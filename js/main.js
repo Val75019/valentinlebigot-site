@@ -136,6 +136,35 @@
   const sidebarTitle = document.getElementById('sidebarTitle');
   const navLinks = [...document.querySelectorAll('[data-nav]')];
 
+  /* ---------- Volet du texte des projets (mobile) ----------
+     Sur mobile, seuls le titre et le sous-titre sont visibles ; la
+     description et les hashtags s'ouvrent avec le « + » (comme sur Cargo). */
+  projects.forEach(p => {
+    const info = p.querySelector('.project__info');
+    const head = info.querySelector('.project__head');
+    const body = info.querySelector('.project__body');
+    const more = document.createElement('div');
+    more.className = 'project__more';
+    const inner = document.createElement('div');
+    body.replaceWith(more);
+    more.appendChild(inner);
+    inner.appendChild(body);
+
+    const btn = document.createElement('button');
+    btn.className = 'project__toggle';
+    btn.type = 'button';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Afficher la description de ' + p.dataset.label);
+    btn.innerHTML = '<i></i>';
+    head.appendChild(btn);
+
+    head.addEventListener('click', () => {
+      if (!matchMedia('(max-width: 900px)').matches) return;
+      const open = info.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  });
+
   /* ---------- Section active : couleurs + index ---------- */
   const roll = document.querySelector('.counter__roll');
   let current = null;
