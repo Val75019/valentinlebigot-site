@@ -12,56 +12,111 @@
   const about = document.getElementById('a-propos');
   const sections = [...projects, about];
 
-  /* ---------- Intro : 16 bandes colorées ----------
-     16 bandes verticales (9 sur mobile), chacune découpée en 1 à 3
-     sections. Les tailles et les teintes bougent en décalé d'une bande
-     à l'autre (même ressort que la barre latérale), puis les bandes
-     remontent et disparaissent en décalé.                             */
+  /* ---------- Intro : lignes fines ----------
+     Des lignes verticales aussi fines que la barre latérale, chacune en
+     3 sections. Les couleurs ne changent pas : seules les sections montent
+     et descendent, chaque ligne à son rythme (moments, durées et amplitudes
+     au hasard). Puis les lignes remontent et disparaissent en décalé.
+
+     Couleurs réparties intelligemment, une seule fois au départ :
+     - une section n'a jamais la même famille de couleur (bleu/bleu clair,
+       rouge/terracotta, crème/blanc…) que la section au-dessus d'elle, ni
+       qu'AUCUNE section de la ligne de gauche : la règle reste donc vraie
+       quelle que soit la hauteur des sections pendant le mouvement ;
+     - on privilégie les contrastes (clair à côté de foncé) ;
+     - les couleurs les moins utilisées sont favorisées (équilibre).      */
   const intro = document.getElementById('intro');
   if (intro && !reduceMotion) {
-    const PALETTE = ['#1f5199', '#e5472b', '#fdf4bb', '#2d3a24', '#bacfec', '#c4a8f8', '#f7f7f7', '#78271f'];
-    const COLS = innerWidth < 700 ? 9 : 16;
-    const STAGGER = 0.035;        // décalage entre bandes (s)
-    const STEPS = 3;              // nombre de recompositions avant la sortie
-    const STEP_MS = 650;
+    const PALETTE = [
+      { c: '#0050a0', fam: 'bleu' },
+      { c: '#b7d0ef', fam: 'bleu' },
+      { c: '#f53216', fam: 'rouge' },
+      { c: '#82201c', fam: 'rouge' },
+      { c: '#fdf3b0', fam: 'clair' },
+      { c: '#f6f6f6', fam: 'clair' },
+      { c: '#c9a6fb', fam: 'lavande' },
+      { c: '#2b3a25', fam: 'vert' },
+    ];
+    // paires trop proches à l'œil, à éviter si possible
+    const TOO_CLOSE = [['#b7d0ef', '#c9a6fb'], ['#82201c', '#2b3a25']];
 
-    const pick = (avoid) => { let c; do { c = PALETTE[Math.floor(Math.random() * PALETTE.length)]; } while (c === avoid); return c; };
-    const cols = [...Array(COLS)].map((_, k) => {
-      const col = document.createElement('div');
-      col.className = 'intro__col';
-      col.innerHTML = '<span class="intro__seg"></span>'.repeat(3);
-      [...col.children].forEach(seg => (seg.style.transitionDelay = `${k * STAGGER}s`));
-      intro.appendChild(col);
-      return col;
+    const lum = hex => {
+      const v = [1, 3, 5].map(i => parseInt(hex.substr(i, 2), 16) / 255)
+        .map(x => (x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4));
+      return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2];
+    };
+    PALETTE.forEach(p => (p.l = lum(p.c)));
+    // pénalité de voisinage : même famille = à proscrire, paire trop proche = à éviter
+    const clash = (a, b) => (a.fam === b.fam ? 10 : 0) +
+      (TOO_CLOSE.some(([x, y]) => (a.c === x && b.c === y) || (a.c === y && b.c === x)) ? 1 : 0);
+
+    const LINE_W = innerWidth < 900 ? 10 : 12;   // largeur d'une ligne (px)
+    const COLS = Math.ceil(innerWidth / LINE_W);
+    const MOVE_UNTIL = 1400;                       // les sections bougent jusqu'à… (ms)
+    const rand = (a, b) => a + Math.random() * (b - a);
+
+    // 1. couleurs (une fois pour toutes)
+    const usage = new Map(PALETTE.map(p => [p.c, 0]));
+    const colors = [];
+    for (let k = 0; k < COLS; k++) {
+      const col = [];
+      for (let j = 0; j < 3; j++) {
+        const neigh = [...(k > 0 ? colors[k - 1] : []), ...(j > 0 ? [col[j - 1]] : [])];
+        const pen = PALETTE.map(p => neigh.reduce((t, n) => t + clash(p, n), 0));
+        const minPen = Math.min(...pen);
+        let best = null, bestScore = -Infinity;
+        PALETTE.forEach((p, i) => {
+          if (pen[i] > minPen) return;
+          const contrast = neigh.length ? Math.min(...neigh.map(n => Math.abs(p.l - n.l))) : 0.5;
+          const score = contrast * 1.2 - usage.get(p.c) / COLS * 3 + Math.random() * 0.35;
+          if (score > bestScore) { bestScore = score; best = p; }
+        });
+        col.push(best);
+        usage.set(best.c, usage.get(best.c) + 1);
+      }
+      colors.push(col);
+    }
+
+    // 2. lignes
+    const cols = colors.map(col => {
+      const el = document.createElement('div');
+      el.className = 'intro__col';
+      el.style.width = LINE_W + 'px';
+      el.innerHTML = col.map(p => `<span class="intro__seg" style="background:${p.c}"></span>`).join('');
+      intro.appendChild(el);
+      return el;
     });
 
-    // recompose chaque bande : 1 à 3 sections, tailles et teintes au hasard
-    const shuffle = () => cols.forEach(col => {
-      const n = 1 + Math.floor(Math.random() * 3);
-      let prev = null;
-      [...col.children].forEach((seg, j) => {
-        // valeurs ×10 : le rebond ne peut jamais laisser de vide dans la bande
-        seg.style.flexGrow = j < n ? (6 + Math.random() * 24).toFixed(1) : 0;
-        prev = pick(prev);
-        seg.style.backgroundColor = prev;
-      });
+    // tailles au hasard (valeurs ×10 : le rebond ne laisse jamais de vide)
+    const resize = (col, instant) => [...col.children].forEach(seg => {
+      if (!instant) {
+        // chaque section a sa propre durée : les mouvements ne sont jamais synchronisés
+        seg.style.transitionDuration = rand(0.6, 1.2).toFixed(2) + 's';
+      }
+      seg.style.flexGrow = rand(6, 30).toFixed(1);
     });
 
-    // état de départ sans transition
     intro.querySelectorAll('.intro__seg').forEach(el => (el.style.transition = 'none'));
-    shuffle();
+    cols.forEach(c => resize(c, true));
     void intro.offsetWidth;
     intro.querySelectorAll('.intro__seg').forEach(el => (el.style.transition = ''));
 
-    for (let i = 0; i < STEPS; i++) setTimeout(shuffle, 250 + i * STEP_MS);
+    // 3. chaque ligne bouge 2 à 4 fois, à des moments qui lui sont propres
+    cols.forEach(col => {
+      const moves = 1 + Math.floor(Math.random() * 3);
+      for (let m = 0; m < moves; m++) setTimeout(() => resize(col), rand(80, MOVE_UNTIL));
+    });
 
-    // les bandes remontent en décalé
-    const outAt = 250 + STEPS * STEP_MS + 200;
+    // 4. sortie : les lignes remontent, en décalé et un peu au hasard
+    const OUT_AT = MOVE_UNTIL + 150;
+    const OUT_SPREAD = 0.5;   // étalement des départs (s)
     setTimeout(() => {
-      cols.forEach((c, k) => (c.style.transitionDelay = `${k * STAGGER}s`));
-      intro.classList.add('is-out');
-    }, outAt);
-    setTimeout(() => { intro.remove(); body.classList.remove('is-loading'); }, outAt + 1000 + COLS * STAGGER * 1000 + 100);
+      cols.forEach((c, k) => {
+        c.style.transitionDelay = (k / COLS * OUT_SPREAD * 0.5 + Math.random() * OUT_SPREAD * 0.5).toFixed(3) + 's';
+        c.style.transform = 'translateY(-100%)';
+      });
+    }, OUT_AT);
+    setTimeout(() => { intro.remove(); body.classList.remove('is-loading'); }, OUT_AT + (OUT_SPREAD + 0.85) * 1000 + 100);
   } else {
     intro?.remove();
     body.classList.remove('is-loading');
@@ -75,13 +130,15 @@
     p.dataset.sub = p.querySelector('.project__sub')?.textContent.trim() || '';
     p.dataset.index = i;
   });
-  document.querySelector('.counter__total').textContent = String(projects.length).padStart(2, '0');
+  const stepPrev = document.querySelector('.counter__prev');
+  const stepNext = document.querySelector('.counter__next');
+  const sepPrev = document.querySelector('.counter__sep--prev');
+  const sepNext = document.querySelector('.counter__sep--next');
   const sidebarTitle = document.getElementById('sidebarTitle');
   const navLinks = [...document.querySelectorAll('[data-nav]')];
 
   /* ---------- Section active : couleurs + index ---------- */
   const roll = document.querySelector('.counter__roll');
-  const mobileCurrent = document.getElementById('mobileCurrent');
   let current = null;
 
   function setActive(section) {
@@ -119,12 +176,21 @@
       roll.classList.add(nextIndex > prevIndex ? 'is-up' : 'is-down');
     }
 
-    // Titre mobile
-    mobileCurrent.classList.add('is-swap');
-    setTimeout(() => {
-      mobileCurrent.textContent = section.dataset.label;
-      mobileCurrent.classList.remove('is-swap');
-    }, 250);
+    // Frise : numéros du projet précédent et suivant (gris, cliquables)
+    if (isProject) {
+      const setStep = (el, sep, p) => {
+        const on = !!p;
+        el.classList.toggle('is-off', !on);
+        sep.classList.toggle('is-off', !on);
+        el.tabIndex = on ? 0 : -1;
+        if (!on) return;
+        el.textContent = String(projects.indexOf(p) + 1).padStart(2, '0');
+        el.href = '#' + p.id;
+        el.title = p.dataset.label;
+      };
+      setStep(stepPrev, sepPrev, projects[nextIndex - 1]);
+      setStep(stepNext, sepNext, projects[nextIndex + 1]);
+    }
 
     // Titre du projet dans la barre latérale
     sidebarTitle.classList.add('is-swap');

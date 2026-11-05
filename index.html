@@ -57,11 +57,14 @@
         <img src="assets/15-12-2025_logo-00-02.png" alt="Valentin Lebigot Studio">
       </a>
 
-      <div class="sidebar__counter" aria-hidden="true">
-        <span class="counter__current"><span class="counter__roll">01</span></span>
-        <span class="counter__sep"></span>
-        <span class="counter__total">09</span>
-      </div>
+      <!-- Frise : projet précédent — projet en cours — projet suivant -->
+      <nav class="sidebar__counter" aria-label="Navigation entre projets">
+        <a class="counter__step counter__prev" href="#" aria-label="Projet précédent">00</a>
+        <span class="counter__sep counter__sep--prev"></span>
+        <span class="counter__current" aria-current="true"><span class="counter__roll">01</span></span>
+        <span class="counter__sep counter__sep--next"></span>
+        <a class="counter__step counter__next" href="#" aria-label="Projet suivant">02</a>
+      </nav>
 
       <p class="sidebar__title" id="sidebarTitle" aria-live="polite"></p>
 
@@ -69,7 +72,7 @@
 
       <div class="sidebar__bottom">
         <nav class="sidebar__nav">
-          <a href="#projets" data-nav="projets">Projets</a>
+          <a href="#top" data-nav="projets">Projets</a>
           <a href="#a-propos" data-nav="a-propos">À propos</a>
         </nav>
         <div class="socials">
@@ -97,7 +100,6 @@
   <!-- Barre mobile -->
   <header class="mobilebar">
     <a href="#top" class="mobilebar__logo"><img src="assets/15-12-2025_logo-00-02.png" alt="Valentin Lebigot Studio"></a>
-    <span class="mobilebar__current" id="mobileCurrent">Collection Produit</span>
     <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
   </header>
 
