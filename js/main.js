@@ -11,6 +11,35 @@
   const about = document.getElementById('a-propos');
   const sections = [...projects, about];
 
+  /* ---------- Typographie française ----------
+     Les petits mots (de, et, à, la, le, un, pour, par…) ne restent jamais
+     seuls en fin de ligne : ils sont liés au mot suivant par une espace
+     insécable. Idem pour « : ; ! ? », les guillemets et les plages de dates
+     (2026 – 2027). Aucune césure n'est faite (voir le CSS).            */
+  (() => {
+    const SMALL = ['à', 'a', 'au', 'aux', 'de', 'du', 'des', 'd’', 'le', 'la', 'les', 'l’', 'un', 'une',
+      'et', 'ou', 'ni', 'en', 'dans', 'par', 'pour', 'sur', 'sous', 'avec', 'sans', 'chez', 'vers', 'entre',
+      'ce', 'cet', 'cette', 'ces', 'se', 'sa', 'son', 'ses', 'mon', 'ma', 'mes', 'leur', 'leurs', 'qui', 'que',
+      'ne', 'y', 'il', 'elle', 'on', 'je', 'j’', 'x', '&', '–', '—', '-', '|'];
+    const NB = ' ';
+    const esc = w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const reSmall = new RegExp(`(^|[\\s(«“])(${SMALL.map(esc).join('|')})[ \\t\\n]+`, 'giu');
+    const fix = t => t
+      .replace(reSmall, (m, before, w) => before + w + NB)
+      .replace(reSmall, (m, before, w) => before + w + NB)          // 2e passe : « à la », « de la »…
+      .replace(/(\d)[ \t\n]+([–—-])[ \t\n]+(\d)/g, `$1${NB}$2${NB}$3`)  // 2026 – 2027
+      .replace(/[ \t\n]+([:;!?»])/g, `${NB}$1`)                          // avant : ; ! ? »
+      .replace(/(«)[ \t\n]+/g, `$1${NB}`)                               // après «
+      .replace(/(\p{L})-(?=\p{L})/gu, '$1\u2060-\u2060');               // mots composés (sur-mesure, au-delà) jamais coupés
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => n.parentElement.closest('script, style, svg, .intro') || !n.nodeValue.trim()
+        ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT,
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n => { const v = fix(n.nodeValue); if (v !== n.nodeValue) n.nodeValue = v; });
+  })();
+
   /* ---------- Intro : lignes fines ----------
      Des lignes verticales aussi fines que la barre latérale, chacune en
      3 sections. Les couleurs ne changent pas : seules les sections montent

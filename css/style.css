@@ -43,8 +43,16 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* typographie : jamais de césure, mots jamais coupés */
+  -webkit-hyphens: none;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 img, video { display: block; max-width: 100%; }
+/* retours à la ligne équilibrés : titres de longueurs égales, pas de mot seul en fin de paragraphe */
+h1, h2, h3, .project__sub, .sidebar__title, .about__lead { text-wrap: balance; }
+p, li, dd, dt { text-wrap: pretty; }
 a { color: inherit; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 ::selection { background: var(--c1); color: #fff; }
@@ -192,7 +200,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .main { margin-left: var(--sidebar-w); }
 
 .project {
-  padding: var(--pad) var(--pad) calc(var(--pad) * 2.2);
+  padding: var(--pad);   /* même espace au-dessus et en dessous de chaque projet */
 }
 .project + .project { border-top: 1px solid var(--line); }
 
@@ -200,7 +208,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .gallery {
   --ratio: 1.4146;
   position: relative;
-  width: min(100%, calc((100vh - 2 * var(--pad)) * var(--ratio)));
+  width: min(100%, calc(100vh * var(--ratio)));   /* pleine largeur, limitée seulement par la hauteur d'écran */
   aspect-ratio: 1600 / 1131;
   margin: 0 auto;
   overflow: hidden;
@@ -247,7 +255,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* Texte projet */
 .project__info {
-  width: min(100%, calc((100vh - 2 * var(--pad)) * 1.4146));
+  width: min(100%, calc(100vh * 1.4146));
   margin: 28px auto 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
