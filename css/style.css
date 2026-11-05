@@ -230,8 +230,19 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .gallery { --peek: var(--bar-w); }
 .gallery__shift {
   height: 100%;
-  transition: transform .55s var(--ease);
+  /* apparition : la galerie sort d'un flou « verre dépoli » qui se dissipe vite */
+  filter: blur(18px) saturate(170%);
+  transition: transform .55s var(--ease), filter .75s cubic-bezier(.22, .9, .24, 1) .12s;
 }
+.gallery.is-in .gallery__shift { filter: none; }
+/* voile blanc translucide du verre, qui s'efface en même temps que le flou */
+.gallery::after {
+  content: ""; position: absolute; inset: 0; z-index: 3;
+  background: rgba(255, 255, 255, .4);
+  pointer-events: none;
+  transition: opacity .75s ease .12s;
+}
+.gallery.is-in::after { opacity: 0; }
 .gallery.peek-next .gallery__shift { transform: translateX(calc(-1 * var(--peek))); }
 .gallery.peek-prev .gallery__shift { transform: translateX(var(--peek)); }
 .gallery__track {
