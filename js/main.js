@@ -158,6 +158,9 @@
     constructor(el) {
       this.el = el;
       this.items = JSON.parse(el.dataset.media);
+      // texte alternatif (lu par Google et les lecteurs d'écran) : titre + sous-titre du projet
+      const proj = el.closest('.project');
+      this.alt = proj ? `${proj.querySelector('.project__title').textContent.trim()}, ${proj.querySelector('.project__sub')?.textContent.trim() || ''}`.replace(/"/g, '') : '';
       this.index = 0;
       this.visible = false;
       this.timer = null;
@@ -172,7 +175,7 @@
         if (typeof item === 'object' && item.video) {
           s.innerHTML = `<video muted playsinline loop preload="${i === 0 ? 'auto' : 'none'}" poster="${item.poster}"><source src="${item.video}" type="video/mp4"></video>`;
         } else {
-          s.innerHTML = `<img src="${item}" alt="" ${i === 0 ? '' : 'loading="lazy"'} decoding="async" draggable="false">`;
+          s.innerHTML = `<img src="${item}" alt="${this.alt} — image ${i + 1} sur ${this.items.length}" ${i === 0 ? '' : 'loading="lazy"'} decoding="async" draggable="false">`;
         }
         this.el.appendChild(s);
         return s;
