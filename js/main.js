@@ -5,7 +5,6 @@
   const AUTOPLAY_MS = 4500;         // durée d'une image
   const root = document.documentElement;
   const body = document.body;
-  const isTouch = matchMedia('(hover: none)').matches;
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const projects = [...document.querySelectorAll('.project')];
@@ -235,58 +234,85 @@
     }
 
     build() {
+      // rail horizontal : toutes les images côte à côte, chacune pleine largeur.
+      // .gallery__shift porte le petit décalage au survol, .gallery__track le défilement.
+      this.shift = document.createElement('div');
+      this.shift.className = 'gallery__shift';
+      this.track = document.createElement('div');
+      this.track.className = 'gallery__track';
+      this.shift.appendChild(this.track);
+      this.el.appendChild(this.shift);
+
       this.slides = this.items.map((item, i) => {
         const s = document.createElement('div');
         s.className = 'slide';
         if (typeof item === 'object' && item.video) {
           s.innerHTML = `<video muted playsinline loop preload="${i === 0 ? 'auto' : 'none'}" poster="${item.poster}"><source src="${item.video}" type="video/mp4"></video>`;
         } else {
-          s.innerHTML = `<img src="${item}" alt="${this.alt} — image ${i + 1} sur ${this.items.length}" ${i === 0 ? '' : 'loading="lazy"'} decoding="async" draggable="false">`;
+          s.innerHTML = `<img src="${item}" alt="${this.alt} — image ${i + 1} sur ${this.items.length}" ${i < 2 ? '' : 'loading="lazy"'} decoding="async" draggable="false">`;
         }
-        this.el.appendChild(s);
+        this.track.appendChild(s);
         return s;
       });
 
-      const bars = document.createElement('div');
-      bars.className = 'gallery__bars';
-      bars.innerHTML = this.items.map(() => '<span><i></i></span>').join('');
-      this.el.appendChild(bars);
-      this.bars = [...bars.children];
-      bars.style.setProperty('--dur', AUTOPLAY_MS + 'ms');
+      // copies aux deux bouts : la boucle continue sans retour en arrière visible,
+      // et l'image « précédente » existe aussi à gauche de la première
+      this.offset = 0;
+      if (this.slides.length > 1) {
+        const mk = src => {
+          const c = src.cloneNode(true);
+          c.setAttribute('aria-hidden', 'true');
+          c.querySelector('img')?.setAttribute('alt', '');
+          c.querySelector('img')?.removeAttribute('loading');
+          return c;
+        };
+        this.track.appendChild(mk(this.slides[0]));
+        this.track.insertBefore(mk(this.slides[this.slides.length - 1]), this.track.firstChild);
+        this.offset = 1;
+      }
 
-      this.count = document.createElement('div');
-      this.count.className = 'gallery__count';
-      this.el.appendChild(this.count);
-
+      this.pos = 0;   // position (de -1 à n : -1 et n sont les copies)
+      this.place(0, false);
       this.show(0, true);
+      addEventListener('resize', () => this.place(this.pos, false));
+    }
+
+    // déplace le rail sur la position p
+    place(p, animate = true) {
+      const step = this.el.getBoundingClientRect().width;
+      this.track.classList.toggle('no-anim', !animate);
+      this.track.style.transform = `translateX(${-(p + this.offset) * step}px)`;
+      if (!animate) void this.track.offsetWidth;
+      this.pos = p;
     }
 
     show(i, instant = false) {
       const n = this.slides.length;
-      const prev = this.slides[this.index];
-      this.index = (i + n) % n;
-      const next = this.slides[this.index];
+      const prevSlide = this.slides[this.index];
 
-      if (prev !== next) {
-        prev.classList.remove('is-active');
-        prev.classList.add('is-leaving');
-        setTimeout(() => prev.classList.remove('is-leaving'), 900);
-        prev.querySelector('video')?.pause();
+      if (!instant && n > 1) {
+        clearTimeout(this.snap);
+        // si on était resté sur une copie (clic rapide), on se replace d'abord
+        if (this.pos >= n) this.place(this.pos - n, false), i = this.index + (i > this.index ? 1 : -1);
+        else if (this.pos < 0) this.place(this.pos + n, false), i = this.index + (i > this.index ? 1 : -1);
+
+        const target = i;   // peut valoir -1 ou n : on glisse vers la copie…
+        requestAnimationFrame(() => this.place(target, true));
+        if (target >= n || target < 0) {
+          // …puis on se replace sur la vraie image, sans animation
+          this.snap = setTimeout(() => this.place((target + n) % n, false), 1100);
+        }
       }
-      next.classList.add('is-active');
 
-      // précharge l'image suivante
-      const after = this.slides[(this.index + 1) % n].querySelector('img');
-      if (after) after.loading = 'eager';
+      this.index = (i + n) % n;
+      if (prevSlide !== this.slides[this.index]) prevSlide.querySelector('video')?.pause();
 
-      this.bars.forEach((b, k) => {
-        b.classList.toggle('is-done', k < this.index);
-        b.classList.remove('is-active');
+      // précharge les images voisines
+      [1, 2, -1].forEach(d => {
+        const img = this.slides[(this.index + d + n) % n]?.querySelector('img');
+        if (img) img.loading = 'eager';
       });
-      void this.bars[this.index].offsetWidth;
-      if (this.visible || instant) this.bars[this.index].classList.add('is-active');
 
-      this.count.textContent = `${String(this.index + 1).padStart(2, '0')} / ${String(n).padStart(2, '0')}`;
       this.playVideo();
       this.schedule();
     }
@@ -307,11 +333,7 @@
 
     setVisible(v) {
       this.visible = v;
-      this.el.classList.toggle('is-paused', !v);
       if (v) {
-        this.bars[this.index].classList.remove('is-active');
-        void this.bars[this.index].offsetWidth;
-        this.bars[this.index].classList.add('is-active');
         this.playVideo();
         this.schedule();
       } else {
@@ -322,11 +344,24 @@
 
     bind() {
       // Clic : moitié gauche = précédent, moitié droite = suivant
-      this.el.addEventListener('click', e => {
-        const r = this.el.getBoundingClientRect();
-        const left = e.clientX - r.left < r.width * 0.33;
-        this.show(this.index + (left ? -1 : 1));
-      });
+      const isLeft = e => e.clientX - this.el.getBoundingClientRect().left < this.el.clientWidth / 2;
+      this.el.addEventListener('click', e => this.show(this.index + (isLeft(e) ? -1 : 1)));
+
+      // Survol : l'image suivante (à droite) ou précédente (à gauche) dépasse légèrement
+      if (matchMedia('(hover: hover)').matches) {
+        this.el.addEventListener('mousemove', e => {
+          const side = isLeft(e) ? 'prev' : 'next';
+          if (side !== this.peek) {
+            this.peek = side;
+            this.el.classList.toggle('peek-prev', side === 'prev');
+            this.el.classList.toggle('peek-next', side === 'next');
+          }
+        });
+        this.el.addEventListener('mouseleave', () => {
+          this.peek = null;
+          this.el.classList.remove('peek-prev', 'peek-next');
+        });
+      }
 
       // Swipe mobile
       let x0 = null, y0 = null;
@@ -342,13 +377,6 @@
         x0 = null;
       });
 
-      // Curseur personnalisé
-      if (!isTouch) {
-        this.el.addEventListener('mousemove', e => {
-          const r = this.el.getBoundingClientRect();
-          this.el.classList.toggle('is-prev', e.clientX - r.left < r.width * 0.33);
-        });
-      }
     }
   }
 
