@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Valentin Lebigot — Direction artistique, design graphique & d'espace</title>
+  <meta name="description" content="Valentin Lebigot, directeur artistique et graphiste basé à Paris : identités qui prennent vie dans l'espace — branding, PLV, retail, scénographie, design produit.">
+  <link rel="icon" href="assets/22-12-2025_logo-rfaviconC.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+
+  <!-- Intro : bandes colorées qui se regroupent en 3 puis remontent (générée en JS) -->
+  <div class="intro" id="intro" aria-hidden="true"></div>
+
+  <!-- ============ BARRE LATÉRALE FIXE ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__inner">
+      <a href="#top" class="sidebar__logo" aria-label="Valentin Lebigot Studio — haut de page">
+        <img src="assets/15-12-2025_logo-00-02.png" alt="Valentin Lebigot Studio">
+      </a>
+
+      <div class="sidebar__counter" aria-hidden="true">
+        <span class="counter__current"><span class="counter__roll">01</span></span>
+        <span class="counter__sep"></span>
+        <span class="counter__total">09</span>
+      </div>
+
+      <p class="sidebar__title" id="sidebarTitle" aria-live="polite"></p>
+
+      <div class="sidebar__spacer"></div>
+
+      <div class="sidebar__bottom">
+        <nav class="sidebar__nav">
+          <a href="#projets" data-nav="projets">Projets</a>
+          <a href="#a-propos" data-nav="a-propos">À propos</a>
+        </nav>
+        <div class="socials">
+          <a href="https://www.instagram.com/valentin.lebigot/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" class="fill"/></svg>
+          </a>
+          <a href="https://www.pinterest.fr/valentin_lebigot/" target="_blank" rel="noopener" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 8.5c3.5-1 5.5 1.2 5 3.6-.5 2.6-3 3.4-4.2 2.3M11.6 10.5 9.5 19.5"/></svg>
+          </a>
+          <a href="https://fr.linkedin.com/in/valentin-lebigot-76a615128" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V16M8 7.6v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.3-2.6s2.2.9 2.2 2.6V16"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barres colorées : teinte pilotée par le projet visible -->
+    <div class="colorbar" aria-hidden="true">
+      <span class="colorbar__seg seg-1"></span>
+      <span class="colorbar__seg seg-2"></span>
+      <span class="colorbar__seg seg-3"></span>
+    </div>
+  </aside>
+
+  <!-- Barre mobile -->
+  <header class="mobilebar">
+    <a href="#top" class="mobilebar__logo"><img src="assets/15-12-2025_logo-00-02.png" alt="Valentin Lebigot Studio"></a>
+    <span class="mobilebar__current" id="mobileCurrent">Collection Produit</span>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <!-- ============ CONTENU ============ -->
+  <main class="main" id="top">
+
+    <section id="projets" class="projects">
+
+      <!-- 01 -->
+      <article class="project" id="collection-produit" data-colors="#448ec0,#f9e1af,#f87e6c">
+        <div class="gallery" data-media='[
+          "assets/img/21-10-2025_Portfolio_graphisme5.jpg",
+          "assets/img/21-10-2025_Portfolio_graphisme.jpg",
+          "assets/img/21-10-2025_Portfolio_graphisme4.jpg",
+          "assets/img/21-10-2025_Portfolio_graphisme2.jpg",
+          {"video":"assets/video/Composition-5.mp4","poster":"assets/img/Composition-5.jpg"},
+          "assets/img/21-10-2025_Portfolio_graphisme3.jpg"
+        ]'></div>
+        <div class="project__info">
+          <div class="project__head">
+            <h2 class="project__title">Collection Produit</h2>
+            <p class="project__sub">Valentin Lebigot</p>
+          </div>
+          <div class="project__body">
+            <p>Depuis 2020 à Paris, Valentin Lebigot crée des objets 3D recyclables au design audacieux et coloré. Chaque pièce reflète une démarche responsable, pensée pour une clientèle sensible au design contemporain et éthique.</p>
+            <ul class="tags"><li>designproduits</li><li>directionartistiques</li><li>impression3D</li><li>objetsgraphiques</li><li>packaging</li><li>designresponsable</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 -->
+      <article class="project" id="strategie-communication" data-colors="#006ff7,#f1dfa6,#0c186c">
+        <div class="gallery" data-media='[
+          "assets/img/21-10-2025_Portfolio_graphisme20.jpg",
+          "assets/img/21-10-2025_Portfolio_graphisme19.jpg",
+          {"video":"assets/video/Composition-1_2.mp4","poster":"assets/img/Composition-1_2.jpg"}
+        ]'></div>
+        <div class="project__info">
+          <div class="project__head">
+            <h2 class="project__title">Stratégie &amp; communication</h2>
+            <p class="project__sub">Valentin Lebigot</p>
+          </div>
+          <div class="project__body">
+            <p>Univers digital pensé comme un ensemble cohérent : site e-shop WordPress, UX/UI, réseaux sociaux, newsletters et Ads. Chaque point de contact prolonge l’identité visuelle et assure une expérience de marque claire et continue.</p>
+            <ul class="tags"><li>socialMedia</li><li>newsletter</li><li>ads</li><li>eshop</li><li>contentdesign</li><li>brandidentity</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 -->
+      <article class="project" id="face-a-face-marker" data-colors="#171644,#fcf9c8,#ca6f68">
+        <div class="gallery" data-media='[
+          "assets/img/08-09-2026_002.jpg",
+          "assets/img/08-09-2026_003.jpg",
+          {"video":"assets/video/Composition-1.mp4","poster":"assets/img/Composition-1.avif"},
+          "assets/img/08-09-2026_004.jpg",
+          "assets/img/08-09-2026_006.jpg",
+          "assets/img/08-09-2026_005.jpg"
+        ]'></div>
+        <div class="project__info">
+          <div class="project__head">
+            <h2 class="project__title">Face à Face 2026 – 2027</h2>
+            <p class="project__sub">Face à Face Paris</p>
+          </div>
+          <div class="project__body">
+            <p>Pour la campagne 2026/2027 de <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, j’ai accompagné les équipes dans la direction artistique autour de MARKER, une collection inspirée par le geste du dessin, les lignes franches et les couleurs électriques. Un univers kraft, surréaliste et onirique, imaginé pour souligner l’audace des montures. Photographies et vidéos réalisées par <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.</p>
+            <ul class="tags"><li>artdirection</li><li>campaign</li><li>eyewear</li><li>design</li><li>setdesign</li><li>branding</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 -->
+      <article class="project" id="ripple" data-colors="#8a74c4,#e9dfbd,#cbb6e2">
+        <div class="gallery" data-media='[
+          "assets/img/30-04-2026_dossier_002.jpg",
+          "assets/img/B.jpg",
+          "assets/img/B2.jpg",
+          "assets/img/30-04-2026_dossier_0011.jpg",
+          "assets/img/30-04-2026_dossier_007.jpg",
+          "assets/img/30-04-2026_dossier_005.jpg"
+        ]'></div>
+        <div class="project__info">
+          <div class="project__head">
+            <h2 class="project__title">Ripple</h2>
+            <p class="project__sub">Face à Face Paris</p>
+          </div>
+          <div class="project__body">
+            <p>Pour la nouvelle collection optique et solaire de <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE Paris</a>, j’ai collaboré avec la marque à la création de RIPPLE, un dispositif PLV sur-mesure destiné aux opticiens partenaires. Réalisés en impression 3D, ces présentoirs reprennent les codes graphiques et les couleurs de la collection pour mettre en valeur les montures en point de vente.</p>
+            <ul class="tags"><li>retail</li><li>PLV</li><li>eyewear</li><li>design</li><li>3Dprinting</li><li>visualmerchandising</li><li>branding</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 -->
+      <article class="project" id="brasserie-le-s" data-colors="#0b3252,#cdb284,#8f291c">
+        <div class="gallery" data-media='[
+          "assets/img/21-10-2025_Portfolio_graphisme13.jpg",
+          "assets/img/21-10-2025_Portfolio_graphisme15.jpg",
+          "assets/img/10-03-2026_00.jpg",
+          "assets/img/21-10-2025_Portfolio_graphisme14.jpg",
+          "assets/img/21-10-2025_Portfolio_graphisme16.jpg"
+        ]'></div>
+        <div class="project__info">
+          <div class="project__head">
+            <h2 class="project__title">Collection Brasserie le S</h2>
+            <p class="project__sub">Servier Monde</p>
+          </div>
+          <div class="project__body">
+            <p>Collection sur mesure d’objets de table conçue pour la Brasserie Le S pour <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes. Développée avec <a href="https://www.snef.fr/wattdb/" target="_blank" rel="noopener">Watt</a> Design &amp; Build, elle prolonge l’univers architectural à travers des pièces sculpturales et fonctionnelles.</p>
+            <ul class="tags"><li>designproduit</li><li>objetsgraphiques</li><li>directionartistique</li><li>impression3D</li><li>architectureInterieure</li><li>design&amp;build</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 06 -->
+      <article class="project" id="surval-4-all" data-colors="#004099,#f4e6c6,#fa7844">
+        <div class="gallery" data-media='[
+          "assets/img/21-10-2025_Portfolio_graphisme10.jpg",
+          "assets/img/21-10-2025_Portfolio_graphisme11.jpg",
+          "assets/img/21-10-2025_Portfolio_graphisme12.jpg"
+        ]'></div>
+        <div class="project__info">
+          <div class="project__head">
+            <h2 class="project__title">Collection SURVAL 4 ALL</h2>
+            <p class="project__sub">Servier Monde</p>
+          </div>
+          <div class="project__body">
+            <p>Produits de bureau modulaires et colorés développés pour les nouveaux locaux de <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes, en collaboration avec <a href="https://www.geniedeslieux.com/" target="_blank" rel="noopener">Génies des Lieux</a>, pensés pour des espaces de travail fonctionnels et dynamiques.</p>
+            <ul class="tags"><li>designproduit</li><li>objetsgraphiques</li><li>directionartistique</li><li>impression3D</li><li>officedesign</li><li>designmodulaire</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 07 -->
+      <article class="project" id="born-to-be-woow" data-colors="#e0628f,#f7efb7,#b67c5d">
+        <div class="gallery" data-media='[
+          "assets/img/Fond-05-02-2026_ai-logo-Woow.gif",
+          "assets/img/01.jpg",
+          "assets/img/03-02-2026_recherches-Krys-x-Woow-13.jpg",
+          {"video":"assets/video/FOND-21-04-2026_jeu-echec.mp4","poster":"assets/img/FOND-21-04-2026_jeu-echec.jpg"},
+          "assets/img/00.jpg",
+          "assets/img/FOND-21-04-2026_woow-2.jpg"
+        ]'></div>
+        <div class="project__info">
+          <div class="project__head">
+            <h2 class="project__title">Born to be WOOW</h2>
+            <p class="project__sub">WOOW x Krys Group</p>
+          </div>
+          <div class="project__body">
+            <p>Pour les 60 ans de Krys Group, WOOW eyewear est mis à l’honneur à travers un kit PLV vitrine immersif dédié aux années 80. Le dispositif décline bannières, stickers, countercards et présentoirs autour de l’univers pop et coloré initié par <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> et mis en scène par l’agence <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.</p>
+            <ul class="tags"><li>retail</li><li>PLV</li><li>scénographie</li><li>vitrine</li><li>branding</li><li>identité</li><li>visualmerchandising</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 08 -->
+      <article class="project" id="scenographie-retail" data-colors="#9e514c,#f8b956,#e18a45">
+        <div class="gallery" data-media='[
+          "assets/img/21-10-2025_Portfolio_graphisme6.jpg",
+          "assets/img/21-10-2025_Portfolio_graphisme7.jpg",
+          "assets/img/21-10-2025_Portfolio_graphisme8.jpg"
+        ]'></div>
+        <div class="project__info">
+          <div class="project__head">
+            <h2 class="project__title">Scénographie &amp; Retail</h2>
+            <p class="project__sub">Degree Concept Store — PDW 2025</p>
+          </div>
+          <div class="project__body">
+            <p>Scénographie pop et sculpturale conçue pour les 30 ans de <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE</a> lors de la Paris Design Week 2025. Le projet met en dialogue design, couleur et identité pour révéler le potentiel sculptural des solaires.</p>
+            <ul class="tags"><li>retail</li><li>scénographie</li><li>impression3D</li><li>directionartistique</li><li>setdesign</li><li>evenementiel</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 09 -->
+      <article class="project" id="trobos" data-colors="#0a0ab1,#fdbdcc,#f35d58">
+        <div class="gallery" data-media='[
+          "assets/img/21-10-2025_Portfolio_graphisme24.jpg",
+          "assets/img/21-10-2025_Portfolio_graphisme23.jpg",
+          {"video":"assets/video/Composition-4.mp4","poster":"assets/img/Composition-4.jpg"},
+          "assets/img/16-12-2025_slide-00.jpg",
+          "assets/img/16-12-2025_slide-002.jpg"
+        ]'></div>
+        <div class="project__info">
+          <div class="project__head">
+            <h2 class="project__title">Trobos</h2>
+            <p class="project__sub">Papier Merveille x Valentin Lebigot</p>
+          </div>
+          <div class="project__body">
+            <p>TROBOS est une collection de trombones à cliper, conçue comme un objet graphique de papeterie contemporain, née de la collaboration avec la marque lyonnaise <a href="https://www.papiermerveille.com/fr/" target="_blank" rel="noopener">Papier Merveille</a>.</p>
+            <ul class="tags"><li>designproduit</li><li>packaging</li><li>designresponsable</li><li>objetsgraphiques</li><li>graphisme</li><li>impression3D</li></ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ À PROPOS ============ -->
+    <section id="a-propos" class="about" data-colors="#02549d,#f7f4ca,#82201c" data-label="À propos">
+      <div class="about__grid">
+        <figure class="about__photo reveal">
+          <img src="assets/img/11-03-2026_02.jpg" alt="Portrait de Valentin Lebigot" loading="lazy">
+        </figure>
+
+        <div class="about__content">
+          <p class="about__kicker reveal">À propos</p>
+          <h2 class="about__lead reveal">Directeur artistique et graphiste basé à Paris, j'accompagne agences, studios et marques dans la conception d'identités <em>qui prennent vie dans l'espace.</em></h2>
+          <div class="about__text reveal">
+            <p>À la croisée du branding, du design graphique et du design d'espace, j'imagine des dispositifs visuels, signalétiques, scénographiques et des éléments sur mesure qui prolongent l'identité des marques au-delà des supports traditionnels.</p>
+            <p>J'interviens principalement sur des projets de bureaux, PLV, retail, hospitality et identité de lieu, en collaboration avec des agences Design &amp; Build, des studios de création et des marques.</p>
+          </div>
+
+          <ul class="contact reveal">
+            <li><a href="mailto:contact@valentinlebigot.com" class="link-u">contact@valentinlebigot.com</a></li>
+            <li><a href="tel:+33675900021" class="link-u">+33 (0)6 75 90 00 21</a></li>
+            <li><a href="https://www.instagram.com/valentin.lebigot/" target="_blank" rel="noopener" class="link-u">@valentin.lebigot</a></li>
+          </ul>
+
+          <div class="accordion reveal">
+            <details>
+              <summary>Expériences professionnelles<i></i></summary>
+              <div class="acc__body"><div>
+                <div class="cv-item">
+                  <h3>Fondateur &amp; Directeur Artistique <span>Valentin Lebigot Studio</span></h3>
+                  <p class="cv-date">2020 — Actuellement</p>
+                  <p>Accompagnement d’agences et de marques sur des projets d’identité appliquée à l’espace et à l’objet.</p>
+                  <ul><li>Conception de dispositifs identitaires sur mesure</li><li>Développement d’objets et supports intégrés aux espaces</li><li>Direction artistique globale et cohérence des univers de marque</li><li>Production et suivi de fabrication (print, volume, 3D)</li><li>Collaboration avec agences Design &amp; Build et équipes retail</li></ul>
+                </div>
+                <div class="cv-item">
+                  <h3>Direction artistique et identité de marque <span>Quark, Paris</span></h3>
+                  <p class="cv-date">2023 — 2025</p>
+                  <p>Définition et déploiement de l’identité de marque dans une logique produit et espace.</p>
+                  <ul><li>Structuration de l’identité visuelle et de marque</li><li>Déploiement sur supports print, digital et espace</li><li>Supervision d’équipe design</li><li>Coordination avec équipes produit, marketing et commerciales</li><li>Contribution à la stratégie de positionnement de la marque</li></ul>
+                </div>
+                <div class="cv-item">
+                  <h3>Graphiste Print <span>WipBrands, Paris</span></h3>
+                  <p class="cv-date">2019 — 2020</p>
+                  <ul><li>Création d’identités visuelles et supports print</li><li>Exécution et préparation de fichiers</li><li>Compréhension avancée des contraintes de production</li></ul>
+                </div>
+              </div></div>
+            </details>
+
+            <details>
+              <summary>Compétences<i></i></summary>
+              <div class="acc__body"><div>
+                <dl class="cv-list">
+                  <dt>Direction Artistique &amp; Identité</dt><dd>Branding, storytelling, multi-supports</dd>
+                  <dt>Design d’espace &amp; retail</dt><dd>Signalétique, PLV, vitrines, scénographie</dd>
+                  <dt>Design produit</dt><dd>Objets sur mesure, impression 3D, développement</dd>
+                  <dt>Production &amp; exécution</dt><dd>Print, fabrication, suivi technique</dd>
+                  <dt>Logiciels</dt><dd>Illustrator, Photoshop, InDesign, Figma, After Effects, Rhino</dd>
+                </dl>
+              </div></div>
+            </details>
+
+            <details>
+              <summary>Expositions &amp; Conférences<i></i></summary>
+              <div class="acc__body"><div>
+                <dl class="cv-list">
+                  <dt>Paris Design Week (2025)</dt><dd>DEGREE Concept Store</dd>
+                  <dt>Paris Design Week (2022)</dt><dd>Galerie Joseph Froissart</dd>
+                  <dt>Milan Design Week (2021)</dt><dd>Exposition « 1000 Vases »</dd>
+                  <dt>IESEG Paris (2021)</dt><dd>Workshop impression 3D</dd>
+                </dl>
+              </div></div>
+            </details>
+
+            <details>
+              <summary>Formations<i></i></summary>
+              <div class="acc__body"><div>
+                <dl class="cv-list">
+                  <dt>DSAA Design de Produit (2016)</dt><dd>LAAB, Rennes — Félicitations du jury</dd>
+                  <dt>BTS Design de Produit (2014)</dt><dd>Lycée Vauban, Brest</dd>
+                  <dt>Baccalauréat STI Arts Appliqués (2012)</dt><dd>Lycée Ste Geneviève, Rennes</dd>
+                </dl>
+              </div></div>
+            </details>
+
+            <details>
+              <summary>Langues<i></i></summary>
+              <div class="acc__body"><div>
+                <dl class="cv-list">
+                  <dt>Français</dt><dd>Langue maternelle</dd>
+                  <dt>Anglais</dt><dd>Courant</dd>
+                </dl>
+              </div></div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> Valentin Lebigot Studio</span>
+        <a href="#top" class="link-u">Haut de page ↑</a>
+      </footer>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
