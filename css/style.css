@@ -226,7 +226,6 @@ p, li, dd, dt { text-wrap: pretty; }
 .next__bar { transition: width .45s var(--ease); }
 .next:hover .next__arrow { transform: translateX(8px); }
 .next:hover .next__bar { width: 20px; }
-.nav__projects { display: none; }
 
 /* ---------- À propos ---------- */
 .about { padding: clamp(110px, 16vh, 180px) var(--pad) clamp(70px, 12vh, 140px) calc(var(--rail) + var(--pad)); border-top: 1px solid var(--line); }
@@ -322,19 +321,9 @@ p, li, dd, dt { text-wrap: pretty; }
     backdrop-filter: blur(30px) saturate(180%);
     opacity: 0; pointer-events: none; transition: opacity .4s var(--ease);
   }
-  .head__nav { justify-content: flex-start; gap: 14px; padding-top: calc(var(--head-h) + 28px); padding-bottom: 40px; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
   .head__nav.open { opacity: 1; pointer-events: auto; }
   .head__nav > a { font-size: 30px; line-height: 1.15; color: var(--ink); align-self: flex-start; }
   .head__nav > a::after { bottom: -4px; }
-  .nav__projects { display: block; margin-top: 22px; border-top: 1px solid var(--line); }
-  .nav__projects li { border-bottom: 1px solid var(--line); }
-  .nav__projects a {
-    display: grid; grid-template-columns: 12px 26px minmax(0, 1fr); align-items: center; column-gap: 12px;
-    padding: 12px 0; text-decoration: none; color: var(--ink);
-  }
-  .nav__projects .next__bar { min-height: 30px; }
-  .nav__projects em { font-family: var(--serif); font-size: 14px; color: var(--ink-soft); }
-  .nav__projects b { font-size: 16px; font-weight: 600; line-height: 1.25; }
   body.menu-open { overflow: hidden; }
   body.menu-open .head::before { opacity: 0; }
   .head__burger { position: relative; z-index: 2; }

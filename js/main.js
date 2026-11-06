@@ -331,11 +331,6 @@
   /* ---------- 9. Menu mobile + accordéons + année ---------- */
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
-  // sur mobile, le menu liste aussi les projets pour y aller en un geste
-  nav.insertAdjacentHTML('beforeend', `<ol class="nav__projects">${PROJECTS.map((p, k) => `
-    <li><a href="#${p.id}" style="--n1:${p.colors[0]};--n2:${p.colors[1]};--n3:${p.colors[2]}">
-      <span class="next__bar" aria-hidden="true"><i></i><i></i><i></i></span><em>${pad2(k + 1)}</em><b>${esc(p.title)}</b>
-    </a></li>`).join('')}</ol>`);
   burger.addEventListener('click', () => {
     const open = burger.getAttribute('aria-expanded') !== 'true';
     burger.setAttribute('aria-expanded', open);
