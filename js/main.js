@@ -9,63 +9,63 @@
 
   const PROJECTS = [
     {
-      id: 'collection-produit', colors: ['#448ec0', '#f9e1af', '#f87e6c'],
+      id: 'collection-produit', year: '2020', role: 'Branding & Design global', colors: ['#448ec0', '#f9e1af', '#f87e6c'],
       title: 'Collection Produit', sub: 'Valentin Lebigot',
       desc: 'Depuis 2020 à Paris, Valentin Lebigot crée des objets 3D recyclables au design audacieux et coloré. Chaque pièce reflète une démarche responsable, pensée pour une clientèle sensible au design contemporain et éthique.',
       tags: ['designproduits', 'directionartistiques', 'impression3D', 'objetsgraphiques', 'packaging', 'designresponsable'],
       media: [i('21-10-2025_Portfolio_graphisme5.jpg'), i('21-10-2025_Portfolio_graphisme.jpg'), i('21-10-2025_Portfolio_graphisme4.jpg'), i('21-10-2025_Portfolio_graphisme2.jpg'), v('Composition-5.mp4', 'Composition-5.jpg'), i('21-10-2025_Portfolio_graphisme3.jpg')],
     },
     {
-      id: 'strategie-communication', colors: ['#006ff7', '#f1dfa6', '#0c186c'],
+      id: 'strategie-communication', year: '2020', role: 'Graphisme & Social media', colors: ['#006ff7', '#f1dfa6', '#0c186c'],
       title: 'Stratégie & communication', sub: 'Valentin Lebigot',
       desc: 'Univers digital pensé comme un ensemble cohérent : site e-shop WordPress, UX/UI, réseaux sociaux, newsletters et Ads. Chaque point de contact prolonge l’identité visuelle et assure une expérience de marque claire et continue.',
       tags: ['socialMedia', 'newsletter', 'ads', 'eshop', 'contentdesign', 'brandidentity'],
       media: [i('21-10-2025_Portfolio_graphisme20.jpg'), i('21-10-2025_Portfolio_graphisme19.jpg'), v('Composition-1_2.mp4', 'Composition-1_2.jpg')],
     },
     {
-      id: 'face-a-face-marker', colors: ['#171644', '#fcf9c8', '#ca6f68'],
+      id: 'face-a-face-marker', year: '2026', role: 'Direction artistique', colors: ['#171644', '#fcf9c8', '#ca6f68'],
       title: 'Face à Face 2026 – 2027', sub: 'Face à Face Paris',
       desc: 'Pour la campagne 2026/2027 de <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, j’ai accompagné les équipes dans la direction artistique autour de MARKER, une collection inspirée par le geste du dessin, les lignes franches et les couleurs électriques. Un univers kraft, surréaliste et onirique, imaginé pour souligner l’audace des montures. Photographies et vidéos réalisées par <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['artdirection', 'campaign', 'eyewear', 'design', 'setdesign', 'branding'],
       media: [i('08-09-2026_002.jpg'), i('08-09-2026_003.jpg'), v('Composition-1.mp4', 'Composition-1.avif'), i('08-09-2026_004.jpg'), i('08-09-2026_006.jpg'), i('08-09-2026_005.jpg')],
     },
     {
-      id: 'ripple', colors: ['#8a74c4', '#e9dfbd', '#cbb6e2'],
+      id: 'ripple', year: '2026', role: 'Retail & PLV', colors: ['#8a74c4', '#e9dfbd', '#cbb6e2'],
       title: 'Ripple', sub: 'Face à Face Paris',
       desc: 'Pour la nouvelle collection optique et solaire de <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE Paris</a>, j’ai collaboré avec la marque à la création de RIPPLE, un dispositif PLV sur-mesure destiné aux opticiens partenaires. Réalisés en impression 3D, ces présentoirs reprennent les codes graphiques et les couleurs de la collection pour mettre en valeur les montures en point de vente.',
       tags: ['retail', 'PLV', 'eyewear', 'design', '3Dprinting', 'visualmerchandising', 'branding'],
       media: [i('30-04-2026_dossier_002.jpg'), i('B.jpg'), i('B2.jpg'), i('30-04-2026_dossier_0011.jpg'), i('30-04-2026_dossier_007.jpg'), i('30-04-2026_dossier_005.jpg')],
     },
     {
-      id: 'brasserie-le-s', colors: ['#0b3252', '#cdb284', '#8f291c'],
+      id: 'brasserie-le-s', year: '2025', role: 'Hospitality', colors: ['#0b3252', '#cdb284', '#8f291c'],
       title: 'Collection Brasserie le S', sub: 'Servier Monde',
       desc: 'Collection sur mesure d’objets de table conçue pour la Brasserie Le S pour <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes. Développée avec <a href="https://www.snef.fr/wattdb/" target="_blank" rel="noopener">Watt</a> Design &amp; Build, elle prolonge l’univers architectural à travers des pièces sculpturales et fonctionnelles.',
       tags: ['designproduit', 'objetsgraphiques', 'directionartistique', 'impression3D', 'architectureInterieure', 'design&build'],
       media: [i('21-10-2025_Portfolio_graphisme13.jpg'), i('21-10-2025_Portfolio_graphisme15.jpg'), i('10-03-2026_00.jpg'), i('21-10-2025_Portfolio_graphisme14.jpg'), i('21-10-2025_Portfolio_graphisme16.jpg')],
     },
     {
-      id: 'surval-4-all', colors: ['#004099', '#f4e6c6', '#fa7844'],
+      id: 'surval-4-all', year: '2024', role: 'Office design', colors: ['#004099', '#f4e6c6', '#fa7844'],
       title: 'Collection SURVAL 4\u00A0ALL', sub: 'Servier Monde',
       desc: 'Produits de bureau modulaires et colorés développés pour les nouveaux locaux de <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes, en collaboration avec <a href="https://www.geniedeslieux.com/" target="_blank" rel="noopener">Génies des Lieux</a>, pensés pour des espaces de travail fonctionnels et dynamiques.',
       tags: ['designproduit', 'objetsgraphiques', 'directionartistique', 'impression3D', 'officedesign', 'designmodulaire'],
       media: [i('21-10-2025_Portfolio_graphisme10.jpg'), i('21-10-2025_Portfolio_graphisme11.jpg'), i('21-10-2025_Portfolio_graphisme12.jpg')],
     },
     {
-      id: 'born-to-be-woow', colors: ['#e0628f', '#f7efb7', '#b67c5d'],
+      id: 'born-to-be-woow', year: '2026', role: 'Branding & Retail', colors: ['#e0628f', '#f7efb7', '#b67c5d'],
       title: 'Born to be WOOW', sub: 'WOOW x Krys Group',
       desc: 'Pour les 60 ans de Krys Group, WOOW eyewear est mis à l’honneur à travers un kit PLV vitrine immersif dédié aux années 80. Le dispositif décline bannières, stickers, countercards et présentoirs autour de l’univers pop et coloré initié par <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> et mis en scène par l’agence <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['retail', 'PLV', 'scénographie', 'vitrine', 'branding', 'identité', 'visualmerchandising'],
       media: [v('Fond-05-02-2026_ai-logo-Woow.mp4', 'Fond-05-02-2026_ai-logo-Woow.jpg'), i('01.jpg'), i('03-02-2026_recherches-Krys-x-Woow-13.jpg'), v('FOND-21-04-2026_jeu-echec.mp4', 'FOND-21-04-2026_jeu-echec.jpg'), i('00.jpg'), i('FOND-21-04-2026_woow-2.jpg')],
     },
     {
-      id: 'scenographie-retail', colors: ['#9e514c', '#f8b956', '#e18a45'],
+      id: 'scenographie-retail', year: '2025', role: 'Événementiel & Set design', colors: ['#9e514c', '#f8b956', '#e18a45'],
       title: 'Scénographie & Retail', sub: 'Degree Concept Store — PDW 2025',
       desc: 'Scénographie pop et sculpturale conçue pour les 30 ans de <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE</a> lors de la Paris Design Week 2025. Le projet met en dialogue design, couleur et identité pour révéler le potentiel sculptural des solaires.',
       tags: ['retail', 'scénographie', 'impression3D', 'directionartistique', 'setdesign', 'evenementiel'],
       media: [i('21-10-2025_Portfolio_graphisme6.jpg'), i('21-10-2025_Portfolio_graphisme7.jpg'), i('21-10-2025_Portfolio_graphisme8.jpg')],
     },
     {
-      id: 'trobos', colors: ['#0a0ab1', '#fdbdcc', '#f35d58'],
+      id: 'trobos', year: '2020', role: 'Design produit & Packaging', colors: ['#0a0ab1', '#fdbdcc', '#f35d58'],
       title: 'Trobos', sub: 'Papier Merveille x Valentin Lebigot',
       desc: 'TROBOS est une collection de trombones à cliper, conçue comme un objet graphique de papeterie contemporain, née de la collaboration avec la marque lyonnaise <a href="https://www.papiermerveille.com/fr/" target="_blank" rel="noopener">Papier Merveille</a>.',
       tags: ['designproduit', 'packaging', 'designresponsable', 'objetsgraphiques', 'graphisme', 'impression3D'],
@@ -141,6 +141,7 @@
         <p class="work__num rv"><span class="tri"></span>${pad2(k + 1)} / ${pad2(PROJECTS.length)}</p>
         <h2 class="work__title rv">${esc(p.title)}</h2>
         <p class="work__client rv">${esc(p.sub)}</p>
+        <p class="work__meta rv">${p.year} · ${esc(p.role)}</p>
         <p class="work__desc rv">${p.desc}</p>
         <ul class="tags rv">${p.tags.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
       </div>

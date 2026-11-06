@@ -212,6 +212,7 @@ p, li, dd, dt { text-wrap: pretty; }
 .work__num .tri { background: linear-gradient(90deg, var(--w1) 0 50%, var(--w2) 50% 80%, var(--w3) 80%); }
 .work__title { margin: 0; font-size: clamp(30px, 3.2vw, 58px); line-height: 1.04; font-weight: 600; letter-spacing: -.03em; }
 .work__client { margin: 8px 0 0; font-family: var(--serif); font-style: italic; font-size: clamp(19px, 1.6vw, 26px); line-height: 1.2; }
+.work__meta { margin: 14px 0 0; font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--ink-soft); }
 .work__desc { margin: clamp(20px, 3.5vh, 32px) 0 20px; max-width: 470px; font-size: 14px; line-height: 1.7; color: #2b2b2b; }
 .work__desc a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
