@@ -1,2 +1,8 @@
 .DS_Store
 .claude/
+# brouillon du portfolio interactif (en pause, non publié)
+portfolio/
+# originaux haute définition des images du spectre (seul assets/spectre/web/ est publié)
+assets/spectre/*.jpg
+assets/spectre/*.JPG
+assets/spectre/*.png
