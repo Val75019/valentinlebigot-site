@@ -310,9 +310,10 @@ p, li, dd, dt { text-wrap: pretty; }
     position: fixed; inset: 0; z-index: 1;
     flex-direction: column; justify-content: center; gap: 22px;
     padding: 0 calc(var(--rail) + var(--pad));
-    background: rgba(255, 255, 255, .93);
-    -webkit-backdrop-filter: blur(30px) saturate(180%);
-    backdrop-filter: blur(30px) saturate(180%);
+    /* même verre dépoli que l'en-tête sur desktop */
+    background: rgba(255, 255, 255, .7);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    backdrop-filter: blur(22px) saturate(180%);
     opacity: 0; pointer-events: none; transition: opacity .4s var(--ease);
   }
   .head__nav.open { opacity: 1; pointer-events: auto; }
