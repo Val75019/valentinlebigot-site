@@ -215,12 +215,13 @@
     s.style.flexGrow = rand(6, 30).toFixed(1);
   });
 
-  const lineW = innerWidth < 900 ? 10 : 12;
+  // largeur des lignes = largeur du rail coloré des projets (12 px desktop, 8 px mobile) : tout reste cohérent
+  const railW = () => parseFloat(getComputedStyle(root).getPropertyValue('--rail')) || 12;
+  const lineW = railW();
   const hero = document.getElementById('hero');
   const start = () => { body.classList.remove('is-loading'); hero.classList.add('in'); };
   const intro = document.getElementById('intro');
-  const isPhone = matchMedia('(max-width: 900px)').matches;   // mobile : pas d'intro, le site démarre sur le premier projet
-  if (!reduceMotion && !isPhone) {
+  if (!reduceMotion) {
     const cols = buildLines(intro, lineW);
     const MOVE_UNTIL = 1200;
     cols.forEach(c => { const m = 1 + Math.floor(Math.random() * 3); for (let k = 0; k < m; k++) setTimeout(() => shuffle(c), rand(80, MOVE_UNTIL)); });
@@ -234,7 +235,7 @@
   // pied de page : lignes de même hauteur, légèrement décalées, qui ondulent chacune à son rythme
   const footLines = document.getElementById('footLines');
   const buildFoot = () => {
-    buildLines(footLines, innerWidth < 900 ? 10 : 12).forEach(c => {
+    buildLines(footLines, railW()).forEach(c => {
       c.style.transitionDelay = rand(0, .35).toFixed(2) + 's';
       c.style.setProperty('--amp', rand(10, 34).toFixed(0) + 'px');
       c.style.setProperty('--dur', rand(2.4, 4.6).toFixed(2) + 's');
