@@ -221,27 +221,6 @@ p, li, dd, dt { text-wrap: pretty; }
   display: grid; gap: clamp(12px, 1.2vw, 20px);
 }
 
-/* ---------- Projet suivant ---------- */
-.next {
-  display: block; margin-top: clamp(30px, 6vh, 60px);
-  padding: 22px 0 6px; border-top: 1px solid var(--ink);
-  text-decoration: none;
-}
-.next__label { display: block; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
-.next__row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 18px; }
-.next__bar { display: flex; flex-direction: column; width: 12px; align-self: stretch; min-height: 44px; }
-.next__bar i { flex: 1; }
-.next__bar i:nth-child(1) { background: var(--n1); flex-grow: 5; }
-.next__bar i:nth-child(2) { background: var(--n2); flex-grow: 3; }
-.next__bar i:nth-child(3) { background: var(--n3); flex-grow: 2; }
-.next__text { display: flex; flex-direction: column; }
-.next__text b { font-size: clamp(22px, 2.4vw, 40px); font-weight: 600; line-height: 1.1; letter-spacing: -.025em; }
-.next__text em { font-family: var(--serif); font-size: clamp(16px, 1.3vw, 21px); margin-top: 4px; }
-.next__arrow { font-size: clamp(22px, 2.2vw, 34px); transition: transform .45s var(--ease); }
-.next__bar { transition: width .45s var(--ease); }
-.next:hover .next__arrow { transform: translateX(8px); }
-.next:hover .next__bar { width: 20px; }
-
 /* ---------- À propos ---------- */
 .about { padding: clamp(110px, 16vh, 180px) var(--pad) clamp(70px, 12vh, 140px) calc(var(--rail) + var(--pad)); border-top: 1px solid var(--line); }
 .about__head { max-width: 1180px; margin-bottom: clamp(44px, 8vh, 90px); }

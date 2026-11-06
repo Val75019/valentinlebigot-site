@@ -133,18 +133,6 @@
   const shot = m => typeof m === 'string'
     ? `<figure class="shot"><img src="${m}" alt="" loading="lazy" decoding="async"></figure>`
     : `<figure class="shot"><video src="${m.video}" poster="${m.poster}" muted loop playsinline preload="none"></video></figure>`;
-  // fin de projet : lien vers le suivant (le dernier renvoie vers À propos)
-  const nextLink = k => {
-    const n = PROJECTS[k + 1];
-    const href = n ? '#' + n.id : '#a-propos';
-    const cols = n ? n.colors : ['#02549d', '#f7f4ca', '#82201c'];
-    return `<a class="next" href="${href}" style="--n1:${cols[0]};--n2:${cols[1]};--n3:${cols[2]}">
-      <span class="next__label">${n ? 'Projet suivant' : 'Pour finir'}</span>
-      <span class="next__row"><span class="next__bar" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span class="next__text"><b>${n ? esc(n.title) : 'À propos'}</b><em>${n ? esc(n.sub) : 'Valentin Lebigot'}</em></span>
-        <span class="next__arrow" aria-hidden="true">→</span></span>
-    </a>`;
-  };
   document.getElementById('projets').innerHTML = PROJECTS.map((p, k) => `
     <section class="work" id="${p.id}" data-colors="${p.colors}" data-label="${esc(p.title)}" data-num="${pad2(k + 1)}"
       style="--w1:${p.colors[0]};--w2:${p.colors[1]};--w3:${p.colors[2]}">
@@ -156,7 +144,7 @@
         <p class="work__desc rv">${p.desc}</p>
         <ul class="tags rv">${p.tags.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
       </div>
-      <div class="work__media">${p.media.map(shot).join('')}${nextLink(k)}</div>
+      <div class="work__media">${p.media.map(shot).join('')}</div>
     </section>`).join('');
 
   /* ---------- 3. Typographie française (comme sur le site) ---------- */
