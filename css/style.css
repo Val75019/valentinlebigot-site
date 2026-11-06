@@ -132,7 +132,9 @@ p, li, dd, dt { text-wrap: pretty; }
 .hero__title .rise { white-space: nowrap; }
 @supports (font-size: 1cqi) { .hero__title { font-size: min(11.8cqi, 82px); } }
 .hero__hint { margin: clamp(24px, 5vh, 48px) 0 0; font-size: 12px; font-weight: 600; line-height: 1.8; transition-delay: .4s; }
-.hero__hint span { font-weight: 500; color: var(--ink-soft); }
+.hero__hint span { display: block; font-weight: 500; color: var(--ink-soft); }
+/* métiers : sur une ligne si possible, sinon coupés en lignes équilibrées (jamais un mot seul) */
+.hero__disc { display: block; font-weight: 600; text-wrap: balance; }
 
 .spectrum { display: flex; height: calc(100% - var(--head-h)); margin-top: var(--head-h); }
 .band {
