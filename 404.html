@@ -6,14 +6,12 @@
   <title>Page introuvable — Valentin Lebigot</title>
   <meta name="robots" content="noindex">
   <link rel="icon" href="/assets/22-12-2025_logo-rfaviconC.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/fonts.css?v=4.2">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; height: 100%; }
     body {
-      font-family: "Montserrat", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      font-family: "Archivo", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
       color: #161616;
       background: #fff;
       display: flex;
@@ -72,6 +70,10 @@
     .btn:hover span { transform: translateX(3px); }
     .note { margin-top: 22px; font-size: 13px; color: #a3a3a3; }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+
+    /* système typographique : grands titres en capitales étroites, italique en contrepoint */
+    h1 { font-variation-settings: "wdth" 62; font-weight: 700; text-transform: uppercase; letter-spacing: -.005em; line-height: .94; }
+    h1 em { font-variation-settings: normal; text-transform: none; font-weight: 400; font-size: 1.06em; }
   </style>
 </head>
 <body>

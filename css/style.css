@@ -16,8 +16,8 @@
   --rail: 12px;
   --pad: clamp(20px, 3vw, 56px);
   --head-h: 84px;
-  --sans: "Montserrat", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Archivo", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --serif: "Instrument Serif", Georgia, serif;
   --ease: cubic-bezier(.22, .9, .24, 1);
   --ease-io: cubic-bezier(.65, 0, .35, 1);
   --soft: cubic-bezier(.45, .05, .25, 1);
@@ -389,3 +389,31 @@ p, li, dd, dt { text-wrap: pretty; }
   .band:hover .band__num { opacity: 1; }
   .hero__hint span { display: none; }
 }
+
+/* =========================================================
+   Système typographique E — « Verticale »
+   Archivo (une seule famille, plusieurs largeurs) + Instrument Serif italique.
+   Les capitales étroites ne servent qu'aux grands titres : elles forment
+   des lignes verticales qui répondent au spectre et au rail.
+   ========================================================= */
+body { font-variation-settings: "wdth" 100; }
+.hero__title, .work__title, .contact__title {
+  font-variation-settings: "wdth" 62;
+  font-weight: 700; text-transform: uppercase;
+  letter-spacing: -.005em; line-height: .94;
+}
+.hero__title .serif, .contact__title .serif {
+  font-variation-settings: normal; text-transform: none;
+  font-weight: 400; letter-spacing: -.01em; line-height: 1;
+  font-size: 1.06em;
+}
+.work__title { font-size: clamp(34px, 3.6vw, 64px); }
+.contact__title { font-size: clamp(54px, 11vw, 200px); }
+/* les métiers en petites capitales espacées */
+.hero__disc { text-transform: uppercase; letter-spacing: .14em; font-size: 11px; }
+/* Instrument Serif est plus petite à corps égal : on compense */
+.work__client { font-size: clamp(21px, 1.8vw, 29px); }
+.about__lead em { font-size: 1.08em; }
+.serif, .work__client, .band__label em, .cv-item h3 span, .work__num { letter-spacing: 0; }
+/* capitales étroites : on peut agrandir l'accroche en gardant chaque ligne entière */
+@supports (font-size: 1cqi) { .hero__title { font-size: min(14.5cqi, 96px); } }

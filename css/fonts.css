@@ -1,0 +1,18 @@
+/* Polices hébergées sur le site (licence SIL Open Font License) — plus d'appel à Google Fonts.
+   Archivo : une seule police variable (largeur 62–100, graisse 400–700).
+   Instrument Serif : italique. */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 62% 100%;
+  font-display: swap;
+  src: url("/assets/fonts/archivo-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/instrument-serif-italic-latin.woff2") format("woff2");
+}
