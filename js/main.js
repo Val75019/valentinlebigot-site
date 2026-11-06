@@ -302,7 +302,7 @@
     e.target.classList.add('in');
     revealObs.unobserve(e.target);
   }), { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-  document.querySelectorAll('.rv, .shot, .contact__title .rise').forEach(el => revealObs.observe(el));
+  document.querySelectorAll('.rv, .shot, .contact__title .rise, .about__name .rise').forEach(el => revealObs.observe(el));
   new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('in')), { threshold: 0.2 })
     .observe(document.getElementById('contact'));
 
