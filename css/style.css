@@ -101,6 +101,21 @@ p, li, dd, dt { text-wrap: pretty; }
 .head__nav a.is-active::after { transform: none; }
 .head__burger { display: none; }
 
+/* Réseaux sociaux (mêmes pictos que la V2) : affichés dans le menu mobile */
+.socials { display: none; gap: 14px; }
+.socials a {
+  display: grid; place-items: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--line);
+  transition: background-color .3s, border-color .3s, transform .4s var(--ease);
+}
+.socials a::after { display: none; }
+.socials svg { width: 17px; height: 17px; fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; transition: stroke .3s; }
+.socials svg .fill { fill: var(--ink); stroke: none; }
+.socials a:hover { background: var(--ink); border-color: var(--ink); transform: translateY(-2px); }
+.socials a:hover svg { stroke: #fff; }
+.socials a:hover svg .fill { fill: #fff; }
+
 /* ---------- Accueil : spectre ---------- */
 .hero {
   position: relative;
@@ -324,6 +339,7 @@ p, li, dd, dt { text-wrap: pretty; }
   .head__nav.open { opacity: 1; pointer-events: auto; }
   .head__nav > a { font-size: 30px; line-height: 1.15; color: var(--ink); align-self: flex-start; }
   .head__nav > a::after { bottom: -4px; }
+  .head__nav .socials { display: flex; position: absolute; left: calc(var(--rail) + var(--pad)); bottom: max(28px, env(safe-area-inset-bottom)); }
   body.menu-open { overflow: hidden; }
   body.menu-open .head::before { opacity: 0; }
   .head__burger { position: relative; z-index: 2; }
