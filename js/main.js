@@ -249,6 +249,33 @@
     buildFoot.t = setTimeout(() => { if (Math.abs(innerWidth - lastW) > 40) { lastW = innerWidth; buildFoot(); } }, 250);
   });
 
+  // les lignes du pied de page se soulèvent doucement autour du curseur (ou du doigt), comme une onde
+  if (!reduceMotion) {
+    let px = null, raf = 0;
+    const lift = new Map();
+    const tick = () => {
+      raf = 0;
+      let moving = false;
+      [...footLines.children].forEach(c => {
+        const r = c.getBoundingClientRect();
+        const dx = px === null ? 1e9 : (r.left + r.width / 2) - px;
+        const goal = px === null ? 0 : 54 * Math.exp(-(dx * dx) / (2 * 90 * 90));
+        const cur = lift.get(c) || 0;
+        const next = cur + (goal - cur) * 0.16;
+        if (Math.abs(next - cur) > 0.1) moving = true;
+        lift.set(c, next);
+        c.style.top = (-next).toFixed(1) + 'px';
+      });
+      if (moving) raf = requestAnimationFrame(tick);
+    };
+    const go = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    const zone = document.getElementById('contact');
+    zone.addEventListener('pointermove', e => { px = e.clientX; go(); });
+    zone.addEventListener('pointerleave', () => { px = null; go(); });
+    zone.addEventListener('touchmove', e => { px = e.touches[0].clientX; go(); }, { passive: true });
+    zone.addEventListener('touchend', () => { px = null; go(); });
+  }
+
   /* ---------- 5. Section active : couleurs, navigation, titre en haut ---------- */
   const sections = [...document.querySelectorAll('.work, .about, .contact')];
   const navLinks = [...document.querySelectorAll('.head__nav a')];

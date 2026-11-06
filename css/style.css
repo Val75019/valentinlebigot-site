@@ -283,7 +283,8 @@ p, li, dd, dt { text-wrap: pretty; }
 .foot a { text-decoration: none; }
 
 /* Lignes en escalier qui sortent du bas et ondulent doucement */
-.lines { height: 26vh; min-height: 150px; display: flex; overflow: hidden; }
+.lines { height: calc(26vh + 60px); min-height: 210px; padding-top: 60px; display: flex; overflow: hidden; }
+.lines .intro__col { position: relative; top: 0; }
 .lines .intro__col {
   height: calc(100% + 40px);
   transform: translateY(110%);
@@ -342,7 +343,7 @@ p, li, dd, dt { text-wrap: pretty; }
   .about__photo { max-width: 320px; }
   .cv-list { grid-template-columns: 1fr; gap: 2px; }
   .cv-list dd { margin-bottom: 10px; }
-  .lines { height: 24vh; }
+  .lines { height: calc(24vh + 60px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
