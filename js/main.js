@@ -51,7 +51,7 @@
       media: [i('21-10-2025_Portfolio_graphisme10.jpg'), i('21-10-2025_Portfolio_graphisme11.jpg'), i('21-10-2025_Portfolio_graphisme12.jpg')],
     },
     {
-      id: 'born-to-be-woow', year: '2026', role: 'Branding & Retail', cover: { fit: 'contain', bg: '#87cfa8' }, colors: ['#e0628f', '#f7efb7', '#b67c5d'],
+      id: 'born-to-be-woow', year: '2026', role: 'Branding & Retail', colors: ['#e0628f', '#f7efb7', '#b67c5d'],
       title: 'Born to be WOOW', sub: 'WOOW x Krys Group',
       desc: 'Pour les 60 ans de Krys Group, WOOW eyewear est mis à l’honneur à travers un kit PLV vitrine immersif dédié aux années 80. Le dispositif décline bannières, stickers, countercards et présentoirs autour de l’univers pop et coloré initié par <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> et mis en scène par l’agence <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['retail', 'PLV', 'scénographie', 'vitrine', 'branding', 'identité', 'visualmerchandising'],
@@ -82,7 +82,7 @@
   // image du spectre fournie pour chaque projet (assets/spectre/web : 700, 1000 et 1400 px de large, format 2:3)
   const thumbOf = p => {
     const base = A + 'spectre/web/' + p.id;
-    const v = '?v=2';   // à augmenter quand une image du spectre change
+    const v = '?v=4';   // à augmenter quand une image du spectre change
     return `src="${base}-700.jpg${v}" data-srcset="${base}-700.jpg${v} 700w, ${base}-1000.jpg${v} 1000w, ${base}-1400.jpg${v} 1400w" sizes="(max-width: 900px) 100vw, (hover: none) 60vw, max(28vw, 64vh)"`;
   };
 
