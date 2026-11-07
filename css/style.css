@@ -4,12 +4,12 @@
    un spectre de projets à l'accueil, puis un rail par projet.
    ========================================================= */
 
-@property --c1 { syntax: "<color>"; inherits: true; initial-value: #02549d; }
-@property --c2 { syntax: "<color>"; inherits: true; initial-value: #f7f4ca; }
-@property --c3 { syntax: "<color>"; inherits: true; initial-value: #82201c; }
+@property --c1 { syntax: "<color>"; inherits: true; initial-value: #2c7fd6; }
+@property --c2 { syntax: "<color>"; inherits: true; initial-value: #f3ebdc; }
+@property --c3 { syntax: "<color>"; inherits: true; initial-value: #8b1e3f; }
 
 :root {
-  --c1: #02549d; --c2: #f7f4ca; --c3: #82201c;
+  --c1: #2c7fd6; --c2: #f3ebdc; --c3: #8b1e3f;
   --ink: #141414;
   --ink-soft: #6a6a6a;
   --line: rgba(0, 0, 0, .1);
