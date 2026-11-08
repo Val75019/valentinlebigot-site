@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Valentin Lebigot — Liens</title>
+  <meta name="description" content="Valentin Lebigot, directeur artistique et graphiste à Paris : portfolio, projets, Instagram, Pinterest, LinkedIn et contact.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://valentinlebigot.com/liens/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Valentin Lebigot — Directeur artistique &amp; graphiste">
+  <meta property="og:description" content="Portfolio, projets, Instagram, Pinterest, LinkedIn et contact.">
+  <meta property="og:url" content="https://valentinlebigot.com/liens/">
+  <meta property="og:image" content="https://valentinlebigot.com/assets/og-image.jpg?v=8">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/favicon.ico?v=2" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/fonts.css?v=5.7">
+  <style>
+    /* Page de liens (bio Instagram) — même DA que le site : Archivo étroite, Instrument Serif, palette, lignes */
+    :root {
+      --ink: #141414; --soft: #6a6a6a; --line: rgba(0, 0, 0, .1);
+      --rail: 8px; --pad: 22px;
+      --ease: cubic-bezier(.22, .9, .24, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      min-height: 100svh; display: flex; flex-direction: column;
+      font-family: "Archivo", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink); background: #fff;
+      -webkit-font-smoothing: antialiased; hyphens: none;
+      overflow-x: hidden;
+    }
+
+    main {
+      width: 100%; max-width: 520px; margin: 0 auto;
+      padding: max(34px, env(safe-area-inset-top)) var(--pad) 34px;
+      flex: 1;
+    }
+    .logo { display: block; width: 40px; height: auto; margin-bottom: 30px; }
+    h1 {
+      margin: 0; font-size: clamp(46px, 15vw, 66px); line-height: .92;
+      font-weight: 700; font-variation-settings: "wdth" 62; text-transform: uppercase; letter-spacing: -.005em;
+    }
+    .role { margin: 10px 0 0; font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 24px; line-height: 1.15; }
+    .place { text-wrap: balance; margin: 8px 0 0; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
+
+
+    /* liens : ligne tricolore + intitulé + flèche, comme le sommaire des projets */
+    .links { list-style: none; margin: 30px 0 0; padding: 0; border-top: 1px solid var(--line); }
+    .links li { border-bottom: 1px solid var(--line); }
+    .links a {
+      display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: stretch; column-gap: 16px;
+      min-height: 64px; text-decoration: none; color: var(--ink);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .bar { width: 12px; display: flex; flex-direction: column; margin: 10px 0; transition: width .3s var(--ease); }
+    .bar i { flex: 1; }
+    .label { display: flex; flex-direction: column; justify-content: center; transition: transform .35s cubic-bezier(.34, 1.56, .64, 1); transform-origin: left center; }
+    .label b { font-size: 17px; font-weight: 600; line-height: 1.2; }
+    .label span { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 15px; color: var(--soft); }
+    .arrow { align-self: center; font-size: 18px; transition: transform .35s var(--ease); }
+    .links a:hover .bar, .links a:active .bar, .links a:focus-visible .bar { width: 24px; }
+    .links a:hover .label, .links a:active .label, .links a:focus-visible .label { transform: translateX(4px) scale(1.04); }
+    .links a:hover .arrow, .links a:active .arrow { transform: translateX(4px); }
+    .links a:focus-visible { outline: none; }
+
+    .foot { display: flex; justify-content: space-between; margin-top: 26px; font-size: 11px; letter-spacing: .04em; color: var(--soft); }
+    .foot a { color: var(--ink); text-decoration: none; font-weight: 600; letter-spacing: .14em; }
+
+    /* lignes colorées qui ondulent en bas, comme sur le site */
+    .lines { height: 16vh; min-height: 90px; display: flex; overflow: hidden; }
+    .lines div { flex: none; height: calc(100% + 30px); display: flex; flex-direction: column; animation: bob var(--dur, 3s) ease-in-out var(--dl, 0s) infinite alternate; }
+    .lines span { flex: 1; }
+    @keyframes bob { from { transform: translateY(0); } to { transform: translateY(var(--amp, 14px)); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="/" aria-label="Valentin Lebigot — site"><img class="logo" src="/assets/15-12-2025_logo-00-02.png" alt="Valentin Lebigot Studio"></a>
+    <h1>Valentin<br>Lebigot</h1>
+    <p class="role">Directeur artistique &amp; graphiste</p>
+    <p class="place">Paris · Branding · Graphisme · Design&nbsp;produit · Retail · Scénographie</p>
+
+
+    <ul class="links">
+      <li><a href="/"><span class="bar"><i style="background:#1c63d7"></i><i style="background:#f4ebdd"></i><i style="background:#93272a"></i></span>
+        <span class="label"><b>Portfolio</b><span>valentinlebigot.com</span></span><span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="https://www.instagram.com/valentin.lebigot/" target="_blank" rel="noopener"><span class="bar"><i style="background:#907fe8"></i><i style="background:#f4ebdd"></i><i style="background:#a3d3fb"></i></span>
+        <span class="label"><b>Instagram</b><span>@valentin.lebigot</span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+      <li><a href="https://www.pinterest.fr/valentin_lebigot/" target="_blank" rel="noopener"><span class="bar"><i style="background:#93272a"></i><i style="background:#14213d"></i><i style="background:#f4ebdd"></i></span>
+        <span class="label"><b>Pinterest</b><span>Inspirations &amp; recherches</span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+      <li><a href="https://fr.linkedin.com/in/valentin-lebigot-76a615128" target="_blank" rel="noopener"><span class="bar"><i style="background:#1c63d7"></i><i style="background:#e48f9f"></i><i style="background:#ff7a5c"></i></span>
+        <span class="label"><b>LinkedIn</b><span>Parcours &amp; collaborations</span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+      <li><a href="mailto:contact@valentinlebigot.com"><span class="bar"><i style="background:#93ad8e"></i><i style="background:#f6dc9a"></i><i style="background:#e48f9f"></i></span>
+        <span class="label"><b>Me contacter</b><span>contact@valentinlebigot.com</span></span><span class="arrow" aria-hidden="true">→</span></a></li>
+    </ul>
+
+    <p class="foot"><span>© <span id="y"></span> Valentin Lebigot Studio</span><a href="/en/" lang="en">ENGLISH</a></p>
+  </main>
+
+  <div class="lines" id="lines" aria-hidden="true"></div>
+
+  <script>
+    // lignes : palette du site, jamais deux teintes de la même famille côte à côte, chacune ondule à son rythme
+    (function () {
+      var P = [['#14213d','b'],['#1c63d7','b'],['#a3d3fb','b'],['#96bec7','b'],['#93ad8e','v'],['#c9d8c9','v'],['#907fe8','l'],['#d8cbf2','l'],['#f6301e','r'],['#93272a','r'],['#ff7a5c','c'],['#e48f9f','p'],['#f6dc9a','j'],['#f4ebdd','k']];
+      var box = document.getElementById('lines'), w = 8, n = Math.ceil(innerWidth / w) + 1, prev = [], html = '';
+      var rnd = function (a, b) { return a + Math.random() * (b - a); };
+      for (var k = 0; k < n; k++) {
+        var col = [];
+        for (var j = 0; j < 3; j++) {
+          var ban = prev.concat(j ? [col[j - 1]] : []).map(function (c) { return c[1]; });
+          var pool = P.filter(function (c) { return ban.indexOf(c[1]) < 0; });
+          col.push(pool[Math.floor(Math.random() * pool.length)]);
+        }
+        prev = col;
+        html += '<div style="width:' + w + 'px;--amp:' + rnd(8, 26).toFixed(0) + 'px;--dur:' + rnd(2.4, 4.4).toFixed(2) + 's;--dl:' + (-rnd(0, 4)).toFixed(2) + 's">' +
+          col.map(function (c) { return '<span style="background:' + c[0] + ';flex-grow:' + rnd(6, 26).toFixed(1) + '"></span>'; }).join('') + '</div>';
+      }
+      box.innerHTML = html;
+      document.getElementById('y').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
