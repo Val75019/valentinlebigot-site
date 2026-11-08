@@ -487,6 +487,42 @@
     setTimeout(() => { rn.classList.add('hint'); sessionStorage.setItem('railHint', '1'); setTimeout(() => rn.classList.remove('hint'), 2600); }, 3200);
   }
 
+  /* ---------- 8d. Desktop : menu déroulant « Projets » ----------
+     Au survol (ou au clavier) du lien « Projets », un sommaire des 9 projets se déroule. */
+  const navProjets = document.querySelector('.head__nav a[data-nav="projets"]');
+  const drop = document.createElement('div');
+  drop.className = 'navdrop';
+  drop.setAttribute('role', 'menu');
+  // même principe graphique que le sommaire mobile : ligne tricolore, numéro, titre
+  drop.innerHTML = `<p class="navdrop__title">Projets</p><ol>${PROJECTS.map((p, k) => `
+    <li><a href="#${p.id}" role="menuitem" style="--d:${(k * 0.03).toFixed(3)}s">
+      <span class="navdrop__bar">${p.colors.map(c => `<i style="background:${c}"></i>`).join('')}</span>
+      <span class="navdrop__label"><em>${pad2(k + 1)}</em>${esc(p.title)}</span></a></li>`).join('')}</ol>`;
+  document.getElementById('head').appendChild(drop);
+  let dropTimer = 0;
+  const dropDesk = matchMedia('(min-width: 901px) and (hover: hover)');
+  const dropOpen = () => {
+    if (!dropDesk.matches) return;
+    clearTimeout(dropTimer);
+    drop.classList.add('open');
+    navProjets.setAttribute('aria-expanded', 'true');
+  };
+  const dropClose = (now) => {
+    clearTimeout(dropTimer);
+    dropTimer = setTimeout(() => { drop.classList.remove('open'); navProjets.setAttribute('aria-expanded', 'false'); }, now ? 0 : 220);
+  };
+  navProjets.setAttribute('aria-haspopup', 'true');
+  navProjets.setAttribute('aria-expanded', 'false');
+  [navProjets, drop].forEach(el => {
+    el.addEventListener('mouseenter', dropOpen);
+    el.addEventListener('mouseleave', () => dropClose());
+  });
+  navProjets.addEventListener('focus', dropOpen);
+  drop.addEventListener('focusout', e => { if (!drop.contains(e.relatedTarget) && e.relatedTarget !== navProjets) dropClose(true); });
+  drop.addEventListener('click', e => { if (e.target.closest('a')) dropClose(true); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') dropClose(true); });
+  addEventListener('scroll', () => drop.classList.contains('open') && !drop.matches(':hover') && dropClose(true), { passive: true });
+
   /* ---------- 9. Menu mobile + accordéons + année ---------- */
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
