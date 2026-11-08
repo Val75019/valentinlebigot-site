@@ -10,38 +10,38 @@
   /* Palette du site : 15 teintes, les seules utilisées partout (intro, projets, lignes, rail). */
   const T = {
     encre: '#14213d',   // Bleu encre
-    ceruleen: '#2c7fd6',   // Céruléen
-    sky: '#8ccbf0',   // Sky blue
-    canard: '#1f6f78',   // Bleu canard
-    sauge: '#7fc8a9',   // Vert d’eau
-    lavande: '#8f7fe8',   // Lavande
-    prunerose: '#c95b8e',   // Prune rose
-    vermillon: '#e04a2f',   // Vermillon
-    grenat: '#8b1e3f',   // Grenat
-    sienne: '#d2643f',   // Sienne brûlée
-    abricot: '#f39a54',   // Abricot
-    safran: '#efc04b',   // Safran
-    paille: '#f5e3a8',   // Paille
-    creme: '#f3ebdc',   // Crème
+    bleu: '#1c63d7',   // Bleu roi
+    sky: '#a3d3fb',   // Sky blue
+    bleugris: '#96bec7',   // Bleu gris
+    sauge: '#93ad8e',   // Sauge
+    vertgris: '#c9d8c9',   // Vert de gris
+    lavande: '#907fe8',   // Lavande
+    lilas: '#d8cbf2',   // Lilas
+    vermillon: '#f6301e',   // Vermillon
+    brique: '#93272a',   // Brique
+    corail: '#ff7a5c',   // Corail
+    rose: '#e48f9f',   // Rose ancien
+    paille: '#f6dc9a',   // Paille
+    creme: '#f4ebdd',   // Crème
   };
 
   const PROJECTS = [
     {
-      id: 'collection-produit', year: '2020', role: 'Branding & Design global', colors: [T.ceruleen, T.paille, T.vermillon],
+      id: 'collection-produit', year: '2020', role: 'Branding & Design global', colors: [T.vermillon, T.paille, T.bleu],
       title: 'Collection Produit', sub: 'Valentin Lebigot',
       desc: 'Depuis 2020 à Paris, Valentin Lebigot crée des objets 3D recyclables au design audacieux et coloré. Chaque pièce reflète une démarche responsable, pensée pour une clientèle sensible au design contemporain et éthique.',
       tags: ['designproduits', 'directionartistiques', 'impression3D', 'objetsgraphiques', 'packaging', 'designresponsable'],
       media: [i('21-10-2025_Portfolio_graphisme5.jpg'), i('21-10-2025_Portfolio_graphisme.jpg'), i('21-10-2025_Portfolio_graphisme4.jpg'), i('21-10-2025_Portfolio_graphisme2.jpg'), v('Composition-5.mp4', 'Composition-5.jpg'), i('21-10-2025_Portfolio_graphisme3.jpg')],
     },
     {
-      id: 'strategie-communication', year: '2020', role: 'Graphisme & Social media', colors: [T.sky, T.creme, T.canard],
+      id: 'strategie-communication', year: '2020', role: 'Graphisme & Social media', colors: [T.creme, T.encre, T.sky],
       title: 'Stratégie & communication', sub: 'Valentin Lebigot',
       desc: 'Univers digital pensé comme un ensemble cohérent : site e-shop WordPress, UX/UI, réseaux sociaux, newsletters et Ads. Chaque point de contact prolonge l’identité visuelle et assure une expérience de marque claire et continue.',
       tags: ['socialMedia', 'newsletter', 'ads', 'eshop', 'contentdesign', 'brandidentity'],
       media: [i('21-10-2025_Portfolio_graphisme20.jpg'), i('21-10-2025_Portfolio_graphisme19.jpg'), v('Composition-1_2.mp4', 'Composition-1_2.jpg')],
     },
     {
-      id: 'face-a-face-marker', year: '2026', role: 'Direction artistique', colors: [T.encre, T.safran, T.prunerose],
+      id: 'face-a-face-marker', year: '2026', role: 'Direction artistique', colors: [T.encre, T.paille, T.rose],
       title: 'Face à Face 2026 – 2027', sub: 'Face à Face Paris',
       desc: 'Pour la campagne 2026/2027 de <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, j’ai accompagné les équipes dans la direction artistique autour de MARKER, une collection inspirée par le geste du dessin, les lignes franches et les couleurs électriques. Un univers kraft, surréaliste et onirique, imaginé pour souligner l’audace des montures. Photographies et vidéos réalisées par <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['artdirection', 'campaign', 'eyewear', 'design', 'setdesign', 'branding'],
@@ -55,35 +55,35 @@
       media: [i('30-04-2026_dossier_002.jpg'), i('B.jpg'), i('B2.jpg'), i('30-04-2026_dossier_0011.jpg'), i('30-04-2026_dossier_007.jpg'), i('30-04-2026_dossier_005.jpg')],
     },
     {
-      id: 'brasserie-le-s', year: '2025', role: 'Hospitality', colors: [T.encre, T.sauge, T.grenat],
+      id: 'brasserie-le-s', year: '2025', role: 'Hospitality', colors: [T.brique, T.encre, T.creme],
       title: 'Collection Brasserie le S', sub: 'Servier Monde',
       desc: 'Collection sur mesure d’objets de table conçue pour la Brasserie Le S pour <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes. Développée avec <a href="https://www.snef.fr/wattdb/" target="_blank" rel="noopener">Watt</a> Design &amp; Build, elle prolonge l’univers architectural à travers des pièces sculpturales et fonctionnelles.',
       tags: ['designproduit', 'objetsgraphiques', 'directionartistique', 'impression3D', 'architectureInterieure', 'design&build'],
       media: [i('21-10-2025_Portfolio_graphisme13.jpg'), i('21-10-2025_Portfolio_graphisme15.jpg'), i('10-03-2026_00.jpg'), i('21-10-2025_Portfolio_graphisme14.jpg'), i('21-10-2025_Portfolio_graphisme16.jpg')],
     },
     {
-      id: 'surval-4-all', year: '2024', role: 'Office design', colors: [T.ceruleen, T.paille, T.abricot],
+      id: 'surval-4-all', year: '2024', role: 'Office design', colors: [T.creme, T.rose, T.bleu],
       title: 'Collection SURVAL 4\u00A0ALL', sub: 'Servier Monde',
       desc: 'Produits de bureau modulaires et colorés développés pour les nouveaux locaux de <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes, en collaboration avec <a href="https://www.geniedeslieux.com/" target="_blank" rel="noopener">Génies des Lieux</a>, pensés pour des espaces de travail fonctionnels et dynamiques.',
       tags: ['designproduit', 'objetsgraphiques', 'directionartistique', 'impression3D', 'officedesign', 'designmodulaire'],
       media: [i('21-10-2025_Portfolio_graphisme10.jpg'), i('21-10-2025_Portfolio_graphisme11.jpg'), i('21-10-2025_Portfolio_graphisme12.jpg')],
     },
     {
-      id: 'born-to-be-woow', year: '2026', role: 'Branding & Retail', colors: [T.prunerose, T.safran, T.sauge],
+      id: 'born-to-be-woow', year: '2026', role: 'Branding & Retail', colors: [T.sauge, T.paille, T.rose],
       title: 'Born to be WOOW', sub: 'WOOW x Krys Group',
       desc: 'Pour les 60 ans de Krys Group, WOOW eyewear est mis à l’honneur à travers un kit PLV vitrine immersif dédié aux années 80. Le dispositif décline bannières, stickers, countercards et présentoirs autour de l’univers pop et coloré initié par <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> et mis en scène par l’agence <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['retail', 'PLV', 'scénographie', 'vitrine', 'branding', 'identité', 'visualmerchandising'],
       media: [v('Fond-05-02-2026_ai-logo-Woow.mp4', 'Fond-05-02-2026_ai-logo-Woow.jpg'), i('01.jpg'), i('03-02-2026_recherches-Krys-x-Woow-13.jpg'), v('FOND-21-04-2026_jeu-echec.mp4', 'FOND-21-04-2026_jeu-echec.jpg'), i('00.jpg'), i('FOND-21-04-2026_woow-2.jpg')],
     },
     {
-      id: 'scenographie-retail', year: '2025', role: 'Événementiel & Set design', colors: [T.sienne, T.paille, T.abricot],
+      id: 'scenographie-retail', year: '2025', role: 'Événementiel & Set design', colors: [T.creme, T.vertgris, T.brique],
       title: 'Scénographie & Retail', sub: 'Degree Concept Store — PDW 2025',
       desc: 'Scénographie pop et sculpturale conçue pour les 30 ans de <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE</a> lors de la Paris Design Week 2025. Le projet met en dialogue design, couleur et identité pour révéler le potentiel sculptural des solaires.',
       tags: ['retail', 'scénographie', 'impression3D', 'directionartistique', 'setdesign', 'evenementiel'],
       media: [i('21-10-2025_Portfolio_graphisme6.jpg'), i('21-10-2025_Portfolio_graphisme7.jpg'), i('21-10-2025_Portfolio_graphisme8.jpg')],
     },
     {
-      id: 'trobos', year: '2020', role: 'Design produit & Packaging', colors: [T.ceruleen, T.prunerose, T.vermillon],
+      id: 'trobos', year: '2020', role: 'Design produit & Packaging', colors: [T.bleu, T.rose, T.corail],
       title: 'Trobos', sub: 'Papier Merveille x Valentin Lebigot',
       desc: 'TROBOS est une collection de trombones à cliper, conçue comme un objet graphique de papeterie contemporain, née de la collaboration avec la marque lyonnaise <a href="https://www.papiermerveille.com/fr/" target="_blank" rel="noopener">Papier Merveille</a>.',
       tags: ['designproduit', 'packaging', 'designresponsable', 'objetsgraphiques', 'graphisme', 'impression3D'],
@@ -95,7 +95,7 @@
   // la teinte claire n'est pas toujours au milieu
   const shuffle3 = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   // (deux projets voisins n'ont jamais de teinte en commun : aucune teinte identique ne se touche dans le spectre)
-  PROJECTS.forEach(p => (p.colors = shuffle3(p.colors)));
+  // ordre fixe (haut → milieu → bas) défini dans chaque projet
 
   const root = document.documentElement;
   const body = document.body;
@@ -123,14 +123,42 @@
   const sharpen = () => spectrum.querySelectorAll('img[data-srcset]').forEach(img => { img.srcset = img.dataset.srcset; img.removeAttribute('data-srcset'); });
   spectrum.addEventListener('pointerenter', sharpen, { once: true });
   addEventListener('load', () => setTimeout(sharpen, 2500), { once: true });
-  const drift = band => [...band.querySelectorAll('.band__segs i')].forEach(s => (s.style.flexGrow = rand(4, 22).toFixed(1)));
+  // proportions des 3 teintes de chaque bande : elles bougent, mais deux teintes identiques
+  // de bandes voisines ne doivent jamais se toucher (leurs zones ne se chevauchent jamais)
+  const segsOf = b => [...b.querySelectorAll('.band__segs i')];
+  bands.forEach(b => { b._c = segsOf(b).map(i => i.style.background); b._g = [10, 10, 10]; segsOf(b).forEach(i => (i.style.flexGrow = 10)); });
+  const spans = g => { const t = g[0] + g[1] + g[2]; let y = 0; return g.map(v => { const a = y / t; y += v; return [a, y / t]; }); };
+  const fits = (b, g) => {
+    const mine = spans(g);
+    return [bands[bands.indexOf(b) - 1], bands[bands.indexOf(b) + 1]].every(n => {
+      if (!n) return true;
+      const theirs = spans(n._g);
+      return b._c.every((c, i) => n._c.every((d, j) => c !== d ||
+        Math.min(mine[i][1], theirs[j][1]) - Math.max(mine[i][0], theirs[j][0]) <= 0));
+    });
+  };
+  const drift = band => {
+    for (let tries = 0; tries < 14; tries++) {
+      const g = [rand(5, 18), rand(5, 18), rand(5, 18)];
+      if (fits(band, g)) { band._g = g; band._t = performance.now(); segsOf(band).forEach((i, k) => (i.style.flexGrow = g[k].toFixed(2))); return; }
+    }
+  };
+  // proportions de départ posées sans animation
+  bands.forEach(b => segsOf(b).forEach(i => { i._d = i.style.transitionDelay; i.style.transition = 'none'; }));
   bands.forEach(drift);
+  bands.forEach(b => (b._t = 0));
+  void spectrum.offsetWidth;
+  bands.forEach(b => segsOf(b).forEach(i => { i.style.transition = ''; i.style.transitionDelay = i._d; }));
   // mouvement lent et calme : une ou deux bandes se réajustent de temps en temps
   let spectrumVisible = true;
   new IntersectionObserver(es => (spectrumVisible = es[0].isIntersecting)).observe(spectrum);
   if (!reduceMotion) setInterval(() => {
     if (document.hidden || !spectrumVisible) return;
-    for (let k = 0; k < 2; k++) drift(bands[Math.floor(Math.random() * bands.length)]);
+    // une bande ne bouge que si ses voisines sont immobiles : même pendant l'animation,
+    // deux teintes identiques ne peuvent pas se toucher
+    const now = performance.now(), still = b => !b || !b._t || now - b._t > 2800;
+    const free = bands.filter((b, k) => still(b) && still(bands[k - 1]) && still(bands[k + 1]));
+    if (free.length) drift(free[Math.floor(Math.random() * free.length)]);
   }, 1800);
 
   // bandes horizontales (mobile, tactile) : une seule bande, la plus proche du centre de l'écran, dévoile son image
@@ -199,7 +227,7 @@
   })();
 
   /* ---------- 4. Lignes colorées (intro + pied de page) ---------- */
-  const PALETTE = Object.entries(T).map(([name, c]) => ({ name, c, fam: {'encre': 'bleu', 'ceruleen': 'bleu', 'sky': 'bleu', 'canard': 'vert', 'sauge': 'vert', 'lavande': 'violet', 'prunerose': 'rose', 'vermillon': 'rouge', 'grenat': 'rouge', 'sienne': 'terre', 'abricot': 'orange', 'safran': 'jaune', 'paille': 'clair', 'creme': 'neutre'}[name] }));
+  const PALETTE = Object.entries(T).map(([name, c]) => ({ name, c, fam: {'encre': 'bleu', 'bleu': 'bleu', 'sky': 'bleu', 'bleugris': 'bleu', 'sauge': 'vert', 'vertgris': 'vert', 'lavande': 'violet', 'lilas': 'violet', 'vermillon': 'rouge', 'brique': 'rouge', 'corail': 'corail', 'rose': 'rose', 'paille': 'jaune', 'creme': 'clair'}[name] }));
   const lum = hex => {
     const x = [1, 3, 5].map(j => parseInt(hex.substr(j, 2), 16) / 255)
       .map(c => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
@@ -308,7 +336,7 @@
   const setActive = sec => {
     if (sec === current) return;
     current = sec;
-    const cols = (sec ? sec.dataset.colors : [T.ceruleen, T.creme, T.grenat].join(',')).split(',');
+    const cols = (sec ? sec.dataset.colors : [T.bleu, T.creme, T.brique].join(',')).split(',');
     ['--c1', '--c2', '--c3'].forEach((v, k) => root.style.setProperty(v, cols[k]));
     const key = !sec ? '' : sec.classList.contains('work') ? 'projets' : sec.id;
     navLinks.forEach(a => a.classList.toggle('is-active', a.dataset.nav === key));
