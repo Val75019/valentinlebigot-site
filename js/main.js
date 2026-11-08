@@ -3,7 +3,7 @@
    Pour ajouter / modifier un projet : éditer la liste PROJECTS.
    ========================================================= */
 (() => {
-  const A = 'assets/';
+  const A = '/assets/';
   const v = (name, poster) => ({ video: A + 'video/' + name, poster: A + 'img/' + poster });
   const i = name => A + 'img/' + name;
 
@@ -28,6 +28,7 @@
   const PROJECTS = [
     {
       id: 'collection-produit', year: '2020', role: 'Branding & Design global', colors: [T.vermillon, T.paille, T.bleu],
+      en: { title: 'Product collection', role: 'Branding & Overall design', desc: 'Since 2020 in Paris, Valentin Lebigot has been creating recyclable 3D objects with a bold, colourful design. Each piece reflects a responsible approach, designed for people who care about contemporary, ethical design.' },
       title: 'Collection Produit', sub: 'Valentin Lebigot',
       desc: 'Depuis 2020 à Paris, Valentin Lebigot crée des objets 3D recyclables au design audacieux et coloré. Chaque pièce reflète une démarche responsable, pensée pour une clientèle sensible au design contemporain et éthique.',
       tags: ['designproduits', 'directionartistiques', 'impression3D', 'objetsgraphiques', 'packaging', 'designresponsable'],
@@ -35,6 +36,7 @@
     },
     {
       id: 'strategie-communication', year: '2020', role: 'Graphisme & Social media', colors: [T.creme, T.encre, T.sky],
+      en: { title: 'Strategy & communication', role: 'Graphic design & Social media', desc: 'A digital universe designed as a coherent whole: WordPress e-shop, UX/UI, social media, newsletters and ads. Every touchpoint extends the visual identity and delivers a clear, seamless brand experience.' },
       title: 'Stratégie & communication', sub: 'Valentin Lebigot',
       desc: 'Univers digital pensé comme un ensemble cohérent : site e-shop WordPress, UX/UI, réseaux sociaux, newsletters et Ads. Chaque point de contact prolonge l’identité visuelle et assure une expérience de marque claire et continue.',
       tags: ['socialMedia', 'newsletter', 'ads', 'eshop', 'contentdesign', 'brandidentity'],
@@ -42,6 +44,7 @@
     },
     {
       id: 'face-a-face-marker', year: '2026', role: 'Direction artistique', colors: [T.encre, T.paille, T.rose],
+      en: { title: 'Face à Face 2026 – 2027', role: 'Art direction', desc: 'For the 2026/2027 campaign of <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, I supported the teams with the art direction of MARKER, a collection inspired by the gesture of drawing, bold lines and electric colours. A kraft, surreal and dreamlike universe, imagined to highlight the boldness of the frames. Photography and videos by <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.' },
       title: 'Face à Face 2026 – 2027', sub: 'Face à Face Paris',
       desc: 'Pour la campagne 2026/2027 de <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, j’ai accompagné les équipes dans la direction artistique autour de MARKER, une collection inspirée par le geste du dessin, les lignes franches et les couleurs électriques. Un univers kraft, surréaliste et onirique, imaginé pour souligner l’audace des montures. Photographies et vidéos réalisées par <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['artdirection', 'campaign', 'eyewear', 'design', 'setdesign', 'branding'],
@@ -49,6 +52,7 @@
     },
     {
       id: 'ripple', year: '2026', role: 'Retail & PLV', colors: [T.lavande, T.creme, T.sky],
+      en: { title: 'Ripple', role: 'Retail & POS', desc: 'For the new optical and sun collection of <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE Paris</a>, I worked with the brand on RIPPLE, a bespoke point-of-sale display system for partner opticians. 3D-printed, the displays echo the graphic codes and colours of the collection to showcase the frames in store.' },
       title: 'Ripple', sub: 'Face à Face Paris',
       desc: 'Pour la nouvelle collection optique et solaire de <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE Paris</a>, j’ai collaboré avec la marque à la création de RIPPLE, un dispositif PLV sur-mesure destiné aux opticiens partenaires. Réalisés en impression 3D, ces présentoirs reprennent les codes graphiques et les couleurs de la collection pour mettre en valeur les montures en point de vente.',
       tags: ['retail', 'PLV', 'eyewear', 'design', '3Dprinting', 'visualmerchandising', 'branding'],
@@ -56,6 +60,7 @@
     },
     {
       id: 'brasserie-le-s', year: '2025', role: 'Hospitality', colors: [T.brique, T.encre, T.creme],
+      en: { title: 'Brasserie le S collection', role: 'Hospitality', desc: 'A bespoke tableware collection designed for Brasserie Le S, for <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> in Suresnes. Developed with <a href="https://www.snef.fr/wattdb/" target="_blank" rel="noopener">Watt</a> Design &amp; Build, it extends the architectural universe through sculptural, functional pieces.' },
       title: 'Collection Brasserie le S', sub: 'Servier Monde',
       desc: 'Collection sur mesure d’objets de table conçue pour la Brasserie Le S pour <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes. Développée avec <a href="https://www.snef.fr/wattdb/" target="_blank" rel="noopener">Watt</a> Design &amp; Build, elle prolonge l’univers architectural à travers des pièces sculpturales et fonctionnelles.',
       tags: ['designproduit', 'objetsgraphiques', 'directionartistique', 'impression3D', 'architectureInterieure', 'design&build'],
@@ -63,6 +68,7 @@
     },
     {
       id: 'surval-4-all', year: '2024', role: 'Office design', colors: [T.creme, T.rose, T.bleu],
+      en: { title: 'SURVAL 4\u00A0ALL collection', role: 'Office design', desc: 'Modular, colourful office products developed for the new premises of <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> in Suresnes, in collaboration with <a href="https://www.geniedeslieux.com/" target="_blank" rel="noopener">Génies des Lieux</a>, designed for functional and dynamic workspaces.' },
       title: 'Collection SURVAL 4\u00A0ALL', sub: 'Servier Monde',
       desc: 'Produits de bureau modulaires et colorés développés pour les nouveaux locaux de <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes, en collaboration avec <a href="https://www.geniedeslieux.com/" target="_blank" rel="noopener">Génies des Lieux</a>, pensés pour des espaces de travail fonctionnels et dynamiques.',
       tags: ['designproduit', 'objetsgraphiques', 'directionartistique', 'impression3D', 'officedesign', 'designmodulaire'],
@@ -70,6 +76,7 @@
     },
     {
       id: 'born-to-be-woow', year: '2026', role: 'Branding & Retail', colors: [T.sauge, T.paille, T.rose],
+      en: { title: 'Born to be WOOW', role: 'Branding & Retail', desc: 'For the 60th anniversary of Krys Group, WOOW eyewear takes the spotlight with an immersive window display kit inspired by the 1980s. The system includes banners, stickers, countercards and displays, built around the pop, colourful universe created by <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> and staged by the agency <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.' },
       title: 'Born to be WOOW', sub: 'WOOW x Krys Group',
       desc: 'Pour les 60 ans de Krys Group, WOOW eyewear est mis à l’honneur à travers un kit PLV vitrine immersif dédié aux années 80. Le dispositif décline bannières, stickers, countercards et présentoirs autour de l’univers pop et coloré initié par <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> et mis en scène par l’agence <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['retail', 'PLV', 'scénographie', 'vitrine', 'branding', 'identité', 'visualmerchandising'],
@@ -77,6 +84,7 @@
     },
     {
       id: 'scenographie-retail', year: '2025', role: 'Événementiel & Set design', colors: [T.creme, T.vertgris, T.brique],
+      en: { title: 'Set design & Retail', role: 'Events & Set design', desc: 'A pop, sculptural set design created for the 30th anniversary of <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE</a> during Paris Design Week 2025. The project brings design, colour and identity into dialogue to reveal the sculptural potential of sunglasses.' },
       title: 'Scénographie & Retail', sub: 'Degree Concept Store — PDW 2025',
       desc: 'Scénographie pop et sculpturale conçue pour les 30 ans de <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE</a> lors de la Paris Design Week 2025. Le projet met en dialogue design, couleur et identité pour révéler le potentiel sculptural des solaires.',
       tags: ['retail', 'scénographie', 'impression3D', 'directionartistique', 'setdesign', 'evenementiel'],
@@ -84,6 +92,7 @@
     },
     {
       id: 'trobos', year: '2020', role: 'Design produit & Packaging', colors: [T.bleu, T.rose, T.corail],
+      en: { title: 'Trobos', role: 'Product design & Packaging', desc: 'TROBOS is a collection of clip-on paper clips, designed as a contemporary graphic stationery object, born from a collaboration with the Lyon-based brand <a href="https://www.papiermerveille.com/fr/" target="_blank" rel="noopener">Papier Merveille</a>.' },
       title: 'Trobos', sub: 'Papier Merveille x Valentin Lebigot',
       desc: 'TROBOS est une collection de trombones à cliper, conçue comme un objet graphique de papeterie contemporain, née de la collaboration avec la marque lyonnaise <a href="https://www.papiermerveille.com/fr/" target="_blank" rel="noopener">Papier Merveille</a>.',
       tags: ['designproduit', 'packaging', 'designresponsable', 'objetsgraphiques', 'graphisme', 'impression3D'],
@@ -96,6 +105,11 @@
   const shuffle3 = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   // (deux projets voisins n'ont jamais de teinte en commun : aucune teinte identique ne se touche dans le spectre)
   // ordre fixe (haut → milieu → bas) défini dans chaque projet
+
+  // langue : la page /en/ affiche les textes anglais des projets et de l'interface
+  const EN = document.documentElement.lang === 'en';
+  const L = (fr, en) => (EN ? en : fr);
+  if (EN) PROJECTS.forEach(p => { if (p.en) { p.title = p.en.title; p.role = p.en.role; p.desc = p.en.desc; } });
 
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   const root = document.documentElement;
@@ -203,7 +217,7 @@
     </section>`).join('');
 
   /* ---------- 3. Typographie française (comme sur le site) ---------- */
-  (() => {
+  if (!EN) (() => {
     const SMALL = ['à', 'a', 'au', 'aux', 'de', 'du', 'des', 'd’', 'le', 'la', 'les', 'l’', 'un', 'une',
       'et', 'ou', 'ni', 'en', 'dans', 'par', 'pour', 'sur', 'sous', 'avec', 'sans', 'chez', 'vers', 'entre',
       'ce', 'cet', 'cette', 'ces', 'se', 'sa', 'son', 'ses', 'mon', 'ma', 'mes', 'leur', 'leurs', 'qui', 'que',
@@ -404,12 +418,12 @@
      on relâche (ou on touche un nom) pour y aller.                           */
   const rn = document.createElement('nav');
   rn.className = 'railnav';
-  rn.setAttribute('aria-label', 'Sommaire des projets');
-  rn.innerHTML = `<div class="railnav__scrim"></div><div class="railnav__drawer"><p class="railnav__title">Projets</p><ol class="railnav__list">${PROJECTS.map((p, k) => `
+  rn.setAttribute('aria-label', L('Sommaire des projets', 'Project index'));
+  rn.innerHTML = `<div class="railnav__scrim"></div><div class="railnav__drawer"><p class="railnav__title">${L('Projets', 'Projects')}</p><ol class="railnav__list">${PROJECTS.map((p, k) => `
     <li><a href="#${p.id}" data-i="${k}"><span class="railnav__bar">${p.colors.map(c => `<i style="background:${c}"></i>`).join('')}</span>
       <span class="railnav__label"><em>${pad2(k + 1)}</em>${esc(p.title)}</span></a></li>`).join('')}</ol></div>
-    <button class="railnav__hit" aria-label="Ouvrir le sommaire des projets"></button>
-    <button class="railnav__back" aria-label="Revenir">←</button>`;
+    <button class="railnav__hit" aria-label="${L('Ouvrir le sommaire des projets', 'Open the project index')}"></button>
+    <button class="railnav__back" aria-label="${L('Revenir', 'Back')}">←</button>`;
   body.appendChild(rn);
   const rnHit = rn.querySelector('.railnav__hit');
   const rnList = rn.querySelector('.railnav__list');
@@ -494,7 +508,7 @@
   drop.className = 'navdrop';
   drop.setAttribute('role', 'menu');
   // même principe graphique que le sommaire mobile : ligne tricolore, numéro, titre
-  drop.innerHTML = `<p class="navdrop__title">Projets</p><ol>${PROJECTS.map((p, k) => `
+  drop.innerHTML = `<p class="navdrop__title">${L('Projets', 'Projects')}</p><ol>${PROJECTS.map((p, k) => `
     <li><a href="#${p.id}" role="menuitem" style="--d:${(k * 0.03).toFixed(3)}s">
       <span class="navdrop__bar">${p.colors.map(c => `<i style="background:${c}"></i>`).join('')}</span>
       <span class="navdrop__label"><em>${pad2(k + 1)}</em>${esc(p.title)}</span></a></li>`).join('')}</ol>`;
@@ -539,7 +553,7 @@
     else history.pushState({ panel: 1 }, '');
     panel = name;
     showPanel(name, true);
-    if (name === 'menu') { burger.setAttribute('aria-expanded', 'true'); burger.setAttribute('aria-label', 'Fermer'); }
+    if (name === 'menu') { burger.setAttribute('aria-expanded', 'true'); burger.setAttribute('aria-label', L('Fermer', 'Close')); }
     body.classList.add(name === 'menu' ? 'menu-open' : 'rail-open');
     body.classList.remove(name === 'menu' ? 'rail-open' : 'menu-open');
     if (name === 'rail') rnOnOpen();
@@ -585,5 +599,6 @@
       } else { d.open = true; requestAnimationFrame(() => d.classList.add('is-open')); }
     });
   });
+  document.querySelectorAll('.lang a').forEach(a => a.addEventListener('click', () => { if (location.hash) a.href = a.getAttribute('href') + location.hash; }));
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
