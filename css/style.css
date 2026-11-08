@@ -474,13 +474,6 @@ body { font-variation-settings: "wdth" 100; }
   .railnav__list a .railnav__label { transition: transform .35s cubic-bezier(.34, 1.56, .64, 1), color .2s, opacity .2s; }
   .railnav.open .railnav__list a:not(.is-on) .railnav__label { opacity: .55; }
   .railnav__list a.is-on .railnav__label { transform: translateX(10px) scale(1.12); }
-  /* repère de première visite : le rail s'élargit doucement deux fois */
-  .railnav.hint .railnav__hit::after {
-    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: var(--rail);
-    background: linear-gradient(var(--c1) 0 50%, var(--c2) 50% 80%, var(--c3) 80%);
-    animation: railHint 1.3s var(--ease-io) 2;
-  }
-  @keyframes railHint { 0%, 100% { width: var(--rail); } 50% { width: 22px; } }
 }
 
 /* Rail des projets (mobile) : de temps en temps, ses lignes glissent très légèrement

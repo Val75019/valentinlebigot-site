@@ -496,10 +496,6 @@
   rnItems.forEach((a, k) => a.addEventListener('click', e => { e.preventDefault(); rnGo(k); }));
   rn.querySelector('.railnav__scrim').addEventListener('click', rnClose);
   rn.querySelector('.railnav__back').addEventListener('click', rnClose);
-  // repère discret : le rail « respire » deux fois lors de la première visite
-  if (!reduceMotion && !sessionStorage.getItem('railHint')) {
-    setTimeout(() => { rn.classList.add('hint'); sessionStorage.setItem('railHint', '1'); setTimeout(() => rn.classList.remove('hint'), 2600); }, 3200);
-  }
 
   /* ---------- 8d. Desktop : menu déroulant « Projets » ----------
      Au survol (ou au clavier) du lien « Projets », un sommaire des 9 projets se déroule. */
