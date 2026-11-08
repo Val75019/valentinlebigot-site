@@ -97,6 +97,7 @@
   // (deux projets voisins n'ont jamais de teinte en commun : aucune teinte identique ne se touche dans le spectre)
   // ordre fixe (haut → milieu → bas) défini dans chaque projet
 
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   const root = document.documentElement;
   const body = document.body;
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -397,30 +398,145 @@
   addEventListener('resize', () => { clearTimeout(fitAsides.t); fitAsides.t = setTimeout(fitAsides, 150); });
   document.fonts && document.fonts.ready.then(fitAsides);
 
+  /* ---------- 8c. Rail-sommaire (mobile) ----------
+     Le rail coloré de gauche devient le sommaire : on le touche, il se déploie
+     en 9 segments aux couleurs des projets ; on glisse le doigt pour parcourir,
+     on relâche (ou on touche un nom) pour y aller.                           */
+  const rn = document.createElement('nav');
+  rn.className = 'railnav';
+  rn.setAttribute('aria-label', 'Sommaire des projets');
+  rn.innerHTML = `<div class="railnav__scrim"></div><div class="railnav__drawer"><p class="railnav__title">Projets</p><ol class="railnav__list">${PROJECTS.map((p, k) => `
+    <li><a href="#${p.id}" data-i="${k}"><span class="railnav__bar">${p.colors.map(c => `<i style="background:${c}"></i>`).join('')}</span>
+      <span class="railnav__label"><em>${pad2(k + 1)}</em>${esc(p.title)}</span></a></li>`).join('')}</ol></div>
+    <button class="railnav__hit" aria-label="Ouvrir le sommaire des projets"></button>
+    <button class="railnav__back" aria-label="Revenir">←</button>`;
+  body.appendChild(rn);
+  const rnHit = rn.querySelector('.railnav__hit');
+  const rnList = rn.querySelector('.railnav__list');
+  const rnItems = [...rn.querySelectorAll('.railnav__list a')];
+  const workEls = [...document.querySelectorAll('.work')];
+  let rnOn = -1, rnPressed = false, rnDragged = false, rnWasOpen = false, rnY0 = 0;
+  const rnSet = i => {
+    if (i === rnOn) return;
+    rnOn = i;
+    rnItems.forEach((a, k) => a.classList.toggle('is-on', k === i));
+    if (navigator.vibrate) navigator.vibrate(4);
+  };
+  const rnIndexAt = y => {
+    const r = rnList.getBoundingClientRect();
+    return Math.max(0, Math.min(PROJECTS.length - 1, Math.floor((y - r.top) / r.height * PROJECTS.length)));
+  };
+  const rnCurrent = () => {
+    const mid = innerHeight / 2;
+    let k = workEls.findIndex(w => { const r = w.getBoundingClientRect(); return r.top <= mid && r.bottom > mid; });
+    return k < 0 ? 0 : k;
+  };
+  let rnOpenPanel = () => {}, rnClosePanel = f => f && f();   // reliés au gestionnaire de panneaux plus bas
+  const rnOnOpen = () => { rnOn = -1; rnSet(rnCurrent()); rnPY = null; rnWave(); };
+  const rnOpen = () => rnOpenPanel();
+  const rnClose = () => rnClosePanel();
+  const rnGo = i => {
+    const t = workEls[i];
+    rnClosePanel(() => t && t.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' }));
+  };
+  rnHit.addEventListener('pointerdown', e => {
+    e.preventDefault();
+    try { rnHit.setPointerCapture(e.pointerId); } catch (_) {}
+    rnWasOpen = rn.classList.contains('open');
+    rnPressed = true; rnDragged = false; rnY0 = e.clientY;
+    if (!rnWasOpen) rnOpen();             // à l'ouverture : le projet en cours est mis en avant
+    else rnSet(rnIndexAt(e.clientY));
+  });
+  rnHit.addEventListener('pointermove', e => {
+    if (!rnPressed) return;
+    if (Math.abs(e.clientY - rnY0) > 8) rnDragged = true;
+    rnPY = e.clientY; rnWave();
+    if (rnDragged) rnSet(rnIndexAt(e.clientY));
+  });
+  rnHit.addEventListener('pointerup', () => {
+    if (!rnPressed) return;
+    rnPressed = false;
+    if (rnDragged || rnWasOpen) rnGo(rnOn);      // glissé, ou second toucher : on y va
+  });
+  rnHit.addEventListener('pointercancel', () => { rnPressed = false; });
+  const rnBars = rnItems.map(a => a.querySelector('.railnav__bar'));
+  const rnW = rnBars.map(() => 14);
+  let rnPY = null, rnRaf = 0;
+  const rnTick = () => {
+    rnRaf = 0;
+    let moving = false;
+    rnBars.forEach((b, k) => {
+      const r = b.getBoundingClientRect(), d = rnPY === null ? 1e9 : (r.top + r.height / 2) - rnPY;
+      const goal = 14 + (k === rnOn ? 12 : 0) + (rnPY === null ? 0 : 30 * Math.exp(-(d * d) / (2 * 55 * 55)));
+      const next = rnW[k] + (goal - rnW[k]) * 0.2;
+      if (Math.abs(next - rnW[k]) > 0.1) moving = true;
+      rnW[k] = next; b.style.width = next.toFixed(1) + 'px';
+    });
+    if (moving || rn.classList.contains('open')) rnRaf = requestAnimationFrame(rnTick);
+  };
+  const rnWave = () => { if (!rnRaf) rnRaf = requestAnimationFrame(rnTick); };
+  rn.addEventListener('pointermove', e => { if (rn.classList.contains('open')) { rnPY = e.clientY; rnWave(); } });
+  rn.addEventListener('pointerleave', () => { rnPY = null; });
+  // à la souris : le projet survolé ressort
+  rnItems.forEach((a, k) => a.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && rn.classList.contains('open')) rnSet(k); }));
+  rnItems.forEach((a, k) => a.addEventListener('click', e => { e.preventDefault(); rnGo(k); }));
+  rn.querySelector('.railnav__scrim').addEventListener('click', rnClose);
+  rn.querySelector('.railnav__back').addEventListener('click', rnClose);
+  // repère discret : le rail « respire » deux fois lors de la première visite
+  if (!reduceMotion && !sessionStorage.getItem('railHint')) {
+    setTimeout(() => { rn.classList.add('hint'); sessionStorage.setItem('railHint', '1'); setTimeout(() => rn.classList.remove('hint'), 2600); }, 3200);
+  }
+
   /* ---------- 9. Menu mobile + accordéons + année ---------- */
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
-  burger.addEventListener('click', () => {
-    const open = burger.getAttribute('aria-expanded') !== 'true';
-    burger.setAttribute('aria-expanded', open);
-    nav.classList.toggle('open', open);
-    body.classList.toggle('menu-open', open);
+  // Deux panneaux sur mobile : le menu (Projets, À propos, Contact) et le sommaire des projets.
+  // Un seul ouvert à la fois ; la croix de l'en-tête et le bouton retour du téléphone les ferment.
+  let panel = null, afterClose = null;
+  const showPanel = (name, on) => {
+    if (name === 'menu') nav.classList.toggle('open', on);
+    if (name === 'rail') rn.classList.toggle('open', on);
+  };
+  const openPanel = name => {
+    if (panel === name) return;
+    if (panel) showPanel(panel, false);
+    else history.pushState({ panel: 1 }, '');
+    panel = name;
+    showPanel(name, true);
+    if (name === 'menu') { burger.setAttribute('aria-expanded', 'true'); burger.setAttribute('aria-label', 'Fermer'); }
+    body.classList.add(name === 'menu' ? 'menu-open' : 'rail-open');
+    body.classList.remove(name === 'menu' ? 'rail-open' : 'menu-open');
+    if (name === 'rail') rnOnOpen();
+  };
+  const closePanel = then => {
+    if (!panel) { then && then(); return; }
+    showPanel(panel, false);
+    panel = null;
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Menu');
+    body.classList.remove('menu-open', 'rail-open');
+    if (history.state && history.state.panel) { afterClose = then || null; history.back(); }
+    else if (then) then();
+  };
+  addEventListener('popstate', () => {
+    if (panel) closePanel();                       // retour du téléphone : ferme le panneau ouvert
+    if (afterClose) { const f = afterClose; afterClose = null; setTimeout(f, 30); }
   });
-  // clic dans le menu : on ferme, on débloque le défilement, puis on va à la section
+  rnOpenPanel = () => openPanel('rail');
+  rnClosePanel = closePanel;
+  burger.addEventListener('click', () => (panel === 'menu' ? closePanel() : openPanel('menu')));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && panel) closePanel(); });
+  const goTo = (target, hash) => closePanel(() => {
+    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    history.replaceState(null, '', hash);
+  });
+  // clic dans le menu : « Projets » ouvre le sommaire (mobile), les autres liens mènent à leur section
   nav.addEventListener('click', e => {
     const a = e.target.closest('a[href^="#"]');
-    if (!a) return;
-    const target = document.querySelector(a.getAttribute('href'));
-    const wasOpen = nav.classList.contains('open');
-    burger.setAttribute('aria-expanded', 'false');
-    nav.classList.remove('open');
-    body.classList.remove('menu-open');
-    if (!target || !wasOpen) return;
+    if (!a || !nav.classList.contains('open')) return;
     e.preventDefault();
-    setTimeout(() => {
-      target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-      history.replaceState(null, '', a.getAttribute('href'));
-    }, 20);
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) goTo(target, a.getAttribute('href')); else closePanel();
   });
 
   document.querySelectorAll('.accordion details').forEach(d => {
