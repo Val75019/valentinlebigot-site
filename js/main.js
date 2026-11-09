@@ -44,8 +44,8 @@
     },
     {
       id: 'face-a-face-marker', year: '2026', role: 'Direction artistique', colors: [T.encre, T.paille, T.rose],
-      en: { title: 'Face à Face 2026 – 2027', role: 'Art direction', desc: 'For the 2026/2027 campaign of <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, art direction support for the teams around MARKER, a collection inspired by the gesture of drawing, bold lines and electric colours. A kraft, surreal and dreamlike universe, imagined to highlight the boldness of the frames. Photography and videos by <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.' },
-      title: 'Face à Face 2026 – 2027', sub: 'Face à Face Paris',
+      en: { title: 'FAF 2026 – 2027', role: 'Art direction', desc: 'For the 2026/2027 campaign of <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, art direction support for the teams around MARKER, a collection inspired by the gesture of drawing, bold lines and electric colours. A kraft, surreal and dreamlike universe, imagined to highlight the boldness of the frames. Photography and videos by <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.' },
+      title: 'FAF 2026 – 2027', sub: 'Face à Face Paris',
       desc: 'Pour la campagne 2026/2027 de <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, accompagnement des équipes dans la direction artistique autour de MARKER, une collection inspirée par le geste du dessin, les lignes franches et les couleurs électriques. Un univers kraft, surréaliste et onirique, imaginé pour souligner l’audace des montures. Photographies et vidéos réalisées par <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['artdirection', 'campaign', 'eyewear', 'design', 'setdesign', 'branding'],
       media: [i('08-09-2026_002.jpg'), i('08-09-2026_003.jpg'), v('Composition-1.mp4', 'Composition-1.avif'), i('08-09-2026_004.jpg'), i('08-09-2026_006.jpg'), i('08-09-2026_005.jpg')],
