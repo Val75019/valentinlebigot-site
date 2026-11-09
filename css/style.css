@@ -336,9 +336,6 @@ p, li, dd, dt { text-wrap: pretty; }
 
   .work { grid-template-columns: 1fr; }
   .work__aside { position: relative; top: auto; margin-top: 0; padding-top: 70px; padding-bottom: 24px; }
-  /* sur mobile, pas d'accueil : on arrive directement sur le premier projet */
-  .hero { display: none; }
-  .work:first-child .work__aside { padding-top: calc(var(--head-h) + 26px); }
   .work__media { padding: 0 var(--pad) 70px calc(var(--rail) + var(--pad)); }
 
   .about__grid { grid-template-columns: minmax(0, 1fr); }
@@ -389,6 +386,29 @@ p, li, dd, dt { text-wrap: pretty; }
   .band:hover .band__label { transition-delay: 0s; }
   .band:hover .band__num { opacity: 1; }
   .hero__hint span { display: none; }
+}
+
+/* ---------- Téléphone : intro plein écran ----------
+   Le texte en haut, puis les petites lignes du pied de page (largeur du rail) qui montent
+   jusqu'en bas de l'écran. Au défilement, elles redescendent ; seule la première, à gauche,
+   reste : aux couleurs du premier projet, elle se prolonge dans son rail. */
+.hero__lines { display: none; }
+@media (max-width: 900px) {
+  .hero { display: flex; flex-direction: column; height: 100vh; height: 100svh; min-height: 540px; overflow: hidden; }
+  .hero__text { flex: none; justify-content: flex-start; padding-top: calc(var(--head-h) + 22px); padding-bottom: 26px; will-change: transform, opacity; }
+  .hero__kicker { margin-bottom: 20px; }
+  .hero__hint { margin-top: 22px; }
+  .hero .spectrum { display: none; }
+  .hero__lines { display: flex; flex: 1 1 0; min-height: 120px; padding-top: 40px; overflow: hidden; }
+  .hero__lines .intro__col {
+    position: relative; top: 0; height: calc(100% + 40px);
+    transform: translateY(110%);
+    transition: transform 1.2s cubic-bezier(.7, 0, .25, 1);
+    animation: bob var(--dur, 3s) ease-in-out var(--dl, 0s) infinite alternate;
+  }
+  .hero.in .hero__lines .intro__col { transform: none; }
+  /* les projets passent par-dessus les lignes qui redescendent */
+  #projets { position: relative; z-index: 1; background: #fff; }
 }
 
 /* =========================================================

@@ -249,11 +249,12 @@
     return 0.2126 * x[0] + 0.7152 * x[1] + 0.0722 * x[2];
   };
   PALETTE.forEach(p => (p.l = lum(p.c)));
-  const buildLines = (container, lineW) => {
+  // first (facultatif) : 3 teintes imposées à la première ligne (le rail du premier projet)
+  const buildLines = (container, lineW, first) => {
     const cols = Math.ceil(innerWidth / lineW);
     const usage = new Map(PALETTE.map(p => [p.c, 0]));
-    const colors = [];
-    for (let k = 0; k < cols; k++) {
+    const colors = first ? [first.map(c => PALETTE.find(p => p.c === c) || { c, fam: '', l: lum(c) })] : [];
+    for (let k = colors.length; k < cols; k++) {
       const col = [];
       // les teintes claires (crème, paille…) tombent à une position tirée au hasard,
       // pas toujours au milieu : sinon un motif clair répétitif apparaît
@@ -310,11 +311,39 @@
       c.style.setProperty('--dl', (-rand(0, 4.6)).toFixed(2) + 's');
     });
   };
+  // téléphone : l'intro se termine par les mêmes petites lignes que le pied de page
+  const heroLines = document.getElementById('heroLines');
+  let heroCols = [];
+  const buildHero = () => {
+    heroCols = buildLines(heroLines, railW());
+    heroCols.forEach((c, k) => {
+      c.style.transitionDelay = (0.15 + rand(0, .45)).toFixed(2) + 's';
+      c.style.setProperty('--amp', rand(10, 34).toFixed(0) + 'px');
+      c.style.setProperty('--dur', rand(2.4, 4.6).toFixed(2) + 's');
+      c.style.setProperty('--dl', (-rand(0, 4.6)).toFixed(2) + 's');
+      c._v = rand(0.8, 1.5);   // vitesse à laquelle la ligne redescend au défilement
+    });
+    heroScroll();
+  };
+  // au défilement, le texte s'efface et toutes les lignes redescendent chacune à sa vitesse ;
+  // le rail du premier projet prend ensuite le relais
+  const phone = matchMedia('(max-width: 900px)');
+  const heroText = document.querySelector('#hero .hero__text');
+  let heroTick = false;
+  const heroScroll = () => {
+    heroTick = false;
+    const y = phone.matches && !reduceMotion ? Math.min(scrollY, innerHeight) : 0;
+    heroText.style.transform = y ? `translateY(${(y * 0.4).toFixed(1)}px)` : '';
+    heroText.style.opacity = y ? Math.max(0, 1 - y / (innerHeight * 0.5)).toFixed(3) : '';
+    heroCols.forEach(c => (c.style.top = y ? (y * c._v).toFixed(1) + 'px' : ''));
+  };
+  addEventListener('scroll', () => { if (!heroTick) { heroTick = true; requestAnimationFrame(heroScroll); } }, { passive: true });
   buildFoot();
+  buildHero();
   let lastW = innerWidth;
   addEventListener('resize', () => {
     clearTimeout(buildFoot.t);
-    buildFoot.t = setTimeout(() => { if (Math.abs(innerWidth - lastW) > 40) { lastW = innerWidth; buildFoot(); } }, 250);
+    buildFoot.t = setTimeout(() => { if (Math.abs(innerWidth - lastW) > 40) { lastW = innerWidth; buildFoot(); buildHero(); } }, 250);
   });
 
   // les lignes du pied de page se soulèvent doucement autour du curseur (ou du doigt), comme une onde
