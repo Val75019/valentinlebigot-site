@@ -76,8 +76,8 @@
     },
     {
       id: 'born-to-be-woow', year: '2026', role: 'Branding & Retail', colors: [T.sauge, T.paille, T.rose],
-      en: { title: 'WOOW x Krys Group', role: 'Branding & Retail', desc: 'For the 60th anniversary of Krys Group, WOOW eyewear takes the spotlight with an immersive window display kit inspired by the 1980s. The system includes banners, stickers, countercards and displays, built around the pop, colourful universe created by <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> and staged by the agency <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.' },
-      title: 'WOOW x Krys Group', sub: 'Born to be WOOW',
+      en: { title: 'Born to be WOOW', role: 'Branding & Retail', desc: 'For the 60th anniversary of Krys Group, WOOW eyewear takes the spotlight with an immersive window display kit inspired by the 1980s. The system includes banners, stickers, countercards and displays, built around the pop, colourful universe created by <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> and staged by the agency <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.' },
+      title: 'Born to be WOOW', sub: 'WOOW x Krys Group',
       desc: 'Pour les 60 ans de Krys Group, WOOW eyewear est mis à l’honneur à travers un kit PLV vitrine immersif dédié aux années 80. Le dispositif décline bannières, stickers, countercards et présentoirs autour de l’univers pop et coloré initié par <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> et mis en scène par l’agence <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['retail', 'PLV', 'scénographie', 'vitrine', 'branding', 'identité', 'visualmerchandising'],
       media: [v('Fond-05-02-2026_ai-logo-Woow.mp4', 'Fond-05-02-2026_ai-logo-Woow.jpg'), i('01.jpg'), i('03-02-2026_recherches-Krys-x-Woow-13.jpg'), v('FOND-21-04-2026_jeu-echec.mp4', 'FOND-21-04-2026_jeu-echec.jpg'), i('00.jpg'), i('FOND-21-04-2026_woow-2.jpg')],
