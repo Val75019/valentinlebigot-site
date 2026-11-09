@@ -28,64 +28,64 @@
   const PROJECTS = [
     {
       id: 'collection-produit', year: '2020', role: 'Branding & Design global', colors: [T.vermillon, T.paille, T.bleu],
-      en: { title: 'Product collection', role: 'Branding & Overall design', desc: 'Since 2020 in Paris, Valentin Lebigot has been creating recyclable 3D objects with a bold, colourful design. Each piece reflects a responsible approach, designed for people who care about contemporary, ethical design.' },
-      title: 'Collection Produit', sub: 'Valentin Lebigot',
-      desc: 'Depuis 2020 à Paris, Valentin Lebigot crée des objets 3D recyclables au design audacieux et coloré. Chaque pièce reflète une démarche responsable, pensée pour une clientèle sensible au design contemporain et éthique.',
+      en: { title: 'Collection –\u00A0VL', role: 'Branding & Overall design', desc: 'A collection of recyclable 3D objects with a bold, colourful design, created in Paris since 2020. Each piece reflects a responsible approach, designed for people who care about contemporary, ethical design.' },
+      title: 'Collection –\u00A0VL', sub: 'Valentin Lebigot',
+      desc: 'Collection d’objets 3D recyclables au design audacieux et coloré, créée à Paris depuis 2020. Chaque pièce reflète une démarche responsable, pensée pour une clientèle sensible au design contemporain et éthique.',
       tags: ['designproduits', 'directionartistiques', 'impression3D', 'objetsgraphiques', 'packaging', 'designresponsable'],
       media: [i('21-10-2025_Portfolio_graphisme5.jpg'), i('21-10-2025_Portfolio_graphisme.jpg'), i('21-10-2025_Portfolio_graphisme4.jpg'), i('21-10-2025_Portfolio_graphisme2.jpg'), v('Composition-5.mp4', 'Composition-5.jpg'), i('21-10-2025_Portfolio_graphisme3.jpg')],
     },
     {
-      id: 'strategie-communication', year: '2020', role: 'Graphisme & Social media', colors: [T.creme, T.encre, T.sky],
-      en: { title: 'Strategy & communication', role: 'Graphic design & Social media', desc: 'A digital universe designed as a coherent whole: WordPress e-shop, UX/UI, social media, newsletters and ads. Every touchpoint extends the visual identity and delivers a clear, seamless brand experience.' },
-      title: 'Stratégie & communication', sub: 'Valentin Lebigot',
+      id: 'strategie-communication', year: '2020', role: 'Social media', colors: [T.creme, T.encre, T.sky],
+      en: { title: 'Strategy & Communication –\u00A0VL', role: 'Social media', desc: 'A digital universe designed as a coherent whole: WordPress e-shop, UX/UI, social media, newsletters and ads. Every touchpoint extends the visual identity and delivers a clear, seamless brand experience.' },
+      title: 'Stratégie & Communication –\u00A0VL', sub: 'Valentin Lebigot',
       desc: 'Univers digital pensé comme un ensemble cohérent : site e-shop WordPress, UX/UI, réseaux sociaux, newsletters et Ads. Chaque point de contact prolonge l’identité visuelle et assure une expérience de marque claire et continue.',
       tags: ['socialMedia', 'newsletter', 'ads', 'eshop', 'contentdesign', 'brandidentity'],
       media: [i('21-10-2025_Portfolio_graphisme20.jpg'), i('21-10-2025_Portfolio_graphisme19.jpg'), v('Composition-1_2.mp4', 'Composition-1_2.jpg')],
     },
     {
       id: 'face-a-face-marker', year: '2026', role: 'Direction artistique', colors: [T.encre, T.paille, T.rose],
-      en: { title: 'Face à Face 2026 – 2027', role: 'Art direction', desc: 'For the 2026/2027 campaign of <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, I supported the teams with the art direction of MARKER, a collection inspired by the gesture of drawing, bold lines and electric colours. A kraft, surreal and dreamlike universe, imagined to highlight the boldness of the frames. Photography and videos by <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.' },
+      en: { title: 'Face à Face 2026 – 2027', role: 'Art direction', desc: 'For the 2026/2027 campaign of <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, art direction support for the teams around MARKER, a collection inspired by the gesture of drawing, bold lines and electric colours. A kraft, surreal and dreamlike universe, imagined to highlight the boldness of the frames. Photography and videos by <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.' },
       title: 'Face à Face 2026 – 2027', sub: 'Face à Face Paris',
-      desc: 'Pour la campagne 2026/2027 de <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, j’ai accompagné les équipes dans la direction artistique autour de MARKER, une collection inspirée par le geste du dessin, les lignes franches et les couleurs électriques. Un univers kraft, surréaliste et onirique, imaginé pour souligner l’audace des montures. Photographies et vidéos réalisées par <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
+      desc: 'Pour la campagne 2026/2027 de <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, accompagnement des équipes dans la direction artistique autour de MARKER, une collection inspirée par le geste du dessin, les lignes franches et les couleurs électriques. Un univers kraft, surréaliste et onirique, imaginé pour souligner l’audace des montures. Photographies et vidéos réalisées par <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['artdirection', 'campaign', 'eyewear', 'design', 'setdesign', 'branding'],
       media: [i('08-09-2026_002.jpg'), i('08-09-2026_003.jpg'), v('Composition-1.mp4', 'Composition-1.avif'), i('08-09-2026_004.jpg'), i('08-09-2026_006.jpg'), i('08-09-2026_005.jpg')],
     },
     {
       id: 'ripple', year: '2026', role: 'Retail & PLV', colors: [T.lavande, T.creme, T.sky],
-      en: { title: 'Ripple', role: 'Retail & POS', desc: 'For the new optical and sun collection of <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE Paris</a>, I worked with the brand on RIPPLE, a bespoke point-of-sale display system for partner opticians. 3D-printed, the displays echo the graphic codes and colours of the collection to showcase the frames in store.' },
+      en: { title: 'Ripple', role: 'Retail & POS', desc: 'RIPPLE is a bespoke point-of-sale display system for partner opticians, created in collaboration with <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE Paris</a> for its new optical and sun collection. 3D-printed, the displays echo the graphic codes and colours of the collection to showcase the frames in store.' },
       title: 'Ripple', sub: 'Face à Face Paris',
-      desc: 'Pour la nouvelle collection optique et solaire de <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE Paris</a>, j’ai collaboré avec la marque à la création de RIPPLE, un dispositif PLV sur-mesure destiné aux opticiens partenaires. Réalisés en impression 3D, ces présentoirs reprennent les codes graphiques et les couleurs de la collection pour mettre en valeur les montures en point de vente.',
+      desc: 'RIPPLE est un dispositif PLV sur-mesure destiné aux opticiens partenaires, créé en collaboration avec <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE Paris</a> pour sa nouvelle collection optique et solaire. Réalisés en impression 3D, ces présentoirs reprennent les codes graphiques et les couleurs de la collection pour mettre en valeur les montures en point de vente.',
       tags: ['retail', 'PLV', 'eyewear', 'design', '3Dprinting', 'visualmerchandising', 'branding'],
       media: [i('30-04-2026_dossier_002.jpg'), i('B.jpg'), i('B2.jpg'), i('30-04-2026_dossier_0011.jpg'), i('30-04-2026_dossier_007.jpg'), i('30-04-2026_dossier_005.jpg')],
     },
     {
-      id: 'brasserie-le-s', year: '2025', role: 'Hospitality', colors: [T.brique, T.encre, T.creme],
-      en: { title: 'Brasserie le S collection', role: 'Hospitality', desc: 'A bespoke tableware collection designed for Brasserie Le S, for <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> in Suresnes. Developed with <a href="https://www.snef.fr/wattdb/" target="_blank" rel="noopener">Watt</a> Design &amp; Build, it extends the architectural universe through sculptural, functional pieces.' },
-      title: 'Collection Brasserie le S', sub: 'Servier Monde',
+      id: 'brasserie-le-s', year: '2025', role: 'Hospitality design', colors: [T.brique, T.encre, T.creme],
+      en: { title: 'Brasserie le S', role: 'Hospitality design', desc: 'A bespoke tableware collection designed for Brasserie Le S, for <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> in Suresnes. Developed with <a href="https://www.snef.fr/wattdb/" target="_blank" rel="noopener">Watt</a> Design &amp; Build, it extends the architectural universe through sculptural, functional pieces.' },
+      title: 'Brasserie le S', sub: 'Servier Monde',
       desc: 'Collection sur mesure d’objets de table conçue pour la Brasserie Le S pour <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes. Développée avec <a href="https://www.snef.fr/wattdb/" target="_blank" rel="noopener">Watt</a> Design &amp; Build, elle prolonge l’univers architectural à travers des pièces sculpturales et fonctionnelles.',
       tags: ['designproduit', 'objetsgraphiques', 'directionartistique', 'impression3D', 'architectureInterieure', 'design&build'],
       media: [i('21-10-2025_Portfolio_graphisme13.jpg'), i('21-10-2025_Portfolio_graphisme15.jpg'), i('10-03-2026_00.jpg'), i('21-10-2025_Portfolio_graphisme14.jpg'), i('21-10-2025_Portfolio_graphisme16.jpg')],
     },
     {
       id: 'surval-4-all', year: '2024', role: 'Office design', colors: [T.creme, T.rose, T.bleu],
-      en: { title: 'SURVAL 4\u00A0ALL collection', role: 'Office design', desc: 'Modular, colourful office products developed for the new premises of <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> in Suresnes, in collaboration with <a href="https://www.geniedeslieux.com/" target="_blank" rel="noopener">Génies des Lieux</a>, designed for functional and dynamic workspaces.' },
-      title: 'Collection SURVAL 4\u00A0ALL', sub: 'Servier Monde',
+      en: { title: 'SURVAL 4\u00A0ALL', role: 'Office design', desc: 'Modular, colourful office products developed for the new premises of <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> in Suresnes, in collaboration with <a href="https://www.geniedeslieux.com/" target="_blank" rel="noopener">Génies des Lieux</a>, designed for functional and dynamic workspaces.' },
+      title: 'SURVAL 4\u00A0ALL', sub: 'Servier Monde',
       desc: 'Produits de bureau modulaires et colorés développés pour les nouveaux locaux de <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes, en collaboration avec <a href="https://www.geniedeslieux.com/" target="_blank" rel="noopener">Génies des Lieux</a>, pensés pour des espaces de travail fonctionnels et dynamiques.',
       tags: ['designproduit', 'objetsgraphiques', 'directionartistique', 'impression3D', 'officedesign', 'designmodulaire'],
       media: [i('21-10-2025_Portfolio_graphisme10.jpg'), i('21-10-2025_Portfolio_graphisme11.jpg'), i('21-10-2025_Portfolio_graphisme12.jpg')],
     },
     {
       id: 'born-to-be-woow', year: '2026', role: 'Branding & Retail', colors: [T.sauge, T.paille, T.rose],
-      en: { title: 'Born to be WOOW', role: 'Branding & Retail', desc: 'For the 60th anniversary of Krys Group, WOOW eyewear takes the spotlight with an immersive window display kit inspired by the 1980s. The system includes banners, stickers, countercards and displays, built around the pop, colourful universe created by <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> and staged by the agency <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.' },
-      title: 'Born to be WOOW', sub: 'WOOW x Krys Group',
+      en: { title: 'WOOW x Krys Group', role: 'Branding & Retail', desc: 'For the 60th anniversary of Krys Group, WOOW eyewear takes the spotlight with an immersive window display kit inspired by the 1980s. The system includes banners, stickers, countercards and displays, built around the pop, colourful universe created by <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> and staged by the agency <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.' },
+      title: 'WOOW x Krys Group', sub: 'Born to be WOOW',
       desc: 'Pour les 60 ans de Krys Group, WOOW eyewear est mis à l’honneur à travers un kit PLV vitrine immersif dédié aux années 80. Le dispositif décline bannières, stickers, countercards et présentoirs autour de l’univers pop et coloré initié par <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> et mis en scène par l’agence <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['retail', 'PLV', 'scénographie', 'vitrine', 'branding', 'identité', 'visualmerchandising'],
       media: [v('Fond-05-02-2026_ai-logo-Woow.mp4', 'Fond-05-02-2026_ai-logo-Woow.jpg'), i('01.jpg'), i('03-02-2026_recherches-Krys-x-Woow-13.jpg'), v('FOND-21-04-2026_jeu-echec.mp4', 'FOND-21-04-2026_jeu-echec.jpg'), i('00.jpg'), i('FOND-21-04-2026_woow-2.jpg')],
     },
     {
       id: 'scenographie-retail', year: '2025', role: 'Événementiel & Set design', colors: [T.creme, T.vertgris, T.brique],
-      en: { title: 'Set design & Retail', role: 'Events & Set design', desc: 'A pop, sculptural set design created for the 30th anniversary of <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE</a> during Paris Design Week 2025. The project brings design, colour and identity into dialogue to reveal the sculptural potential of sunglasses.' },
-      title: 'Scénographie & Retail', sub: 'Degree Concept Store — PDW 2025',
+      en: { title: 'DEGREE x PDW 2025', sub: 'Face à Face — 30th anniversary', role: 'Events & Set design', desc: 'A pop, sculptural set design created for the 30th anniversary of <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE</a> during Paris Design Week 2025. The project brings design, colour and identity into dialogue to reveal the sculptural potential of sunglasses.' },
+      title: 'DEGREE x PDW 2025', sub: 'Face à Face — 30 ans',
       desc: 'Scénographie pop et sculpturale conçue pour les 30 ans de <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE</a> lors de la Paris Design Week 2025. Le projet met en dialogue design, couleur et identité pour révéler le potentiel sculptural des solaires.',
       tags: ['retail', 'scénographie', 'impression3D', 'directionartistique', 'setdesign', 'evenementiel'],
       media: [i('21-10-2025_Portfolio_graphisme6.jpg'), i('21-10-2025_Portfolio_graphisme7.jpg'), i('21-10-2025_Portfolio_graphisme8.jpg')],
@@ -109,7 +109,7 @@
   // langue : la page /en/ affiche les textes anglais des projets et de l'interface
   const EN = document.documentElement.lang === 'en';
   const L = (fr, en) => (EN ? en : fr);
-  if (EN) PROJECTS.forEach(p => { if (p.en) { p.title = p.en.title; p.role = p.en.role; p.desc = p.en.desc; } });
+  if (EN) PROJECTS.forEach(p => { if (p.en) { p.title = p.en.title; p.role = p.en.role; p.desc = p.en.desc; if (p.en.sub) p.sub = p.en.sub; } });
 
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   const root = document.documentElement;
