@@ -32,7 +32,7 @@
       title: 'Collection –\u00A0VL', sub: 'Valentin Lebigot',
       desc: 'Collection d’objets 3D recyclables au design audacieux et coloré, créée à Paris depuis 2020. Chaque pièce reflète une démarche responsable, pensée pour une clientèle sensible au design contemporain et éthique.',
       tags: ['designproduits', 'directionartistiques', 'impression3D', 'objetsgraphiques', 'packaging', 'designresponsable'],
-      media: [i('21-10-2025_Portfolio_graphisme5.jpg'), i('21-10-2025_Portfolio_graphisme.jpg'), i('21-10-2025_Portfolio_graphisme4.jpg'), i('21-10-2025_Portfolio_graphisme2.jpg'), v('Composition-5.mp4', 'Composition-5.jpg'), i('21-10-2025_Portfolio_graphisme3.jpg')],
+      media: [i('21-10-2025_Portfolio_graphisme5.jpg'), v('Corpus_dynamique_1600x1132.mp4', 'Corpus_dynamique_1600x1132.jpg'), i('21-10-2025_Portfolio_graphisme.jpg'), i('21-10-2025_Portfolio_graphisme4.jpg'), i('21-10-2025_Portfolio_graphisme2.jpg'), v('Composition-5.mp4', 'Composition-5.jpg'), i('21-10-2025_Portfolio_graphisme3.jpg')],
     },
     {
       id: 'strategie-communication', year: '2020', role: 'Social media', colors: [T.creme, T.encre, T.sky],
@@ -406,7 +406,11 @@
     const v = e.target;
     if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause();
   }), { threshold: 0.25 });
-  document.querySelectorAll('video').forEach(v => vidObs.observe(v));
+  // chargement anticipé : la vidéo est prête avant d'entrer à l'écran, pas de flash au scroll
+  const vidPre = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.preload = 'auto'; vidPre.unobserve(e.target); }
+  }), { rootMargin: '100% 0px' });
+  document.querySelectorAll('video').forEach(v => { vidObs.observe(v); vidPre.observe(v); });
 
   /* ---------- 8. Rail de progression + en-tête ---------- */
   const works = [...document.querySelectorAll('.work')].map(el => ({ el, rail: el.querySelector('.work__rail > div') }));
