@@ -56,7 +56,7 @@
       title: 'Ripple', sub: 'Face à Face Paris',
       desc: 'RIPPLE est un dispositif PLV sur-mesure destiné aux opticiens partenaires, créé en collaboration avec <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE Paris</a> pour sa nouvelle collection optique et solaire. Réalisés en impression 3D, ces présentoirs reprennent les codes graphiques et les couleurs de la collection pour mettre en valeur les montures en point de vente.',
       tags: ['retail', 'PLV', 'eyewear', 'design', '3Dprinting', 'visualmerchandising', 'branding'],
-      media: [i('30-04-2026_dossier_002.jpg'), i('B.jpg'), v('FaceAFace_travelling_1600x1132.mp4?v=3', 'FaceAFace_travelling_1600x1132.jpg?v=3'), i('30-04-2026_dossier_0011.jpg'), i('30-04-2026_dossier_007.jpg'), i('30-04-2026_dossier_005.jpg')],
+      media: [i('30-04-2026_dossier_002.jpg'), i('B.jpg'), v('FaceAFace_travelling_1600x1132.mp4?v=3', 'FaceAFace_travelling_1600x1132.jpg?v=3'), v('FaceAFace_ondulations_1600x1132.mp4', 'FaceAFace_ondulations_1600x1132.jpg'), i('30-04-2026_dossier_007.jpg'), i('30-04-2026_dossier_005.jpg')],
     },
     {
       id: 'brasserie-le-s', year: '2025', role: 'Hospitality design', colors: [T.brique, T.encre, T.creme],
