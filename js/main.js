@@ -412,6 +412,18 @@
   }), { rootMargin: '100% 0px' });
   document.querySelectorAll('video').forEach(v => { vidObs.observe(v); vidPre.observe(v); });
 
+  /* ---------- 7b. Protection des images et vidéos ----------
+     Dissuasif : pas de clic droit, de glisser-déposer ni d'appui long sur les visuels,
+     pas d'option de téléchargement ni d'image dans l'image sur les vidéos.        */
+  const isMedia = t => t instanceof Element && t.closest('img, video, .shot, .band, .about__photo');
+  ['contextmenu', 'dragstart'].forEach(ev => document.addEventListener(ev, e => { if (isMedia(e.target)) e.preventDefault(); }));
+  document.querySelectorAll('video').forEach(v => {
+    v.setAttribute('controlslist', 'nodownload noremoteplayback noplaybackrate');
+    v.setAttribute('disablepictureinpicture', '');
+    v.setAttribute('disableremoteplayback', '');
+  });
+  document.querySelectorAll('img').forEach(img => img.setAttribute('draggable', 'false'));
+
   /* ---------- 8. Rail de progression + en-tête ---------- */
   const works = [...document.querySelectorAll('.work')].map(el => ({ el, rail: el.querySelector('.work__rail > div') }));
   const head = document.getElementById('head');

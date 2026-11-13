@@ -37,6 +37,9 @@ body {
 }
 body.is-loading { overflow: hidden; }
 img, video { display: block; max-width: 100%; }
+/* protection des visuels : ni sélection, ni glisser, ni menu d'enregistrement à l'appui long (iOS) */
+img, video { -webkit-user-select: none; user-select: none; -webkit-user-drag: none; -webkit-touch-callout: none; }
+.shot, .band, .about__photo { -webkit-touch-callout: none; }
 a { color: inherit; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 h1, h2, h3 { text-wrap: balance; }
