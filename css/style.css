@@ -10,6 +10,7 @@
 
 :root {
   --c1: #1c63d7; --c2: #f4ebdd; --c3: #93272a;
+  --bg: #faf9f6;
   --ink: #141414;
   --ink-soft: #6a6a6a;
   --text: #2b2b2b;
@@ -27,9 +28,9 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { background: var(--bg); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-  margin: 0; background: #fff; color: var(--ink);
+  margin: 0; background: var(--bg); color: var(--ink);
   font-family: var(--sans); font-size: 15px; line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   hyphens: none; -webkit-hyphens: none;
@@ -83,7 +84,7 @@ p, li, dd, dt { text-wrap: pretty; }
    il enfermerait le menu plein écran (mobile) dans la hauteur de l'en-tête.      */
 .head::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: rgba(255, 255, 255, .7);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
   -webkit-backdrop-filter: blur(22px) saturate(180%);
   backdrop-filter: blur(22px) saturate(180%);
   box-shadow: 0 1px 0 var(--line);
@@ -171,7 +172,7 @@ p, li, dd, dt { text-wrap: pretty; }
   pointer-events: none;
 }
 .band__label b, .band__label em {
-  background: #fff; color: var(--ink);
+  background: var(--bg); color: var(--ink);
   padding: 6px 12px; line-height: 1.3;
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
@@ -325,7 +326,7 @@ p, li, dd, dt { text-wrap: pretty; }
     flex-direction: column; justify-content: center; gap: 22px;
     padding: 0 calc(var(--rail) + var(--pad));
     /* même verre dépoli que l'en-tête sur desktop */
-    background: rgba(255, 255, 255, .7);
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
     -webkit-backdrop-filter: blur(22px) saturate(180%);
     backdrop-filter: blur(22px) saturate(180%);
     opacity: 0; pointer-events: none; transition: opacity .4s var(--ease);
@@ -389,7 +390,7 @@ p, li, dd, dt { text-wrap: pretty; }
   .band__label em { font-size: 14px; }
   .band__num {
     top: 50%; left: auto; right: var(--pad); transform: translateY(-50%);
-    background: #fff; padding: 3px 8px; opacity: 1; mix-blend-mode: normal;
+    background: var(--bg); padding: 3px 8px; opacity: 1; mix-blend-mode: normal;
   }
   .spectrum:hover .band, .spectrum .band:hover { flex-grow: 1; }
   .band:hover .band__label { transition-delay: 0s; }
@@ -417,7 +418,7 @@ p, li, dd, dt { text-wrap: pretty; }
   }
   .hero.in .hero__lines .intro__col { transform: none; }
   /* les projets passent par-dessus les lignes qui redescendent */
-  #projets { position: relative; z-index: 1; background: #fff; }
+  #projets { position: relative; z-index: 1; background: var(--bg); }
 }
 
 /* =========================================================
@@ -489,7 +490,7 @@ body { font-variation-settings: "wdth" 100; }
   position: absolute; top: var(--head-h); left: 0; right: 0; z-index: 3;
   display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: clamp(28px, 4vw, 64px); align-items: start;
   padding: 22px var(--pad) 26px calc(var(--rail) + var(--pad));
-  background: rgba(255, 255, 255, .92);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
   -webkit-backdrop-filter: blur(22px) saturate(180%);
   backdrop-filter: blur(22px) saturate(180%);
   border-bottom: 1px solid var(--line);
