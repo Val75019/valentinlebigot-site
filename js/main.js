@@ -32,7 +32,7 @@
       title: 'Collection –\u00A0VL', sub: 'Valentin Lebigot',
       desc: 'Collection d’objets 3D recyclables au design audacieux et coloré, créée à Paris depuis 2020. Chaque pièce reflète une démarche responsable, pensée pour une clientèle sensible au design contemporain et éthique.',
       tags: ['designproduits', 'directionartistiques', 'impression3D', 'objetsgraphiques', 'packaging', 'designresponsable'],
-      media: [i('21-10-2025_Portfolio_graphisme5.jpg'), v('Corpus_dynamique_1600x1132.mp4', 'Corpus_dynamique_1600x1132.jpg'), i('21-10-2025_Portfolio_graphisme.jpg'), i('21-10-2025_Portfolio_graphisme4.jpg'), i('21-10-2025_Portfolio_graphisme2.jpg'), v('Composition-5.mp4', 'Composition-5.jpg'), i('21-10-2025_Portfolio_graphisme3.jpg')],
+      media: [i('21-10-2025_Portfolio_graphisme5.jpg'), v('Corpus_dynamique_1600x1132.mp4', 'Corpus_dynamique_1600x1132.jpg'), i('21-10-2025_Portfolio_graphisme.jpg'), i('21-10-2025_Portfolio_graphisme4.jpg'), i('21-10-2025_Portfolio_graphisme2.jpg'), v('Composition-5.mp4?v=2', 'Composition-5.jpg?v=2'), i('21-10-2025_Portfolio_graphisme3.jpg')],
     },
     {
       id: 'strategie-communication', year: '2020', role: 'Social media', colors: [T.creme, T.encre, T.sky],
@@ -56,7 +56,7 @@
       title: 'Ripple', sub: 'Face à Face Paris',
       desc: 'RIPPLE est un dispositif PLV sur-mesure destiné aux opticiens partenaires, créé en collaboration avec <a href="https://www.faceaface-paris.com/fr" target="_blank" rel="noopener">FACE A FACE Paris</a> pour sa nouvelle collection optique et solaire. Réalisés en impression 3D, ces présentoirs reprennent les codes graphiques et les couleurs de la collection pour mettre en valeur les montures en point de vente.',
       tags: ['retail', 'PLV', 'eyewear', 'design', '3Dprinting', 'visualmerchandising', 'branding'],
-      media: [i('30-04-2026_dossier_002.jpg'), i('B.jpg'), v('FaceAFace_travelling_1600x1132.mp4?v=3', 'FaceAFace_travelling_1600x1132.jpg?v=3'), v('FaceAFace_ondulations_1600x1132.mp4', 'FaceAFace_ondulations_1600x1132.jpg'), i('30-04-2026_dossier_007.jpg'), i('30-04-2026_dossier_005.jpg')],
+      media: [i('30-04-2026_dossier_002.jpg'), i('B.jpg'), v('FaceAFace_travelling_1600x1132.mp4?v=4', 'FaceAFace_travelling_1600x1132.jpg?v=4'), v('FaceAFace_ondulations_1600x1132.mp4?v=2', 'FaceAFace_ondulations_1600x1132.jpg?v=2'), i('30-04-2026_dossier_007.jpg'), i('30-04-2026_dossier_005.jpg')],
     },
     {
       id: 'brasserie-le-s', year: '2025', role: 'Hospitality design', colors: [T.brique, T.encre, T.creme],
@@ -96,7 +96,7 @@
       title: 'Trobos', sub: 'Papier Merveille x Valentin Lebigot',
       desc: 'TROBOS est une collection de trombones à cliper, conçue comme un objet graphique de papeterie contemporain, née de la collaboration avec la marque lyonnaise <a href="https://www.papiermerveille.com/fr/" target="_blank" rel="noopener">Papier Merveille</a>.',
       tags: ['designproduit', 'packaging', 'designresponsable', 'objetsgraphiques', 'graphisme', 'impression3D'],
-      media: [i('21-10-2025_Portfolio_graphisme24.jpg'), i('21-10-2025_Portfolio_graphisme23.jpg'), v('Composition-4.mp4', 'Composition-4.jpg'), i('16-12-2025_slide-00.jpg'), i('16-12-2025_slide-002.jpg')],
+      media: [i('21-10-2025_Portfolio_graphisme24.jpg'), i('21-10-2025_Portfolio_graphisme23.jpg'), v('Composition-4.mp4?v=2', 'Composition-4.jpg'), i('16-12-2025_slide-00.jpg'), i('16-12-2025_slide-002.jpg')],
     },
   ];
 
