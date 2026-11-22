@@ -64,7 +64,7 @@
       title: 'Brasserie le S', sub: 'Servier Monde',
       desc: 'Collection sur mesure d’objets de table conçue pour la Brasserie Le S pour <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes. Développée avec <a href="https://www.snef.fr/wattdb/" target="_blank" rel="noopener">Watt</a> Design &amp; Build, elle prolonge l’univers architectural à travers des pièces sculpturales et fonctionnelles.',
       tags: ['designproduit', 'objetsgraphiques', 'directionartistique', 'impression3D', 'architectureInterieure', 'design&build'],
-      media: [i('21-10-2025_Portfolio_graphisme13.jpg'), i('21-10-2025_Portfolio_graphisme15.jpg'), i('10-03-2026_00.jpg'), i('21-10-2025_Portfolio_graphisme14.jpg'), i('21-10-2025_Portfolio_graphisme16.jpg')],
+      media: [i('21-10-2025_Portfolio_graphisme13.jpg'), i('Brasserie-le-S_materiaux_1600x1132.jpg'), i('21-10-2025_Portfolio_graphisme15.jpg'), i('10-03-2026_00.jpg'), i('21-10-2025_Portfolio_graphisme14.jpg'), i('21-10-2025_Portfolio_graphisme16.jpg')],
     },
     {
       id: 'surval-4-all', year: '2024', role: 'Office design', colors: [T.creme, T.rose, T.bleu],
