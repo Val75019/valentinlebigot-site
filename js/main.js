@@ -328,22 +328,28 @@
   // au défilement, le texte s'efface et toutes les lignes redescendent chacune à sa vitesse ;
   // le rail du premier projet prend ensuite le relais
   const phone = matchMedia('(max-width: 900px)');
+  // hauteur d'écran stable : sur mobile, la barre d'adresse qui se replie change innerHeight en plein
+  // défilement ; on se cale sur la petite hauteur (100svh), qui ne bouge pas, pour éviter les sauts
+  const svhProbe = document.createElement('div');
+  svhProbe.style.cssText = 'position:fixed;top:0;left:0;width:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none';
+  body.appendChild(svhProbe);
+  let VH = svhProbe.offsetHeight || innerHeight;
   const heroText = document.querySelector('#hero .hero__text');
-  let heroTick = false;
   const heroScroll = () => {
-    heroTick = false;
-    const y = phone.matches && !reduceMotion ? Math.min(scrollY, innerHeight) : 0;
+    const y = phone.matches && !reduceMotion ? Math.min(scrollY, VH) : 0;
     heroText.style.transform = y ? `translateY(${(y * 0.4).toFixed(1)}px)` : '';
-    heroText.style.opacity = y ? Math.max(0, 1 - y / (innerHeight * 0.5)).toFixed(3) : '';
+    heroText.style.opacity = y ? Math.max(0, 1 - y / (VH * 0.5)).toFixed(3) : '';
     heroCols.forEach(c => (c.style.top = y ? (y * c._v).toFixed(1) + 'px' : ''));
   };
-  addEventListener('scroll', () => { if (!heroTick) { heroTick = true; requestAnimationFrame(heroScroll); } }, { passive: true });
   buildFoot();
   buildHero();
   let lastW = innerWidth;
   addEventListener('resize', () => {
     clearTimeout(buildFoot.t);
-    buildFoot.t = setTimeout(() => { if (Math.abs(innerWidth - lastW) > 40) { lastW = innerWidth; buildFoot(); buildHero(); } }, 250);
+    buildFoot.t = setTimeout(() => {
+      if (Math.abs(innerWidth - lastW) > 40) { lastW = innerWidth; VH = svhProbe.offsetHeight || innerHeight; buildFoot(); buildHero(); }
+      else if (!phone.matches) VH = svhProbe.offsetHeight || innerHeight;   // desktop : la fenêtre a changé de hauteur
+    }, 250);
   });
 
   // les lignes du pied de page se soulèvent doucement autour du curseur (ou du doigt), comme une onde
@@ -353,9 +359,10 @@
     const tick = () => {
       raf = 0;
       let moving = false;
-      [...footLines.children].forEach(c => {
-        const r = c.getBoundingClientRect();
-        const dx = px === null ? 1e9 : (r.left + r.width / 2) - px;
+      const cols = [...footLines.children];
+      const mids = cols.map(c => { const r = c.getBoundingClientRect(); return r.left + r.width / 2; });   // toutes les lectures d'abord
+      cols.forEach((c, k) => {
+        const dx = px === null ? 1e9 : mids[k] - px;
         const goal = px === null ? 0 : 54 * Math.exp(-(dx * dx) / (2 * 90 * 90));
         const cur = lift.get(c) || 0;
         const next = cur + (goal - cur) * 0.16;
@@ -430,14 +437,17 @@
   let ticking = false;
   const onScroll = () => {
     ticking = false;
-    const vh = innerHeight;
+    const vh = VH;
+    // toutes les lectures d'abord, puis les écritures : pas de recalcul forcé de la page à chaque projet
+    const rects = works.map(({ el }) => el.getBoundingClientRect());
     head.classList.toggle('is-solid', scrollY > 10);
-    works.forEach(({ el, rail }) => {
-      const r = el.getBoundingClientRect();
+    works.forEach(({ rail }, k) => {
+      const r = rects[k];
       if (r.bottom < -50 || r.top > vh + 50) return;
-      const p = Math.min(1, Math.max(0, (vh - r.top) / (r.height)));
-      rail.style.setProperty('--p', p.toFixed(4));
+      const p = Math.min(1, Math.max(0, (vh - r.top) / (r.height))).toFixed(4);
+      if (rail._p !== p) { rail._p = p; rail.style.setProperty('--p', p); }
     });
+    heroScroll();
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
@@ -447,6 +457,7 @@
      puis reste accroché : rien n'est jamais coupé.                          */
   const asides = [...document.querySelectorAll('.work__aside')];
   const fitAsides = () => {
+    if (phone.matches) return;   // mobile : le texte n'est pas accroché
     const headH = head.offsetHeight;
     asides.forEach(a => {
       const room = innerHeight - a.offsetHeight - 24;
@@ -476,8 +487,9 @@
   const accTick = () => {
     accRaf = 0;
     let moving = false;
+    const mids = accBars.map(b => { const r = b.getBoundingClientRect(); return r.top + r.height / 2; });
     accBars.forEach((b, k) => {
-      const r = b.getBoundingClientRect(), d = accY === null ? 1e9 : (r.top + r.height / 2) - accY;
+      const d = accY === null ? 1e9 : mids[k] - accY;
       const goal = 12 + (accY === null ? 0 : 26 * Math.exp(-(d * d) / (2 * 45 * 45)));
       const next = accW[k] + (goal - accW[k]) * 0.2;
       if (Math.abs(next - accW[k]) > 0.1) moving = true;

@@ -24,8 +24,10 @@
   --ease: cubic-bezier(.22, .9, .24, 1);
   --ease-io: cubic-bezier(.65, 0, .35, 1);
   --soft: cubic-bezier(.45, .05, .25, 1);
-  transition: --c1 1s var(--ease-io), --c2 1s var(--ease-io), --c3 1s var(--ease-io);
 }
+/* les couleurs du projet actif glissent d'une teinte à l'autre : la transition n'est posée que sur les
+   quelques éléments qui les utilisent (sur :root, toute la page serait recalculée à chaque image) */
+.tri, .head__nav a::after, .contact__mail { transition: --c1 1s var(--ease-io), --c2 1s var(--ease-io), --c3 1s var(--ease-io); }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { background: var(--bg); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -34,9 +36,9 @@ body {
   font-family: var(--sans); font-size: 15px; line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   hyphens: none; -webkit-hyphens: none;
-  overflow-x: hidden;
+  overflow-x: hidden; overflow-x: clip;
 }
-body.is-loading { overflow: hidden; }
+body.is-loading, html:has(body.is-loading) { overflow: hidden; }
 img, video { display: block; max-width: 100%; }
 /* protection des visuels : ni sélection, ni glisser, ni menu d'enregistrement à l'appui long (iOS) */
 img, video { -webkit-user-select: none; user-select: none; -webkit-user-drag: none; -webkit-touch-callout: none; }
@@ -103,7 +105,7 @@ p, li, dd, dt { text-wrap: pretty; }
   content: ""; position: absolute; left: 0; right: 0; bottom: -7px; height: 2px;
   background: linear-gradient(90deg, var(--c1) 0 50%, var(--c2) 50% 80%, var(--c3) 80%);
   transform: scaleX(0); transform-origin: left;
-  transition: transform .5s var(--ease);
+  transition: transform .5s var(--ease), --c1 1s var(--ease-io), --c2 1s var(--ease-io), --c3 1s var(--ease-io);
 }
 .head__nav a:hover, .head__nav a.is-active { color: var(--ink); }
 .head__nav a.is-active::after { transform: none; }
@@ -283,7 +285,7 @@ p, li, dd, dt { text-wrap: pretty; }
   font-size: clamp(16px, 2.4vw, 40px); font-weight: 600; letter-spacing: -.02em; text-decoration: none; max-width: 100%; overflow-wrap: anywhere;
   background: linear-gradient(90deg, var(--c1) 0 50%, var(--c2) 50% 80%, var(--c3) 80%) 0 100% / 0 3px no-repeat;
   padding-bottom: 6px;
-  transition: background-size .6s var(--ease);
+  transition: background-size .6s var(--ease), --c1 1s var(--ease-io), --c2 1s var(--ease-io), --c3 1s var(--ease-io);
 }
 .contact__mail:hover { background-size: 100% 3px; }
 .contact__list { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 26px; transition-delay: .1s; }
@@ -296,6 +298,8 @@ p, li, dd, dt { text-wrap: pretty; }
 
 /* Lignes en escalier qui sortent du bas et ondulent doucement */
 .lines { height: calc(26vh + 60px); min-height: 210px; padding-top: 60px; display: flex; overflow: hidden; }
+/* lignes qui bougent au défilement : jamais prises comme repère par le navigateur (évite les sauts de scroll) */
+.lines, .hero__lines { overflow-anchor: none; }
 .lines .intro__col { position: relative; top: 0; }
 .lines .intro__col {
   height: calc(100% + 40px);
