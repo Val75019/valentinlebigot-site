@@ -199,7 +199,9 @@
 
   /* ---------- 2. Projets : texte fixe à gauche, images à droite, rail tricolore ---------- */
   const shot = m => typeof m === 'string'
-    ? `<figure class="shot"><img src="${m}" alt="" loading="lazy" decoding="async"></figure>`
+    // téléphone : version de 1100 px (assets/img/m/), deux fois plus légère en mémoire — Safari mobile
+    // n'a plus à décharger puis redécoder les images quand on remonte la page
+    ? `<figure class="shot"><picture><source media="(max-width: 900px)" srcset="${m.replace('/img/', '/img/m/')}"><img src="${m}" alt="" loading="lazy" decoding="async"></picture></figure>`
     : `<figure class="shot"><video src="${m.video}" poster="${m.poster}" muted loop playsinline preload="none"></video></figure>`;
   document.getElementById('projets').innerHTML = PROJECTS.map((p, k) => `
     <section class="work" id="${p.id}" data-colors="${p.colors}" data-label="${esc(p.title)}" data-num="${pad2(k + 1)}"
@@ -323,7 +325,7 @@
       c.style.setProperty('--dl', (-rand(0, 4.6)).toFixed(2) + 's');
       c._v = rand(0.8, 1.5);   // vitesse à laquelle la ligne redescend au défilement
     });
-    heroScroll();
+    heroY = -1; heroScroll();
   };
   // au défilement, le texte s'efface et toutes les lignes redescendent chacune à sa vitesse ;
   // le rail du premier projet prend ensuite le relais
@@ -335,8 +337,11 @@
   body.appendChild(svhProbe);
   let VH = svhProbe.offsetHeight || innerHeight;
   const heroText = document.querySelector('#hero .hero__text');
+  let heroY = -1;
   const heroScroll = () => {
     const y = phone.matches && !reduceMotion ? Math.min(scrollY, VH) : 0;
+    if (y === heroY) return;   // plus bas que l'intro : rien à recalculer
+    heroY = y;
     heroText.style.transform = y ? `translateY(${(y * 0.4).toFixed(1)}px)` : '';
     heroText.style.opacity = y ? Math.max(0, 1 - y / (VH * 0.5)).toFixed(3) : '';
     heroCols.forEach(c => (c.style.top = y ? (y * c._v).toFixed(1) + 'px' : ''));

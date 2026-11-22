@@ -365,6 +365,7 @@ p, li, dd, dt { text-wrap: pretty; }
 
 /* Formats réservés : pas de saut de mise en page au chargement */
 .work__media .shot { aspect-ratio: 1600 / 1131; }
+.work__media .shot picture { display: block; height: 100%; }
 .work__media .shot img, .work__media .shot video { height: 100%; object-fit: cover; }
 .about__photo { aspect-ratio: 1000 / 1233; }
 .about__photo img { height: 100%; object-fit: cover; }
