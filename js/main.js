@@ -72,7 +72,7 @@
       title: 'SURVAL 4\u00A0ALL', sub: 'Servier Monde',
       desc: 'Produits de bureau modulaires et colorés développés pour les nouveaux locaux de <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes, en collaboration avec <a href="https://www.geniedeslieux.com/" target="_blank" rel="noopener">Génies des Lieux</a>, pensés pour des espaces de travail fonctionnels et dynamiques.',
       tags: ['designproduit', 'objetsgraphiques', 'directionartistique', 'impression3D', 'officedesign', 'designmodulaire'],
-      media: [i('SURVAL_titre_1600x1132.jpg'), i('21-10-2025_Portfolio_graphisme10.jpg'), v('SURVAL_carrousel_1600x1132.mp4', 'SURVAL_carrousel_1600x1132.jpg'), i('21-10-2025_Portfolio_graphisme11.jpg'), v('SURVAL_plan_clips_1600x1132.mp4', 'SURVAL_plan_clips_1600x1132.jpg'), i('21-10-2025_Portfolio_graphisme12.jpg')],
+      media: [i('21-10-2025_Portfolio_graphisme10.jpg'), v('SURVAL_carrousel_1600x1132.mp4', 'SURVAL_carrousel_1600x1132.jpg'), i('21-10-2025_Portfolio_graphisme11.jpg'), v('SURVAL_plan_clips_1600x1132.mp4', 'SURVAL_plan_clips_1600x1132.jpg'), i('21-10-2025_Portfolio_graphisme12.jpg')],
     },
     {
       id: 'born-to-be-woow', year: '2026', role: 'Branding & Retail', colors: [T.sauge, T.paille, T.rose],
