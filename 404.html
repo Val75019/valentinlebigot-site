@@ -5,95 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page introuvable — Valentin Lebigot</title>
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#faf9f6">
   <link rel="icon" href="/favicon.ico?v=2" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png?v=2">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="/css/fonts.css?v=4.2">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/fonts.css?v=5.7">
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; height: 100%; }
-    body {
-      font-family: "Archivo", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-      color: #161616;
-      background: #fff;
-      display: flex;
-      -webkit-font-smoothing: antialiased;
-      hyphens: none;
+    /* Page 404 : mêmes règles que le site (fond Lin clair, rail tricolore, capitales étroites,
+       italique en contrepoint, lignes du pied de page). Page autonome : tous les chemins sont absolus. */
+    :root {
+      --bg: #faf9f6; --ink: #141414; --ink-soft: #6a6a6a; --line: rgba(0, 0, 0, .1);
+      --c1: #1c63d7; --c2: #f4ebdd; --c3: #93272a;
+      --rail: 12px; --pad: clamp(20px, 3vw, 56px);
+      --ease: cubic-bezier(.22, .9, .24, 1);
     }
-    /* Les trois barres colorées, comme sur le site */
-    .bars { display: flex; flex-direction: column; width: 12px; flex: none; }
-    .bars span { flex: 1; transform-origin: top; animation: grow 1.1s cubic-bezier(.65,0,.35,1) both; }
-    .bars span:nth-child(1) { background: #1c63d7; flex-grow: 5; }
-    .bars span:nth-child(2) { background: #f4ebdd; flex-grow: 3; animation-delay: .12s; }
-    .bars span:nth-child(3) { background: #93272a; flex-grow: 2; animation-delay: .24s; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; min-height: 100vh; min-height: 100svh;
+      display: flex; flex-direction: column;
+      background: var(--bg); color: var(--ink);
+      font-family: "Archivo", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px; line-height: 1.6; font-variation-settings: "wdth" 100;
+      -webkit-font-smoothing: antialiased; hyphens: none; overflow-x: hidden;
+    }
+    a { color: inherit; }
+
+    /* rail tricolore à gauche, comme celui des projets */
+    .rail { position: fixed; left: 0; top: 0; bottom: 0; width: var(--rail); display: flex; flex-direction: column; z-index: 2; }
+    .rail i { transform-origin: top; animation: grow 1.1s cubic-bezier(.65, 0, .35, 1) both; }
+    .rail i:nth-child(1) { background: var(--c1); flex: 5; }
+    .rail i:nth-child(2) { background: var(--c2); flex: 3; animation-delay: .12s; }
+    .rail i:nth-child(3) { background: var(--c3); flex: 2; animation-delay: .24s; }
     @keyframes grow { from { transform: scaleY(0); } }
 
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: clamp(28px, 6vw, 96px);
-      animation: fade .8s .3s cubic-bezier(.22,.9,.24,1) both;
-    }
-    @keyframes fade { from { opacity: 0; transform: translateY(10px); } }
-    .logo { width: 48px; height: auto; display: block; margin-bottom: clamp(36px, 6vh, 64px); }
-    h1 {
-      font-weight: 600;
-      font-size: clamp(26px, 3.2vw, 44px);
-      line-height: 1.15;
-      margin: 0 0 18px;
-      text-wrap: balance;
-    }
-    p {
-      font-size: clamp(15px, 1.1vw, 17px);
-      line-height: 1.6;
-      color: #5c5c5c;
-      margin: 0 0 36px;
-      max-width: 34em;
-      text-wrap: pretty;
-    }
-    .btn {
-      align-self: flex-start;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 600;
-      font-size: 15px;
-      color: #fff;
-      background: #161616;
-      text-decoration: none;
-      padding: 14px 22px;
-      border-radius: 999px;
-      transition: transform .3s cubic-bezier(.22,.9,.24,1), background .3s;
-    }
-    .btn:hover { background: #1c63d7; transform: translateX(4px); }
-    .btn span { transition: transform .3s cubic-bezier(.22,.9,.24,1); }
-    .btn:hover span { transform: translateX(3px); }
-    .note { margin-top: 22px; font-size: 13px; color: #a3a3a3; }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    .head { display: flex; align-items: center; height: 84px; padding: 0 var(--pad) 0 calc(var(--rail) + var(--pad)); }
+    .head img { display: block; width: 46px; height: auto; }
 
-    /* système typographique : grands titres en capitales étroites, italique en contrepoint */
-    h1 { font-variation-settings: "wdth" 62; font-weight: 700; text-transform: uppercase; letter-spacing: -.005em; line-height: .94; }
-    h1 em { font-variation-settings: normal; text-transform: none; font-weight: 400; font-size: 1.06em; }
+    main {
+      flex: 1; display: flex; flex-direction: column; justify-content: center;
+      padding: 40px var(--pad) 40px calc(var(--rail) + var(--pad));
+    }
+    .rv { opacity: 0; transform: translateY(18px); animation: rv 1s var(--ease) both; }
+    @keyframes rv { to { opacity: 1; transform: none; } }
+    .label { margin: 0 0 clamp(20px, 4vh, 34px); display: flex; align-items: center; gap: 12px;
+      font-size: 10.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); animation-delay: .25s; }
+    .tri { display: inline-block; width: 22px; height: 3px; background: linear-gradient(90deg, var(--c1) 0 50%, var(--c2) 50% 80%, var(--c3) 80%); }
+    h1 {
+      margin: 0; font-size: clamp(54px, 10vw, 168px); line-height: .94;
+      font-variation-settings: "wdth" 62; font-weight: 700; text-transform: uppercase; letter-spacing: -.005em;
+      text-wrap: balance; animation-delay: .35s;
+    }
+    h1 em {
+      font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-weight: 400;
+      font-variation-settings: normal; text-transform: none; letter-spacing: -.01em; font-size: 1.06em; line-height: 1;
+    }
+    .text { max-width: 460px; margin: clamp(24px, 4.5vh, 40px) 0 0; padding-top: clamp(20px, 3.5vh, 30px);
+      border-top: 1px solid var(--line); font-size: 14px; line-height: 1.75; color: #2b2b2b; animation-delay: .45s; }
+    .home {
+      align-self: flex-start; margin-top: clamp(26px, 5vh, 44px);
+      font-size: clamp(18px, 2vw, 30px); font-weight: 600; letter-spacing: -.02em; text-decoration: none;
+      padding-bottom: 6px;
+      background: linear-gradient(90deg, var(--c1) 0 50%, var(--c2) 50% 80%, var(--c3) 80%) 0 100% / 0 3px no-repeat;
+      transition: background-size .6s var(--ease);
+      animation-delay: .55s;
+    }
+    .home:hover, .home:focus-visible { background-size: 100% 3px; outline: none; }
+    .home span { display: inline-block; transition: transform .4s var(--ease); }
+    .home:hover span { transform: translateX(5px); }
+    .links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 22px 0 0; padding: 0; list-style: none; animation-delay: .65s; }
+    .links a { font-size: 13.5px; font-weight: 500; text-decoration: none; color: var(--ink-soft); transition: color .3s; }
+    .links a:hover { color: var(--ink); }
+
+
+    @media (max-width: 900px) {
+      :root { --rail: 8px; --pad: 20px; }
+      .head { height: 66px; }
+      .head img { width: 40px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: .01s !important; }
+      .rv { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
-  <div class="bars" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="rail" aria-hidden="true"><i></i><i></i><i></i></div>
+  <header class="head">
+    <a href="/" id="logo" aria-label="Valentin Lebigot — accueil"><img src="/assets/15-12-2025_logo-00-02.png" alt="Valentin Lebigot"></a>
+  </header>
   <main>
-    <a href="/" aria-label="Accueil"><img class="logo" src="/assets/15-12-2025_logo-00-02.png" alt="Valentin Lebigot"></a>
-    <h1>Cette page n’existe plus.</h1>
-    <p>Le site a fait peau neuve&nbsp;: tous les projets sont maintenant réunis sur une seule page.</p>
-    <a class="btn" href="/">Voir les projets <span aria-hidden="true">→</span></a>
-    <div class="note" id="note">Redirection automatique dans <b id="sec">8</b>&nbsp;s</div>
+    <p class="label rv"><span class="tri"></span><span data-t="label">Erreur 404</span></p>
+    <h1 class="rv" data-t="title">Page <em>introuvable</em></h1>
+    <p class="text rv" data-t="text">L’adresse demandée n’existe pas ou a changé. Tous les projets sont réunis sur la page d’accueil.</p>
+    <a class="home rv" id="home" href="/"><span data-t="home">Retour à l’accueil</span> <span aria-hidden="true">→</span></a>
+    <ul class="links rv">
+      <li><a data-h="#projets" href="/#projets" data-t="projets">Projets</a></li>
+      <li><a data-h="#a-propos" href="/#a-propos" data-t="apropos">À propos</a></li>
+      <li><a data-h="#contact" href="/#contact" data-t="contact">Contact</a></li>
+    </ul>
   </main>
   <script>
     (function () {
-      var s = 8, el = document.getElementById('sec');
-      var t = setInterval(function () {
-        s -= 1; el.textContent = s;
-        if (s <= 0) { clearInterval(t); location.replace('/'); }
-      }, 1000);
+      // une seule page 404 pour tout le site : en anglais si l'adresse commence par /en/
+      var en = /^\/en(\/|$)/.test(location.pathname);
+      if (en) {
+        var T = { label: 'Error 404', title: 'Page <em>not found</em>',
+          text: 'This address doesn’t exist or has moved. All projects are on the home page.',
+          home: 'Back to home', projets: 'Projects', apropos: 'About', contact: 'Contact' };
+        document.documentElement.lang = 'en';
+        document.title = 'Page not found — Valentin Lebigot';
+        [].forEach.call(document.querySelectorAll('[data-t]'), function (el) { el.innerHTML = T[el.dataset.t]; });
+        document.getElementById('home').href = '/en/';
+        document.getElementById('logo').href = '/en/';
+        document.getElementById('logo').setAttribute('aria-label', 'Valentin Lebigot — home');
+        [].forEach.call(document.querySelectorAll('[data-h]'), function (a) { a.href = '/en/' + a.dataset.h; });
+      } else {
+        // espaces fines insécables de la typographie française
+        var t = document.querySelector('.text');
+        t.innerHTML = t.innerHTML.replace(/ (de|la|le|les|ou|sur|a) /g, ' $1 ');
+      }
     })();
   </script>
 </body>
