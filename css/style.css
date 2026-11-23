@@ -679,3 +679,28 @@ main { position: relative; z-index: 1; }
 .guides { display: block; padding: 0;
   background: repeating-linear-gradient(90deg, transparent 0 calc(var(--step, 120px) - 1px), rgba(20, 20, 20, .05) calc(var(--step, 120px) - 1px) var(--step, 120px)); }
 .guides i { display: none; }
+
+/* =========================================================
+   Tout est construit sur le module (largeur du rail = 12 px, 8 px sur téléphone) :
+   marges en multiples du module, premier trait de construction = bord gauche du contenu
+   ========================================================= */
+@media (min-width: 1201px) { :root { --pad: 60px; } }               /* rail + marge = 72 px = 6 modules */
+@media (min-width: 901px) and (max-width: 1200px) { :root { --pad: 48px; } }  /* 60 px = 5 modules */
+.guides { background: repeating-linear-gradient(90deg, rgba(20, 20, 20, .05) 0 1px, transparent 1px var(--step, 144px));
+  background-position: var(--g0, 72px) 0; }
+@media (max-width: 900px) {
+  /* téléphone : contenu des projets à 48 px = 6 modules, sur le premier trait */
+  .work__head, .work__aside, .work__media { padding-left: calc(var(--rail) + var(--pad) + 20px); }
+}
+/* en-tête de projet calé sur la mise en page en dessous : « Client » au-dessus du texte,
+   « Année » et « Rôle » démarrent exactement au bord gauche des images */
+@media (min-width: 901px) {
+  .work__facts { grid-template-columns: calc((100% + var(--rail) + 2 * var(--pad)) * 5 / 12 - var(--rail) - var(--pad)) 1fr 1fr; column-gap: 0; }
+  .work__facts p { padding-right: 24px; }
+}
+/* lignes de fond : rares et à peine perceptibles */
+.guides { background: repeating-linear-gradient(90deg, rgba(20, 20, 20, .032) 0 1px, transparent 1px var(--step, 288px)); background-position: var(--g0, 72px) 0; }
+/* écart entre les images = 1 module (comme les lignes de couleur) ; plus de filet gris entre deux projets :
+   le grand titre et le rail suffisent à marquer le passage */
+.work__media { gap: var(--rail); }
+.work + .work { border-top: 0; }
