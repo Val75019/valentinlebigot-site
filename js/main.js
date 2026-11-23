@@ -43,7 +43,7 @@
       media: [i('21-10-2025_Portfolio_graphisme20.jpg'), i('21-10-2025_Portfolio_graphisme19.jpg'), v('Composition-1_2.mp4', 'Composition-1_2.jpg')],
     },
     {
-      id: 'face-a-face-marker', year: '2026', role: 'Direction artistique', colors: [T.encre, T.paille, T.rose],
+      id: 'face-a-face-marker', year: '2026', role: 'Direction artistique', colors: [T.paille, T.rose, T.encre],
       en: { title: 'FAF 2026 – 2027', role: 'Art direction', desc: 'For the 2026/2027 campaign of <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, art direction support for the teams around MARKER, a collection inspired by the gesture of drawing, bold lines and electric colours. A kraft, surreal and dreamlike universe, imagined to highlight the boldness of the frames. Photography and videos by <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.' },
       title: 'FAF 2026 – 2027', sub: 'Face à Face Paris',
       desc: 'Pour la campagne 2026/2027 de <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, accompagnement des équipes dans la direction artistique autour de MARKER, une collection inspirée par le geste du dessin, les lignes franches et les couleurs électriques. Un univers kraft, surréaliste et onirique, imaginé pour souligner l’audace des montures. Photographies et vidéos réalisées par <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
@@ -59,7 +59,7 @@
       media: [i('30-04-2026_dossier_002.jpg'), i('B.jpg'), v('FaceAFace_travelling_1600x1132.mp4?v=4', 'FaceAFace_travelling_1600x1132.jpg?v=4'), v('FaceAFace_ondulations_1600x1132.mp4?v=2', 'FaceAFace_ondulations_1600x1132.jpg?v=2'), i('30-04-2026_dossier_007.jpg'), i('30-04-2026_dossier_005.jpg')],
     },
     {
-      id: 'brasserie-le-s', year: '2025', role: 'Hospitality design', colors: [T.brique, T.encre, T.creme],
+      id: 'brasserie-le-s', year: '2025', role: 'Hospitality design', colors: [T.creme, T.brique, T.encre],
       en: { title: 'Brasserie le S', role: 'Hospitality design', desc: 'A bespoke tableware collection designed for Brasserie Le S, for <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> in Suresnes. Developed with <a href="https://www.snef.fr/wattdb/" target="_blank" rel="noopener">Watt</a> Design &amp; Build, it extends the architectural universe through sculptural, functional pieces.' },
       title: 'Brasserie le S', sub: 'Servier Monde',
       desc: 'Collection sur mesure d’objets de table conçue pour la Brasserie Le S pour <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes. Développée avec <a href="https://www.snef.fr/wattdb/" target="_blank" rel="noopener">Watt</a> Design &amp; Build, elle prolonge l’univers architectural à travers des pièces sculpturales et fonctionnelles.',
@@ -67,7 +67,7 @@
       media: [i('21-10-2025_Portfolio_graphisme13.jpg'), i('Brasserie-le-S_materiaux_1600x1132.jpg'), i('21-10-2025_Portfolio_graphisme15.jpg'), v('LIGNES_boucle_800x566.mp4', 'LIGNES_boucle_800x566.jpg'), i('10-03-2026_00.jpg'), i('21-10-2025_Portfolio_graphisme14.jpg'), i('21-10-2025_Portfolio_graphisme16.jpg')],
     },
     {
-      id: 'surval-4-all', year: '2024', role: 'Office design', colors: [T.creme, T.rose, T.bleu],
+      id: 'surval-4-all', year: '2024', role: 'Office design', colors: [T.rose, T.creme, T.bleu],
       en: { title: 'SURVAL 4\u00A0ALL', role: 'Office design', desc: 'Modular, colourful office products developed for the new premises of <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> in Suresnes, in collaboration with <a href="https://www.geniedeslieux.com/" target="_blank" rel="noopener">Génies des Lieux</a>, designed for functional and dynamic workspaces.' },
       title: 'SURVAL 4\u00A0ALL', sub: 'Servier Monde',
       desc: 'Produits de bureau modulaires et colorés développés pour les nouveaux locaux de <a href="https://servier.com/" target="_blank" rel="noopener">Servier Monde</a> à Suresnes, en collaboration avec <a href="https://www.geniedeslieux.com/" target="_blank" rel="noopener">Génies des Lieux</a>, pensés pour des espaces de travail fonctionnels et dynamiques.',
@@ -91,7 +91,7 @@
       media: [i('21-10-2025_Portfolio_graphisme6.jpg'), i('21-10-2025_Portfolio_graphisme7.jpg'), i('21-10-2025_Portfolio_graphisme8.jpg')],
     },
     {
-      id: 'trobos', year: '2020', role: 'Design produit & Packaging', colors: [T.bleu, T.rose, T.corail],
+      id: 'trobos', year: '2020', role: 'Design produit & Packaging', colors: [T.rose, T.bleu, T.corail],
       en: { title: 'Trobos', role: 'Product design & Packaging', desc: 'TROBOS is a collection of clip-on paper clips, designed as a contemporary graphic stationery object, born from a collaboration with the Lyon-based brand <a href="https://www.papiermerveille.com/fr/" target="_blank" rel="noopener">Papier Merveille</a>.' },
       title: 'Trobos', sub: 'Papier Merveille x Valentin Lebigot',
       desc: 'TROBOS est une collection de trombones à cliper, conçue comme un objet graphique de papeterie contemporain, née de la collaboration avec la marque lyonnaise <a href="https://www.papiermerveille.com/fr/" target="_blank" rel="noopener">Papier Merveille</a>.',
@@ -125,10 +125,17 @@
     return `src="${base}-700.jpg${v}" data-srcset="${base}-700.jpg${v} 700w, ${base}-1000.jpg${v} 1000w, ${base}-1400.jpg${v} 1400w" sizes="(max-width: 900px) 100vw, (hover: none) 60vw, max(28vw, 64vh)"`;
   };
 
+  // couleur du texte posé sur une teinte : noir sur les claires, blanc sur les foncées
+  const inkOn = hex => {
+    const n = parseInt(hex.slice(1), 16);
+    const c = [n >> 16, (n >> 8) & 255, n & 255].map(x => { x /= 255; return x <= .03928 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4; });
+    return .2126 * c[0] + .7152 * c[1] + .0722 * c[2] > .28 ? '#141414' : '#fff';
+  };
+
   /* ---------- 1. Spectre de l'accueil : une bande par projet ---------- */
   const spectrum = document.getElementById('spectrum');
   spectrum.innerHTML = PROJECTS.map((p, k) => `
-    <a class="band" href="#${p.id}" aria-label="${esc(p.title)} — ${esc(p.sub)}">
+    <a class="band" href="#${p.id}" aria-label="${esc(p.title)} — ${esc(p.sub)}" style="--lf:${inkOn(p.colors[0])};--nf:${inkOn(p.colors[2])}">
       <span class="band__segs">${p.colors.map((c, j) => `<i style="background:${c};transition-delay:0s,${(k * 0.06 + j * 0.05).toFixed(2)}s"></i>`).join('')}</span>
       <img class="band__img" ${thumbOf(p)} alt="" loading="lazy" decoding="async"${p.cover ? ` style="object-fit:${p.cover.fit};background:${p.cover.bg}"` : ''}>
       <span class="band__num">${pad2(k + 1)}</span>
@@ -206,12 +213,18 @@
   document.getElementById('projets').innerHTML = PROJECTS.map((p, k) => `
     <section class="work" id="${p.id}" data-colors="${p.colors}" data-label="${esc(p.title)}" data-num="${pad2(k + 1)}"
       style="--w1:${p.colors[0]};--w2:${p.colors[1]};--w3:${p.colors[2]}">
-      <div class="work__rail" aria-hidden="true"><div><i></i><i></i><i></i></div></div>
+      <div class="work__rail" aria-hidden="true"><div class="rail__stick">
+        <div class="rail__fill"><i></i><i></i><i></i></div>
+        <p class="rail__label"><em>${pad2(k + 1)}</em>${esc(p.title)}</p>
+      </div></div>
+      <header class="work__head">
+        <h2 class="work__big"><span class="mask"><span class="rise">${esc(p.title)}<sup>(${pad2(k + 1)})</sup></span></span></h2>
+        <div class="work__facts rv">
+          <p><span>Client</span><em>${esc(p.sub)}</em></p>
+          <p><span>${L('Année', 'Year')}</span>${p.year}</p>
+          <p><span>${L('Rôle', 'Role')}</span>${esc(p.role)}</p>        </div>
+      </header>
       <div class="work__aside">
-        <p class="work__num rv"><span class="tri"></span>${pad2(k + 1)} / ${pad2(PROJECTS.length)}</p>
-        <h2 class="work__title rv">${esc(p.title)}</h2>
-        <p class="work__client rv">${esc(p.sub)}</p>
-        <p class="work__meta rv">${p.year} · ${esc(p.role)}</p>
         <p class="work__desc rv">${p.desc}</p>
         <ul class="tags rv">${p.tags.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
       </div>
@@ -348,7 +361,19 @@
   };
   buildFoot();
   buildHero();
+  // lignes de construction : posées sur le même module que les lignes de couleur
+  // (largeur du rail = largeur de chaque ligne de l'intro et du pied de page) : chaque trait
+  // tombe exactement sur une jonction entre deux lignes de couleur, environ tous les 1/12 d'écran
+  const guides = document.querySelector('.guides');
+  const placeGuides = () => {
+    if (!guides) return;
+    const w = railW(), cols = innerWidth > 900 ? 12 : 4;
+    const step = Math.max(1, Math.round(innerWidth / cols / w)) * w;
+    guides.style.setProperty('--step', step + 'px');
+  };
+  placeGuides();
   let lastW = innerWidth;
+  addEventListener('resize', placeGuides);
   addEventListener('resize', () => {
     clearTimeout(buildFoot.t);
     buildFoot.t = setTimeout(() => {
@@ -409,7 +434,7 @@
     e.target.classList.add('in');
     revealObs.unobserve(e.target);
   }), { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-  document.querySelectorAll('.rv, .shot, .contact__title .rise, .about__name .rise').forEach(el => revealObs.observe(el));
+  document.querySelectorAll('.rv, .shot, .contact__title .rise, .about__name .rise, .work__head').forEach(el => revealObs.observe(el));
   new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('in')), { threshold: 0.2 })
     .observe(document.getElementById('contact'));
 
@@ -451,6 +476,9 @@
       if (r.bottom < -50 || r.top > vh + 50) return;
       const p = Math.min(1, Math.max(0, (vh - r.top) / (r.height))).toFixed(4);
       if (rail._p !== p) { rail._p = p; rail.style.setProperty('--p', p); }
+      // le titre écrit sur le rail s'efface quand son projet se termine
+      const ending = r.bottom < vh * .92;
+      if (rail._e !== ending) { rail._e = ending; rail.classList.toggle('ending', ending); }
     });
     heroScroll();
   };

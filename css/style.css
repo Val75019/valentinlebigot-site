@@ -545,3 +545,137 @@ body { font-variation-settings: "wdth" 100; }
     font-size: 13px; gap: 10px;
   }
 }
+
+/* =========================================================
+   Version plus élégante et éditoriale (même identité)
+   1. lignes de construction légères  2. menu spectre : textes en travers,
+   sans cadre blanc  3. projets : le titre écrit sur le rail pendant le défilement
+   ========================================================= */
+/* 1. Lignes de construction : la grille de 12 colonnes, à peine visible */
+.guides {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(10px, 1.4vw, 24px);
+  padding: 0 var(--pad) 0 calc(var(--rail) + var(--pad));
+}
+.guides i { border-left: 1px solid rgba(20, 20, 20, .045); }
+.guides i:last-child { border-right: 1px solid rgba(20, 20, 20, .045); }
+main { position: relative; z-index: 1; }
+@media (max-width: 900px) {
+  .guides { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .guides i:nth-child(n+5) { display: none; }
+  .guides i:nth-child(4) { border-right: 1px solid rgba(20, 20, 20, .045); }
+}
+
+/* 2. Menu spectre : plus d'étiquettes blanches ; le titre court en travers de la bande,
+      en capitales étroites, blanc sur l'image (léger voile pour la lisibilité) */
+.band::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0;
+  background: linear-gradient(rgba(0, 0, 0, .28), transparent 24%, transparent 58%, rgba(0, 0, 0, .46)); transition: opacity .6s var(--ease); }
+.band__label { z-index: 2; }
+.band__label b, .band__label em { background: none; padding: 0; color: #fff; }
+@media (hover: hover) and (min-width: 901px) {
+  .band__label {
+    left: 16px; bottom: 18px; max-width: none; max-height: calc(100% - 70px);
+    flex-direction: row; align-items: flex-end; gap: 12px;
+    writing-mode: vertical-rl; transform: rotate(180deg);
+  }
+  .band:hover .band__label { transform: rotate(180deg); }
+  .band__label b { font-variation-settings: "wdth" 62; font-weight: 700; text-transform: uppercase; letter-spacing: -.005em;
+    font-size: clamp(30px, 2.8vw, 54px); line-height: .9; }
+  .band__label em { font-size: 17px; line-height: 1; margin: 0; }
+  .band:hover::before { opacity: 1; }
+}
+/* écrans tactiles / téléphone : bandes horizontales, texte direct sur la couleur, blanc sur l'image */
+@media (max-width: 900px), (hover: none) {
+  .band__label { flex-direction: row; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .band__label b, .band__label em { color: var(--lf, #fff); transition: color .5s var(--ease); }
+  .band__label b { font-variation-settings: "wdth" 62; font-weight: 700; text-transform: uppercase; font-size: 22px; line-height: 1; letter-spacing: 0; }
+  .band__label em { font-size: 16px; }
+  .band.is-on::before { opacity: 1; background: linear-gradient(90deg, rgba(0, 0, 0, .42), transparent 75%); }
+  .band.is-on .band__label b, .band.is-on .band__label em { color: #fff; }
+}
+
+/* 3. Projets : le titre écrit à la verticale au pied du rail, comme sur une tranche */
+.work__rail > .rail__stick { transform: none; display: block; }
+.rail__fill { position: absolute; inset: 0; display: flex; flex-direction: column; transform-origin: top; transform: scaleY(var(--p, 0)); }
+.rail__label {
+  position: absolute; left: calc(var(--rail) + 8px); bottom: 22px; margin: 0;
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  display: flex; align-items: center; gap: 10px; white-space: nowrap;
+  font-size: 10.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink);
+  transition: opacity .4s;
+}
+.rail__label em { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 16px; letter-spacing: 0; text-transform: none; color: var(--ink-soft); }
+.rail__stick.ending .rail__label { opacity: 0; }
+@media (max-width: 900px) { .rail__label { left: calc(var(--rail) + 4px); bottom: 14px; font-size: 9.5px; letter-spacing: .12em; } }
+
+/* 4. Titres des projets : en grand, sur toute la largeur, construits comme une page de magazine
+      (titre en capitales étroites + numéro en exposant italique, puis une ligne de repères) */
+.work__head { grid-column: 1 / -1; position: relative; z-index: 2; padding: clamp(70px, 12vh, 140px) var(--pad) 0 calc(var(--rail) + var(--pad)); }
+.work__big { margin: 0; font-size: clamp(56px, 9.2vw, 180px); line-height: .86; text-wrap: balance;
+  font-variation-settings: "wdth" 62; font-weight: 700; text-transform: uppercase; letter-spacing: -.005em; }
+.work__big .mask { padding-bottom: .04em; }
+.work__big sup { font-family: var(--serif); font-style: italic; font-weight: 400; font-variation-settings: normal; text-transform: none;
+  font-size: .24em; letter-spacing: 0; vertical-align: top; position: relative; top: .15em; margin-left: .3em; color: var(--ink-soft); }
+.work__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px clamp(14px, 2vw, 32px);
+  margin-top: clamp(22px, 4vh, 38px); padding-top: 12px; border-top: 1px solid var(--line); }
+.work__facts p { margin: 0; display: flex; flex-direction: column; gap: 3px; font-size: 10.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.work__facts span { color: var(--ink-soft); font-weight: 500; }
+.work__facts em { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 17px; letter-spacing: 0; text-transform: none; line-height: 1.1; }
+.work__facts .tri { display: inline-block; width: 22px; height: 3px; margin: 0 8px 2px 0; vertical-align: middle;
+  background: linear-gradient(90deg, var(--w1) 0 50%, var(--w2) 50% 80%, var(--w3) 80%); }
+.work__facts p:last-child { flex-direction: column; }
+/* la colonne de gauche ne garde que le texte et les mots-clés */
+.work__aside .work__num, .work__aside .work__title, .work__aside .work__client, .work__aside .work__meta { display: none; }
+.work__aside { margin-top: clamp(30px, 5vh, 54px); }
+.work__aside .work__desc { margin-top: 0; padding-top: 0; border-top: 0; }
+.work__media { padding-top: clamp(30px, 5vh, 54px); }
+@media (max-width: 900px) {
+  .work__head { padding: 64px var(--pad) 0 calc(var(--rail) + var(--pad)); }
+  .work__big { font-size: clamp(44px, 13vw, 76px); overflow-wrap: break-word; }
+  .work__facts { grid-template-columns: 1fr 1fr; }
+  .work__aside { padding-top: 26px; margin-top: 0; }
+  .work__media { padding-top: 0; }
+}
+@media (max-width: 900px) {
+  .work { grid-template-columns: minmax(0, 1fr); }
+  .work__head { min-width: 0; }
+  .rail__label { display: none; }   /* téléphone : trop près des images, le rail suffit */
+}
+@media (max-width: 900px) { .work__big { font-size: clamp(36px, 10.4vw, 64px); overflow-wrap: normal; } }
+/* tailles des titres de projet : fluides de l'écran large au téléphone, jamais lourdes */
+.work__big { font-size: clamp(44px, 8vw, 160px); }
+.work__facts em { font-size: clamp(15px, 1.15vw, 18px); }
+@media (max-width: 1100px) and (min-width: 901px) { .work__head { padding-top: clamp(56px, 9vh, 100px); } }
+@media (max-width: 900px) { .work__big { font-size: clamp(36px, 10.4vw, 64px); } }
+@media (max-width: 420px) { .work__facts { grid-template-columns: 1fr 1fr; } .work__facts p:nth-child(3) { grid-column: 1 / -1; } }
+@media (max-width: 900px) and (min-width: 421px) { .work__facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* numéros des bandes : toujours lisibles, en noir ou en blanc selon la teinte sur laquelle ils sont posés, sans cadre */
+.band__num { color: var(--lf, var(--ink)); mix-blend-mode: normal; opacity: .78; }
+@media (max-width: 900px), (hover: none) {
+  .band__num { color: var(--nf, var(--ink)); background: none; padding: 0; opacity: .85; font-size: 15px; }
+  .band.is-on .band__num { color: #fff; }
+}
+/* téléphone / tablette : le titre en travers revient, avec sa propre marge
+   (le contenu des projets se décale un peu : ni collé au rail, ni aux images) */
+@media (max-width: 900px) {
+  .rail__label { display: flex; left: calc(var(--rail) + 7px); bottom: 16px; font-size: 9px; letter-spacing: .12em; gap: 7px; }
+  .rail__label em { font-size: 13px; }
+  .work__head, .work__aside, .work__media { padding-left: calc(var(--rail) + var(--pad) + 16px); }
+}
+/* rail sans coutures : une seule surface dégradée nette (5 / 3 / 2) au lieu de trois blocs,
+   sinon l'étirement au défilement laisse apparaître de fines lignes entre les teintes */
+.rail__fill { background: linear-gradient(180deg, var(--w1) 0 50%, var(--w2) 50% 80%, var(--w3) 80%);
+  will-change: transform; backface-visibility: hidden; }
+.rail__fill i { display: none; }
+/* plus aucune ligne de fond entre deux teintes (arrondis au demi-pixel pendant les animations) */
+.band__segs i:not(:last-child), .intro__seg:not(:last-child), .lines .intro__col span:not(:last-child) { margin-bottom: -1px; }
+.band:not(:last-child) { margin-right: -1px; }
+@media (max-width: 900px), (hover: none) {
+  .band__segs i:not(:last-child) { margin-bottom: 0; margin-right: -1px; }
+  .band:not(:last-child) { margin-right: 0; margin-bottom: -1px; }
+}
+/* lignes de construction sur le module des lignes de couleur : un trait de 1 px tous les
+   --step (multiple exact de la largeur du rail), départ au bord gauche comme le rail et les lignes */
+.guides { display: block; padding: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 calc(var(--step, 120px) - 1px), rgba(20, 20, 20, .05) calc(var(--step, 120px) - 1px) var(--step, 120px)); }
+.guides i { display: none; }
