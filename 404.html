@@ -32,13 +32,19 @@
     }
     a { color: inherit; }
 
-    /* rail tricolore à gauche, comme celui des projets */
-    .rail { position: fixed; left: 0; top: 0; bottom: 0; width: var(--rail); display: flex; flex-direction: column; z-index: 2; }
-    .rail i { transform-origin: top; animation: grow 1.1s cubic-bezier(.65, 0, .35, 1) both; }
-    .rail i:nth-child(1) { background: var(--c1); flex: 5; }
-    .rail i:nth-child(2) { background: var(--c2); flex: 3; animation-delay: .12s; }
-    .rail i:nth-child(3) { background: var(--c3); flex: 2; animation-delay: .24s; }
+    /* rail tricolore à gauche, comme celui des projets (une seule surface : aucune couture) */
+    .rail { position: fixed; left: 0; top: 0; bottom: 0; width: var(--rail); z-index: 2;
+      background: linear-gradient(180deg, var(--c1) 0 50%, var(--c2) 50% 80%, var(--c3) 80%);
+      transform-origin: top; animation: grow 1.1s cubic-bezier(.65, 0, .35, 1) both; }
+    .rail i { display: none; }
     @keyframes grow { from { transform: scaleY(0); } }
+    /* construction sur le module (largeur du rail) : marges en multiples, lignes de fond rares et discrètes */
+    @media (min-width: 1201px) { :root { --pad: 60px; } }
+    @media (min-width: 901px) and (max-width: 1200px) { :root { --pad: 48px; } }
+    .guides { position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: repeating-linear-gradient(90deg, rgba(20, 20, 20, .032) 0 1px, transparent 1px calc(var(--rail) * 24));
+      background-position: calc(var(--rail) + var(--pad)) 0; }
+    .head, main { position: relative; z-index: 1; }
 
     .head { display: flex; align-items: center; height: 84px; padding: 0 var(--pad) 0 calc(var(--rail) + var(--pad)); }
     .head img { display: block; width: 46px; height: auto; }
@@ -80,7 +86,7 @@
 
 
     @media (max-width: 900px) {
-      :root { --rail: 8px; --pad: 20px; }
+      :root { --rail: 8px; --pad: 24px; }   /* rail + marge = 32 px = 4 modules */
       .head { height: 66px; }
       .head img { width: 40px; }
     }
@@ -91,7 +97,8 @@
   </style>
 </head>
 <body>
-  <div class="rail" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="guides" aria-hidden="true"></div>
+  <div class="rail" aria-hidden="true"></div>
   <header class="head">
     <a href="/" id="logo" aria-label="Valentin Lebigot — accueil"><img src="/assets/15-12-2025_logo-00-02.png" alt="Valentin Lebigot"></a>
   </header>
