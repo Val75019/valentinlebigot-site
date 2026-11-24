@@ -426,6 +426,25 @@
   }), { rootMargin: '-50% 0px -50% 0px' });
   sections.forEach(s => activeObs.observe(s));
 
+  /* ---------- 5b. Titres de projets composés lettre à lettre ----------
+     Chaque lettre monte à son tour quand le titre arrive (les mots restent insécables). */
+  if (!reduceMotion) document.querySelectorAll('.work__big .rise').forEach(rise => {
+    let k = 0;
+    [...rise.childNodes].forEach(n => {
+      if (n.nodeType !== 3) return;
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(part => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        const wd = document.createElement('span'); wd.className = 'wd';
+        [...part].forEach(c => { const s = document.createElement('span'); s.className = 'ch'; s.textContent = c; s.style.setProperty('--d', (k++ * 0.022).toFixed(3) + 's'); wd.appendChild(s); });
+        frag.appendChild(wd);
+      });
+      n.replaceWith(frag);
+    });
+    rise.classList.add('is-split');
+  });
+
   /* ---------- 6. Apparitions ---------- */
   const revealObs = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;

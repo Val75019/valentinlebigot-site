@@ -847,3 +847,27 @@ main { position: relative; z-index: 1; }
   .cl__note { flex-basis: 100%; }
 }
 @media (prefers-reduced-motion: reduce) { .cl__wall li { opacity: 1; transform: none; transition: none; } }
+
+/* =========================================================
+   Identité — mouvements signature (sobres, sans couleur ajoutée)
+   ========================================================= */
+/* titres de projets composés lettre à lettre : chaque lettre monte à son tour */
+.work__big .rise.is-split { transform: none; }
+.work__big .wd { display: inline; white-space: nowrap; }
+.work__big .ch { display: inline-block; opacity: 0; transform: translateY(.42em);
+  transition: opacity .7s var(--ease) var(--d, 0s), transform 1s var(--ease) var(--d, 0s); }
+.work__head.in .work__big .ch { opacity: 1; transform: none; }
+.work__big sup { transition: opacity .8s var(--ease) .45s; }
+.work__head:not(.in) .work__big sup { opacity: 0; }
+
+/* images dévoilées de haut en bas, dans le sens de la frise, avec un léger recul de l'image */
+/* (le rideau est porté par l'image elle-même : posé sur .shot, il empêcherait de détecter son arrivée à l'écran) */
+.shot > picture, .shot > video, .shot > img { display: block; clip-path: inset(0 0 100% 0); transition: clip-path 1.25s var(--ease-io); }
+.shot.in > picture, .shot.in > video, .shot.in > img { clip-path: inset(0 0 0 0); }
+.shot { background: transparent; }
+.shot img, .shot video { transform: scale(1.06); transition: transform 1.6s var(--ease); }
+.shot.in img, .shot.in video { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .shot > picture, .shot > video, .shot > img { clip-path: none; }
+  .shot img, .shot video { transform: none; }
+}
