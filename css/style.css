@@ -871,3 +871,17 @@ main { position: relative; z-index: 1; }
   .shot > picture, .shot > video, .shot > img { clip-path: none; }
   .shot img, .shot video { transform: none; }
 }
+
+/* le léger recul de l’image au dévoilement reste à l’intérieur de son cadre */
+.shot { overflow: hidden; }
+/* apparition des images plus vive : l'image est là dès qu'elle arrive à l'écran */
+.shot { transition: opacity .55s var(--ease); }
+.shot > picture, .shot > video, .shot > img { transition: clip-path .85s var(--ease-io); }
+.shot img, .shot video { transition: transform 1.1s var(--ease); }
+/* galeries sur ordinateur : la première image et les vidéos en grand, les autres par deux (classes posées par main.js) */
+@media (min-width: 901px) {
+  .work__media .shot:nth-child(n) { grid-column: auto; }
+  .work__media .shot.is-wide { grid-column: 1 / -1; }
+}
+@media (min-width: 901px) { .work__media .shot:not(.is-wide):nth-child(n) { grid-column: auto; } }   /* l'ancienne règle « dernière image en grand » ne s'applique plus */
+@media (min-width: 901px) { .work__media .shot.is-wide:nth-child(n) { grid-column: 1 / -1; } }

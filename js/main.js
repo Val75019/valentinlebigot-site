@@ -32,7 +32,7 @@
       title: 'Collection –\u00A0VL', sub: 'Valentin Lebigot',
       desc: 'Collection d’objets 3D recyclables au design audacieux et coloré, créée à Paris depuis 2020. Chaque pièce reflète une démarche responsable, pensée pour une clientèle sensible au design contemporain et éthique.',
       tags: ['designproduits', 'directionartistiques', 'impression3D', 'objetsgraphiques', 'packaging', 'designresponsable'],
-      media: [i('21-10-2025_Portfolio_graphisme5.jpg'), v('Corpus_dynamique_1600x1132.mp4', 'Corpus_dynamique_1600x1132.jpg'), i('21-10-2025_Portfolio_graphisme.jpg'), i('21-10-2025_Portfolio_graphisme4.jpg'), i('21-10-2025_Portfolio_graphisme2.jpg'), v('Composition-5.mp4?v=2', 'Composition-5.jpg?v=2'), i('21-10-2025_Portfolio_graphisme3.jpg')],
+      media: [i('21-10-2025_Portfolio_graphisme5.jpg'), v('Corpus_dynamique_1600x1132.mp4', 'Corpus_dynamique_1600x1132.jpg'), i('21-10-2025_Portfolio_graphisme.jpg'), i('21-10-2025_Portfolio_graphisme4.jpg'), i('21-10-2025_Portfolio_graphisme2.jpg'), v('Composition-5.mp4?v=3', 'Composition-5.jpg?v=3'), i('21-10-2025_Portfolio_graphisme3.jpg')],
     },
     {
       id: 'strategie-communication', year: '2020', role: 'Social media', colors: [T.creme, T.encre, T.sky],
@@ -40,7 +40,7 @@
       title: 'Stratégie & Communication –\u00A0VL', sub: 'Valentin Lebigot',
       desc: 'Univers digital pensé comme un ensemble cohérent : site e-shop WordPress, UX/UI, réseaux sociaux, newsletters et Ads. Chaque point de contact prolonge l’identité visuelle et assure une expérience de marque claire et continue.',
       tags: ['socialMedia', 'newsletter', 'ads', 'eshop', 'contentdesign', 'brandidentity'],
-      media: [i('21-10-2025_Portfolio_graphisme20.jpg'), i('21-10-2025_Portfolio_graphisme19.jpg'), v('Composition-1_2.mp4', 'Composition-1_2.jpg')],
+      media: [i('21-10-2025_Portfolio_graphisme20.jpg'), i('21-10-2025_Portfolio_graphisme19.jpg'), v('Composition-1_2.mp4?v=2', 'Composition-1_2.jpg?v=2')],
     },
     {
       id: 'face-a-face-marker', year: '2026', role: 'Direction artistique', colors: [T.paille, T.rose, T.encre],
@@ -48,7 +48,7 @@
       title: 'FAF 2026 – 2027', sub: 'Face à Face Paris',
       desc: 'Pour la campagne 2026/2027 de <a href="https://www.faceaface-paris.com/" target="_blank" rel="noopener">FACE A FACE Paris</a>, accompagnement des équipes dans la direction artistique autour de MARKER, une collection inspirée par le geste du dessin, les lignes franches et les couleurs électriques. Un univers kraft, surréaliste et onirique, imaginé pour souligner l’audace des montures. Photographies et vidéos réalisées par <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['artdirection', 'campaign', 'eyewear', 'design', 'setdesign', 'branding'],
-      media: [i('08-09-2026_002.jpg'), i('08-09-2026_003.jpg'), v('Composition-1.mp4', 'Composition-1.avif'), i('08-09-2026_004.jpg'), i('08-09-2026_006.jpg'), i('08-09-2026_005.jpg')],
+      media: [i('08-09-2026_002.jpg'), i('08-09-2026_003.jpg'), v('Composition-1.mp4?v=2', 'Composition-1.avif'), i('08-09-2026_004.jpg'), i('08-09-2026_006.jpg'), i('08-09-2026_005.jpg')],
     },
     {
       id: 'ripple', year: '2026', role: 'Retail & PLV', colors: [T.lavande, T.creme, T.sky],
@@ -80,7 +80,7 @@
       title: 'Born to be WOOW', sub: 'WOOW x Krys Group',
       desc: 'Pour les 60 ans de Krys Group, WOOW eyewear est mis à l’honneur à travers un kit PLV vitrine immersif dédié aux années 80. Le dispositif décline bannières, stickers, countercards et présentoirs autour de l’univers pop et coloré initié par <a href="https://designeyeweargroup.com/fr/" target="_blank" rel="noopener">DEGREE Eyewear Group</a> et mis en scène par l’agence <a href="https://www.pigmaparis.com/" target="_blank" rel="noopener">PIGMA Paris</a>.',
       tags: ['retail', 'PLV', 'scénographie', 'vitrine', 'branding', 'identité', 'visualmerchandising'],
-      media: [v('Fond-05-02-2026_ai-logo-Woow.mp4', 'Fond-05-02-2026_ai-logo-Woow.jpg'), i('01.jpg'), i('03-02-2026_recherches-Krys-x-Woow-13.jpg'), v('FOND-21-04-2026_jeu-echec.mp4', 'FOND-21-04-2026_jeu-echec.jpg'), i('00.jpg'), i('FOND-21-04-2026_woow-2.jpg')],
+      media: [v('Fond-05-02-2026_ai-logo-Woow.mp4', 'Fond-05-02-2026_ai-logo-Woow.jpg'), i('01.jpg'), i('03-02-2026_recherches-Krys-x-Woow-13.jpg'), v('FOND-21-04-2026_jeu-echec.mp4?v=2', 'FOND-21-04-2026_jeu-echec.jpg?v=2'), i('00.jpg'), i('FOND-21-04-2026_woow-2.jpg')],
     },
     {
       id: 'scenographie-retail', year: '2025', role: 'Événementiel & Set design', colors: [T.creme, T.vertgris, T.brique],
@@ -96,7 +96,7 @@
       title: 'Trobos', sub: 'Papier Merveille x Valentin Lebigot',
       desc: 'TROBOS est une collection de trombones à cliper, conçue comme un objet graphique de papeterie contemporain, née de la collaboration avec la marque lyonnaise <a href="https://www.papiermerveille.com/fr/" target="_blank" rel="noopener">Papier Merveille</a>.',
       tags: ['designproduit', 'packaging', 'designresponsable', 'objetsgraphiques', 'graphisme', 'impression3D'],
-      media: [i('21-10-2025_Portfolio_graphisme24.jpg'), i('21-10-2025_Portfolio_graphisme23.jpg'), v('Composition-4.mp4?v=2', 'Composition-4.jpg'), i('16-12-2025_slide-00.jpg'), i('16-12-2025_slide-002.jpg')],
+      media: [i('21-10-2025_Portfolio_graphisme24.jpg'), i('21-10-2025_Portfolio_graphisme23.jpg'), v('Composition-4.mp4?v=2', 'Composition-4.jpg?v=2'), i('16-12-2025_slide-00.jpg'), i('16-12-2025_slide-002.jpg')],
     },
   ];
 
@@ -455,6 +455,24 @@
   new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('in')), { threshold: 0.2 })
     .observe(document.getElementById('contact'));
 
+  /* ---------- 6b. Galeries : vidéos en grand, images par deux, toujours équilibrées ----------
+     La première image et les vidéos prennent toute la largeur ; les autres images vont par deux.
+     Une image qui attend sa voisine laisse passer la vidéo devant elle (léger réordonnancement)
+     plutôt que de rapetisser la vidéo. S'il reste une image seule à la fin, elle passe en grand. */
+  const isVid = s => !!s.querySelector('video');
+  document.querySelectorAll('.work__media').forEach(m => {
+    const it = [...m.children];
+    if (it.length < 2) return;
+    const order = [it[0]], wide = new Set([it[0]]);
+    let wait = null;
+    it.slice(1).forEach(s => {
+      if (isVid(s)) { order.push(s); wide.add(s); return; }
+      if (wait) { order.push(wait, s); wait = null; } else wait = s;
+    });
+    if (wait) { order.push(wait); wide.add(wait); }
+    order.forEach(s => { s.classList.toggle('is-wide', wide.has(s)); m.appendChild(s); });
+  });
+
   /* ---------- 6c. Téléphone : galerie de chaque projet en défilement horizontal ----------
      Les images glissent au doigt (l'image suivante dépasse pour inviter au geste).
      Tant qu'on n'y a pas touché, la galerie avance seule, doucement, quand elle
@@ -513,8 +531,17 @@
   // chargement anticipé : la vidéo est prête avant d'entrer à l'écran, pas de flash au scroll
   const vidPre = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { e.target.preload = 'auto'; vidPre.unobserve(e.target); }
-  }), { rootMargin: '100% 0px' });
+  }), { rootMargin: '150% 0px' });
   document.querySelectorAll('video').forEach(v => { vidObs.observe(v); vidPre.observe(v); });
+  // images : chargement anticipé, bien avant l'écran (sans cela Safari attend le dernier moment et l'image
+  // arrive pendant le défilement). Les galeries à faire glisser se chargent en entier à l'approche.
+  const imgPre = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('img[loading="lazy"]').forEach(im => (im.loading = 'eager'));
+    e.target.querySelectorAll('video[preload="none"]').forEach(v => (v.preload = 'metadata'));
+    imgPre.unobserve(e.target);
+  }), { rootMargin: '150% 0px' });
+  document.querySelectorAll('.work__media, .about__photo').forEach(el => imgPre.observe(el));
 
   /* ---------- 7b. Protection des images et vidéos ----------
      Dissuasif : pas de clic droit, de glisser-déposer ni d'appui long sur les visuels,
