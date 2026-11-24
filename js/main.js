@@ -455,22 +455,38 @@
   /* ---------- 8. Rail de progression + en-tête ---------- */
   const works = [...document.querySelectorAll('.work')].map(el => ({ el, rail: el.querySelector('.work__rail > div') }));
   const head = document.getElementById('head');
-  let ticking = false;
+  let ticking = false, easing = 0;
+  // le rail suit le défilement avec souplesse : il rattrape la position voulue en quelques images
+  const ease = () => {
+    easing = 0;
+    let moving = false;
+    works.forEach(({ rail }) => {
+      if (rail._t === undefined) return;
+      const v = rail._v === undefined ? rail._t : rail._v + (rail._t - rail._v) * .18;
+      const done = Math.abs(rail._t - v) < .0008;
+      rail._v = done ? rail._t : v;
+      rail.style.setProperty('--p', rail._v.toFixed(4));
+      if (!done) moving = true;
+    });
+    if (moving) easing = requestAnimationFrame(ease);
+  };
   const onScroll = () => {
     ticking = false;
-    const vh = VH;
+    const vh = VH, hh = head.offsetHeight;
     // toutes les lectures d'abord, puis les écritures : pas de recalcul forcé de la page à chaque projet
     const rects = works.map(({ el }) => el.getBoundingClientRect());
     head.classList.toggle('is-solid', scrollY > 10);
     works.forEach(({ rail }, k) => {
       const r = rects[k];
       if (r.bottom < -50 || r.top > vh + 50) return;
-      const p = Math.min(1, Math.max(0, (vh - r.top) / (r.height))).toFixed(4);
-      if (rail._p !== p) { rail._p = p; rail.style.setProperty('--p', p); }
+      // le rail se remplit pendant la lecture du projet : vide quand son haut arrive sous l'en-tête,
+      // plein quand sa fin atteint le bas de l'écran
+      rail._t = Math.min(1, Math.max(0, (hh - r.top) / Math.max(1, r.height - (vh - hh))));
       // le titre écrit sur le rail s'efface quand son projet se termine
       const ending = r.bottom < vh * .92;
       if (rail._e !== ending) { rail._e = ending; rail.classList.toggle('ending', ending); }
     });
+    if (!easing) easing = requestAnimationFrame(ease);
     heroScroll();
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });

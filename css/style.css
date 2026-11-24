@@ -695,3 +695,6 @@ main { position: relative; z-index: 1; }
 /* accueil : la phrase prend plus de place dans sa colonne */
 @media (min-width: 901px) { .hero__text { padding-right: 24px; } }
 .work__facts .tri { width: 32px; height: 4px; }
+/* le rail se remplit en découvrant ses teintes dans l'ordre, à leur vraie taille (5 / 3 / 2) :
+   on passe d'une couleur à l'autre au fil du projet, sans rien comprimer, et sans piste visible */
+.rail__fill { transform: none !important; clip-path: inset(0 0 calc(100% - var(--p, 0) * 100%) 0); }
