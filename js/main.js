@@ -523,10 +523,9 @@
       if (r.bottom < -50 || r.top > vh + 50) return;
       // le rail se remplit pendant la lecture du projet : vide quand son haut arrive sous l'en-tête,
       // plein quand sa fin atteint le bas de l'écran
-      // chaque frise commence tôt, dès que son projet entre dans l'écran, et se déploie progressivement
-      // (au téléphone, celle du projet 01 prend ainsi le relais des lignes de l'accueil sans bord vide)
-      const s = vh * .85;
-      rail._t = Math.min(1, Math.max(0, (s - r.top) / Math.max(1, r.height - (vh - hh) + (s - hh))));
+      // progression de lecture du projet (0 quand son haut passe sous l'en-tête, 1 quand sa fin atteint le bas de l'écran) :
+      // la frise reste pleine et continue, ce sont ses teintes qui glissent au fil de la lecture
+      rail._t = Math.min(1, Math.max(0, (hh - r.top) / Math.max(1, r.height - (vh - hh))));
       // le titre écrit sur le rail s'efface quand son projet se termine
       const ending = r.bottom < vh * .92;
       if (rail._e !== ending) { rail._e = ending; rail.classList.toggle('ending', ending); }

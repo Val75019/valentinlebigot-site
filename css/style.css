@@ -767,3 +767,8 @@ main { position: relative; z-index: 1; }
   .work__facts { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
   .work__aside { padding-top: 18px; }
 }
+/* frise continue : elle ne se casse jamais. Chaque frise est pleine du haut de son projet à sa fin et touche
+   celle du projet suivant ; d'un projet à l'autre, seules les teintes changent. Elle réagit à la lecture :
+   ses trois teintes glissent doucement (la première se retire, la dernière gagne) à mesure qu'on avance. */
+.rail__fill { clip-path: none !important;
+  background: linear-gradient(180deg, var(--w1) 0 calc(50% - var(--p, 0) * 30%), var(--w2) 0 calc(80% - var(--p, 0) * 30%), var(--w3) 0); }
