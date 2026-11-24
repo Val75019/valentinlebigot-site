@@ -478,6 +478,14 @@
     }, { threshold: [0, .6, 1] }).observe(track);
   });
 
+  /* ---------- 6d. Clients : les noms apparaissent en cascade ---------- */
+  const wall = document.querySelector('.cl__wall');
+  if (wall) {
+    [...wall.children].forEach((li, i) => li.style.setProperty('--i', i));
+    const wallObs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { wall.classList.add('in'); wallObs.disconnect(); } }), { threshold: .15 });
+    wallObs.observe(wall);
+  }
+
   /* ---------- 7. Vidéos visibles uniquement ---------- */
   const vidObs = new IntersectionObserver(es => es.forEach(e => {
     const v = e.target;

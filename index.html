@@ -47,7 +47,7 @@
   </script>
   <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/fonts.css?v=5.7">
-  <link rel="stylesheet" href="/css/style.css?v=11.8">
+  <link rel="stylesheet" href="/css/style.css?v=12.0">
 </head>
 <body class="is-loading">
 
@@ -100,20 +100,25 @@
     <div id="projets"></div>
 
     <!-- ============ À PROPOS ============ -->
-    <section class="about" id="a-propos" data-colors="#1c63d7,#f4ebdd,#93272a" data-label="À propos">
+    <section class="about about--k" id="a-propos" data-colors="#1c63d7,#f4ebdd,#93272a" data-label="À propos">
+      <p class="label rv ak__label">À propos</p>
       <div class="about__grid">
         <figure class="about__photo shot"><img src="/assets/img/11-03-2026_02.jpg" alt="Portrait de Valentin Lebigot" loading="lazy"></figure>
         <div class="about__body">
-          <p class="label rv">À propos</p>
-          <h2 class="about__name">
-            <span class="mask"><span class="rise">Valentin Lebigot</span></span>
-            <span class="mask"><span class="rise serif">Directeur artistique &amp; graphiste.</span></span>
-          </h2>
-          <p class="about__lead rv">Basé à Paris, j'accompagne agences, studios et marques dans la conception d'identités <em>qui prennent vie dans l'espace.</em></p>
-          <div class="about__text rv">
-            <p>À la croisée du branding, du design graphique et du design d'espace, j'imagine des dispositifs visuels, signalétiques, scénographiques et des éléments sur mesure qui prolongent l'identité des marques au-delà des supports traditionnels.</p>
-            <p>J'interviens principalement sur des projets de bureaux, PLV, retail, hospitality et identité de lieu, en collaboration avec des agences Design &amp; Build, des studios de création et des marques.</p>
+          <div class="ak__who">
+            <h2 class="ak__name about__name"><span class="mask"><span class="rise">Valentin Lebigot</span></span></h2>
+            <p class="ak__role serif rv">Directeur artistique &amp; graphiste, Paris.</p>
           </div>
+          <p class="ak__lead rv">Formé au design produit (DSAA), je conçois l’identité d’une marque <em>et son application physique</em>&nbsp;: du logotype à la signalétique, de la PLV à l’objet. J’interviens de la conception jusqu’au suivi de fabrication, en direct ou aux côtés d’agences Design&nbsp;&amp;&nbsp;Build.</p>
+          <ol class="ak__exp rv">
+            <li><span class="ak__n">01</span><h3>Identité de marque</h3><p>Plateforme de marque, logotype, charte graphique, système typographique, déclinaisons print et digitales.</p></li>
+            <li><span class="ak__n">02</span><h3>Identité de lieu &amp; signalétique</h3><p>Signalétique directionnelle et identitaire, habillage mural, vitrophanie, wayfinding de bureaux et d’espaces recevant du public.</p></li>
+            <li><span class="ak__n">03</span><h3>Retail &amp; PLV</h3><p>Présentoirs, PLV permanente et temporaire, vitrines, corners, merchandising visuel en point de vente.</p></li>
+            <li><span class="ak__n">04</span><h3>Scénographie &amp; événementiel</h3><p>Stands, expositions, set design, lancements de collection et salons.</p></li>
+            <li><span class="ak__n">05</span><h3>Objet &amp; design produit</h3><p>Objets sur mesure, prototypage et impression 3D, petites séries, packaging.</p></li>
+            <li><span class="ak__n">06</span><h3>Production &amp; suivi</h3><p>Fichiers d’exécution, BAT, choix des matériaux, relation fabricants, contrôle qualité sur site.</p></li>
+          </ol>
+          <p class="ak__tools rv"><span>Outils</span> Illustrator, Photoshop, InDesign, Figma, After Effects, Rhino, SketchUp</p>
 
           <div class="accordion rv">
             <details>
@@ -136,18 +141,6 @@
                   <p class="cv-date">2019 — 2020</p>
                   <ul><li>Création d’identités visuelles et supports print</li><li>Exécution et préparation de fichiers</li><li>Compréhension avancée des contraintes de production</li></ul>
                 </div>
-              </div></div>
-            </details>
-            <details>
-              <summary>Compétences<i></i></summary>
-              <div class="acc__body"><div>
-                <dl class="cv-list">
-                  <dt>Direction Artistique &amp; Identité</dt><dd>Branding, storytelling, multi-supports</dd>
-                  <dt>Design d’espace &amp; retail</dt><dd>Signalétique, PLV, vitrines, scénographie</dd>
-                  <dt>Design produit</dt><dd>Objets sur mesure, impression 3D, développement</dd>
-                  <dt>Production &amp; exécution</dt><dd>Print, fabrication, suivi technique</dd>
-                  <dt>Logiciels</dt><dd>Illustrator, Photoshop, InDesign, Figma, After Effects, Rhino</dd>
-                </dl>
               </div></div>
             </details>
             <details>
@@ -186,6 +179,15 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
+    <!-- ============ CLIENTS ============ -->
+    <section class="clients" id="clients" aria-labelledby="clients-t">
+      <div class="cl__head">
+        <p class="label rv" id="clients-t">Clients &amp; collaborations</p>
+        <p class="cl__note rv"><em>Institutions, marques et agences</em> — chaque nom renvoie au projet réalisé (numéro).</p>
+      </div>
+      <ul class="cl__wall"><li class="is-proj"><a href="#collection-produit">Centre Pompidou<sup>01</sup></a></li><li class="is-proj"><a href="#scenographie-retail">DEGREE Eyewear Group<sup>08</sup></a></li><li class="is-proj"><a href="#face-a-face-marker">Face à Face Paris<sup>03</sup></a></li><li class="is-proj"><a href="#collection-produit">Fondation Louis Vuitton<sup>01</sup></a></li><li class="is-proj"><a href="#surval-4-all">Génie des Lieux<sup>06</sup></a></li><li class="is-proj"><a href="#collection-produit">Klin d’Oeil<sup>01</sup></a></li><li class="is-proj"><a href="#born-to-be-woow">Krys Group<sup>07</sup></a></li><li class="is-proj"><a href="#collection-produit">Les Arts Décoratifs<sup>01</sup></a></li><li class="is-proj"><a href="#collection-produit">Monoprix<sup>01</sup></a></li><li class="is-proj"><a href="#collection-produit">Palais de Tokyo<sup>01</sup></a></li><li class="is-proj"><a href="#trobos">Papier Merveille<sup>09</sup></a></li><li class="is-proj"><a href="#collection-produit">Papier Tigre<sup>01</sup></a></li><li class="is-proj"><a href="#brasserie-le-s">Servier Monde<sup>05</sup></a></li><li class="is-proj"><a href="#brasserie-le-s">Watt Design &amp; Build<sup>05</sup></a></li><li class="is-proj"><a href="#born-to-be-woow">WOOW eyewear<sup>07</sup></a></li></ul>
+    </section>
+
     <section class="contact" id="contact" data-colors="#1c63d7,#f4ebdd,#93272a" data-label="Contact">
       <div class="contact__inner">
         <p class="label rv">Contact</p>
@@ -206,6 +208,6 @@
     </section>
   </main>
 
-  <script src="/js/main.js?v=12.5"></script>
+  <script src="/js/main.js?v=12.6"></script>
 </body>
 </html>
