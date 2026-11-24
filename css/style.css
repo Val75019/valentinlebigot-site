@@ -698,3 +698,15 @@ main { position: relative; z-index: 1; }
 /* le rail se remplit en découvrant ses teintes dans l'ordre, à leur vraie taille (5 / 3 / 2) :
    on passe d'une couleur à l'autre au fil du projet, sans rien comprimer, et sans piste visible */
 .rail__fill { transform: none !important; clip-path: inset(0 0 calc(100% - var(--p, 0) * 100%) 0); }
+
+/* galeries des projets en deux colonnes : la 1re image en grand, les suivantes deux par deux
+   (une dernière image seule reprend toute la largeur) — tout le projet se voit, en bien moins de défilement */
+@media (min-width: 901px) {
+  .work__media { grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: start; }
+  .work__media .shot:first-child, .work__media .shot:last-child:nth-child(even) { grid-column: 1 / -1; }
+}
+/* rythme éditorial : une image en grand, deux côte à côte, une en grand… (une image seule en fin reprend la largeur) */
+@media (min-width: 901px) {
+  .work__media .shot:last-child:nth-child(even) { grid-column: auto; }
+  .work__media .shot:nth-child(3n+1), .work__media .shot:last-child:nth-child(3n+2) { grid-column: 1 / -1; }
+}
