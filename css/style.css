@@ -757,3 +757,8 @@ main { position: relative; z-index: 1; }
   .work__media { margin-left: calc(var(--rail) + var(--pad) + 16px); }
   .work__media > .shot { flex: 0 0 calc(100% - var(--rail) - 16px); }   /* 16 px de l'image suivante restent visibles */
 }
+/* téléphone : titre, infos et paragraphe forment un seul bloc — écarts resserrés */
+@media (max-width: 900px) {
+  .work__facts { margin-top: 10px; }
+  .work__aside { margin-top: 0; padding-top: 20px; }
+}
