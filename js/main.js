@@ -429,6 +429,46 @@
   new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('in')), { threshold: 0.2 })
     .observe(document.getElementById('contact'));
 
+  /* ---------- 6c. Téléphone : galerie de chaque projet en défilement horizontal ----------
+     Les images glissent au doigt (l'image suivante dépasse pour inviter au geste).
+     Tant qu'on n'y a pas touché, la galerie avance seule, doucement, quand elle
+     est bien visible ; au premier contact elle s'arrête pour de bon et laisse la main.         */
+  const swipeMode = matchMedia('(max-width: 900px)');
+  document.querySelectorAll('.work').forEach(sec => {
+    const track = sec.querySelector('.work__media');
+    const n = track.children.length;
+    if (n < 2) return;
+    const step = () => (track.children[1] ? track.children[1].offsetLeft - track.children[0].offsetLeft : track.clientWidth);
+    const index = () => Math.min(n - 1, Math.max(0, Math.round(track.scrollLeft / step())));
+    let auto = false, autoT = 0;
+    // avance automatique : seulement sur téléphone, sans réduction des animations, galerie visible,
+    // et tant que le visiteur n'a pas fait glisser les images lui-même (un défilement vertical de la page ne compte pas)
+    let touched = false, visible = false, timer = 0;
+    const stop = () => { if (touched) return; touched = true; clearInterval(timer); timer = 0; sec.classList.add('swiped'); };
+    track.addEventListener('scroll', () => {
+      if (!auto) stop();
+    }, { passive: true });
+    track.addEventListener('keydown', stop, { once: true });
+    // un toucher sur une image passe à la suivante (retour à la première après la dernière)
+    track.addEventListener('click', () => {
+      if (!swipeMode.matches) return;
+      stop();
+      const k = index();
+      track.scrollTo({ left: k >= n - 1 ? 0 : (k + 1) * step(), behavior: 'smooth' });
+    });
+    const tick = () => {
+      if (!swipeMode.matches || touched || !visible || document.hidden) return;
+      const k = index();
+      auto = true; clearTimeout(autoT); autoT = setTimeout(() => (auto = false), 900);
+      track.scrollTo({ left: k >= n - 1 ? 0 : (k + 1) * step(), behavior: 'smooth' });
+    };
+    new IntersectionObserver(([e]) => {
+      visible = e.intersectionRatio > .6;
+      if (visible && !touched && !reduceMotion && swipeMode.matches && !timer) timer = setInterval(tick, 3600);
+      if (!visible && timer) { clearInterval(timer); timer = 0; }
+    }, { threshold: [0, .6, 1] }).observe(track);
+  });
+
   /* ---------- 7. Vidéos visibles uniquement ---------- */
   const vidObs = new IntersectionObserver(es => es.forEach(e => {
     const v = e.target;
@@ -481,7 +521,10 @@
       if (r.bottom < -50 || r.top > vh + 50) return;
       // le rail se remplit pendant la lecture du projet : vide quand son haut arrive sous l'en-tête,
       // plein quand sa fin atteint le bas de l'écran
-      rail._t = Math.min(1, Math.max(0, (hh - r.top) / Math.max(1, r.height - (vh - hh))));
+      // téléphone, projet 01 : la frise commence plus tôt, dès que le projet entre dans l'écran,
+      // pour prendre le relais des lignes de l'accueil sans laisser de bord gauche vide
+      const s = k === 0 && phone.matches ? vh * .8 : hh;
+      rail._t = Math.min(1, Math.max(0, (s - r.top) / Math.max(1, r.height - (vh - hh) + (s - hh))));
       // le titre écrit sur le rail s'efface quand son projet se termine
       const ending = r.bottom < vh * .92;
       if (rail._e !== ending) { rail._e = ending; rail.classList.toggle('ending', ending); }

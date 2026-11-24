@@ -710,3 +710,21 @@ main { position: relative; z-index: 1; }
   .work__media .shot:last-child:nth-child(even) { grid-column: auto; }
   .work__media .shot:nth-child(3n+1), .work__media .shot:last-child:nth-child(3n+2) { grid-column: 1 / -1; }
 }
+
+/* téléphone : chaque galerie devient une bande d'images à faire glisser.
+   La suivante dépasse sur la droite (invitation au geste), arrêt net sur chaque image. */
+@media (max-width: 900px) {
+  .work__media {
+    display: flex; gap: var(--rail); overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-left: calc(var(--rail) + var(--pad) + 20px);
+    margin-right: 0; padding-right: var(--pad); padding-bottom: 0; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .work__media::-webkit-scrollbar { display: none; }
+  .work__media > .shot { flex: 0 0 84%; scroll-snap-align: start; }
+}
+/* téléphone : la bande d'images commence au bord du texte et s'y arrête — en glissant, les images
+   ne passent jamais sous la frise de gauche ni sous son titre ; images plus grandes (seule la suivante dépasse) */
+@media (max-width: 900px) {
+  .work__media { margin-left: calc(var(--rail) + var(--pad) + 20px); padding: 0 var(--pad) 0 0; scroll-padding-left: 0; margin-bottom: 70px; }
+  .work__media > .shot { flex: 0 0 calc(100% - 30px); cursor: pointer; }
+}
