@@ -772,3 +772,22 @@ main { position: relative; z-index: 1; }
    ses trois teintes glissent doucement (la première se retire, la dernière gagne) à mesure qu'on avance. */
 .rail__fill { clip-path: none !important;
   background: linear-gradient(180deg, var(--w1) 0 calc(50% - var(--p, 0) * 30%), var(--w2) 0 calc(80% - var(--p, 0) * 30%), var(--w3) 0); }
+/* =========================================================
+   Fluidité (passe d'optimisation)
+   ========================================================= */
+/* frise : le glissement des teintes se fait par un simple déplacement (calculé par la carte graphique),
+   au lieu de redessiner un dégradé à chaque image. Même rendu : 50/30/20 au début du projet, 20/30/50 à la fin. */
+.rail__fill { background: none !important; overflow: hidden; }
+.rail__fill::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 130%;
+  background: linear-gradient(180deg, var(--w1) 0 38.462%, var(--w2) 38.462% 61.538%, var(--w3) 61.538%);
+  transform: translate3d(0, calc(var(--p, 0) * -23.077%), 0);
+  will-change: transform; backface-visibility: hidden;
+}
+/* téléphone : l'en-tête garde son voile clair mais sans flou en temps réel (très coûteux au défilement) */
+@media (max-width: 900px) {
+  .head::before { -webkit-backdrop-filter: none; backdrop-filter: none; background: color-mix(in srgb, var(--bg) 94%, transparent); }
+  .head__nav { -webkit-backdrop-filter: none; backdrop-filter: none; background: color-mix(in srgb, var(--bg) 97%, transparent); }
+}
+/* lignes qui ondulent : à l'arrêt quand elles sont hors de l'écran */
+.lines.is-off .intro__col, .hero__lines.is-off .intro__col { animation-play-state: paused; }

@@ -360,10 +360,17 @@
     heroY = y;
     heroText.style.transform = y ? `translateY(${(y * 0.4).toFixed(1)}px)` : '';
     heroText.style.opacity = y ? Math.max(0, 1 - y / (VH * 0.5)).toFixed(3) : '';
-    heroCols.forEach(c => (c.style.top = y ? (y * c._v).toFixed(1) + 'px' : ''));
+    // déplacement par transformation (pas de recalcul de la mise en page à chaque image de défilement)
+    heroCols.forEach(c => {
+      if (y) c.style.transition = 'none';   // une fois l'intro passée, la ligne suit le doigt sans retard
+      c.style.transform = y ? `translate3d(0,${(y * c._v).toFixed(1)}px,0)` : '';
+    });
   };
   buildFoot();
   buildHero();
+  // les lignes qui ondulent s'arrêtent quand elles sont hors de l'écran (économie de batterie et de fluidité)
+  const offObs = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('is-off', !e.isIntersecting)));
+  [footLines, heroLines].forEach(el => el && offObs.observe(el));
   let lastW = innerWidth;
   addEventListener('resize', () => {
     clearTimeout(buildFoot.t);
