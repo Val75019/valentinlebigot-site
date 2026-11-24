@@ -313,7 +313,7 @@ p, li, dd, dt { text-wrap: pretty; }
 
 /* ---------- Mobile ---------- */
 @media (max-width: 900px) {
-  :root { --rail: 8px; --pad: 20px; --head-h: 66px; }
+  :root { --rail: 12px; --pad: 20px; --head-h: 66px; }
   .head__logo img { width: 36px; }
   .head { justify-content: space-between; }
   .head__burger {
@@ -755,7 +755,7 @@ main { position: relative; z-index: 1; }
   .work__facts em { font-size: 16px; line-height: 1.15; }
   /* galeries alignées sur le bord du texte, aussi larges que possible : seule une fine part de la suivante dépasse */
   .work__media { margin-left: calc(var(--rail) + var(--pad) + 16px); }
-  .work__media > .shot { flex: 0 0 calc(100% - var(--rail) - 16px); }   /* 16 px de l'image suivante restent visibles */
+  .work__media > .shot { flex: 0 0 calc(100% - 2 * var(--rail)); }   /* l'image suivante reste visible sur la largeur de la frise */
 }
 /* téléphone : titre, infos et paragraphe forment un seul bloc — écarts resserrés */
 @media (max-width: 900px) {
