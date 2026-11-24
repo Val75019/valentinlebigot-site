@@ -504,7 +504,7 @@
     let moving = false;
     works.forEach(({ rail }) => {
       if (rail._t === undefined) return;
-      const v = rail._v === undefined ? rail._t : rail._v + (rail._t - rail._v) * .18;
+      const v = rail._v === undefined ? rail._t : rail._v + (rail._t - rail._v) * .08;
       const done = Math.abs(rail._t - v) < .0008;
       rail._v = done ? rail._t : v;
       rail.style.setProperty('--p', rail._v.toFixed(4));
@@ -523,9 +523,9 @@
       if (r.bottom < -50 || r.top > vh + 50) return;
       // le rail se remplit pendant la lecture du projet : vide quand son haut arrive sous l'en-tête,
       // plein quand sa fin atteint le bas de l'écran
-      // téléphone, projet 01 : la frise commence plus tôt, dès que le projet entre dans l'écran,
-      // pour prendre le relais des lignes de l'accueil sans laisser de bord gauche vide
-      const s = k === 0 && phone.matches ? vh * .8 : hh;
+      // chaque frise commence tôt, dès que son projet entre dans l'écran, et se déploie progressivement
+      // (au téléphone, celle du projet 01 prend ainsi le relais des lignes de l'accueil sans bord vide)
+      const s = vh * .85;
       rail._t = Math.min(1, Math.max(0, (s - r.top) / Math.max(1, r.height - (vh - hh) + (s - hh))));
       // le titre écrit sur le rail s'efface quand son projet se termine
       const ending = r.bottom < vh * .92;

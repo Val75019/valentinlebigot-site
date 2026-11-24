@@ -762,3 +762,8 @@ main { position: relative; z-index: 1; }
   .work__facts { margin-top: 10px; }
   .work__aside { margin-top: 0; padding-top: 20px; }
 }
+/* téléphone : fin filet gris entre le bloc titre + infos et le paragraphe, comme sur ordinateur */
+@media (max-width: 900px) {
+  .work__facts { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+  .work__aside { padding-top: 18px; }
+}
