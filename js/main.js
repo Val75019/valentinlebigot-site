@@ -131,6 +131,9 @@
     const c = [n >> 16, (n >> 8) & 255, n & 255].map(x => { x /= 255; return x <= .03928 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4; });
     return .2126 * c[0] + .7152 * c[1] + .0722 * c[2] > .28 ? '#141414' : '#fff';
   };
+  // la teinte la plus soutenue d'un projet (la plus foncée de ses trois) : pour les touches de couleur sur le texte
+  const lumOf = hex => { const n = parseInt(hex.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255].reduce((s, v, i) => s + v * [.2126, .7152, .0722][i], 0); };
+  const deepOf = cols => cols.slice().sort((a, b) => lumOf(a) - lumOf(b))[0];
 
   /* ---------- 1. Spectre de l'accueil : une bande par projet ---------- */
   const spectrum = document.getElementById('spectrum');
@@ -212,7 +215,7 @@
     : `<figure class="shot"><video src="${m.video}" poster="${m.poster}" muted loop playsinline preload="none"></video></figure>`;
   document.getElementById('projets').innerHTML = PROJECTS.map((p, k) => `
     <section class="work" id="${p.id}" data-colors="${p.colors}" data-label="${esc(p.title)}" data-num="${pad2(k + 1)}"
-      style="--w1:${p.colors[0]};--w2:${p.colors[1]};--w3:${p.colors[2]}">
+      style="--w1:${p.colors[0]};--w2:${p.colors[1]};--w3:${p.colors[2]};--wd:${deepOf(p.colors)}">
       <div class="work__rail" aria-hidden="true"><div class="rail__stick">
         <div class="rail__fill"><i></i><i></i><i></i></div>
         <p class="rail__label"><em>${pad2(k + 1)}</em>${esc(p.title)}</p>

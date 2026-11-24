@@ -685,3 +685,13 @@ main { position: relative; z-index: 1; }
 /* la frise de gauche démarre toujours sous la barre du haut (jamais cachée derrière) :
    sa partie visible reste accrochée juste sous l'en-tête et descend jusqu'en bas de l'écran */
 .work__rail > .rail__stick { top: var(--head-h); height: calc(100vh - var(--head-h)); height: calc(100svh - var(--head-h)); }
+
+/* =========================================================
+   Plus graphique, plus identifiable
+   ========================================================= */
+/* la signature (rail, lignes de l'intro et du pied de page, écart des images) prend plus de présence
+   sur grand écran : module de 16 px ; rail + marge = 72 px, toujours sur la grille */
+@media (min-width: 1201px) { :root { --rail: 16px; --pad: 56px; } }
+/* accueil : la phrase prend plus de place dans sa colonne */
+@media (min-width: 901px) { .hero__text { padding-right: 24px; } }
+.work__facts .tri { width: 32px; height: 4px; }
