@@ -56,21 +56,17 @@
     h1 em { font-variation-settings: normal; text-transform: none; font-weight: 400; font-size: 1.06em; }
 
     /* mêmes réglages que le site : fond Lin clair, rail d'une seule surface,
-       marges en multiples du module (largeur du rail), lignes de fond rares et discrètes */
+       marges en multiples du module (largeur du rail) */
     html, body { background: #faf9f6; }
     .rail { background: linear-gradient(180deg, #1c63d7 0 50%, #f4ebdd 50% 80%, #93272a 80%); z-index: 2; }
     .rail i { display: none; }
     @media (min-width: 1201px) { body { --pad: 60px; } }
     @media (min-width: 901px) and (max-width: 1200px) { body { --pad: 48px; } }
     @media (max-width: 900px) { body { --pad: 24px; } }
-    .guides { position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background: repeating-linear-gradient(90deg, rgba(20, 20, 20, .032) 0 1px, transparent 1px calc(var(--rail) * 24));
-      background-position: calc(var(--rail) + var(--pad)) 0; }
     header, main, footer { position: relative; z-index: 1; }
   </style>
 </head>
 <body>
-  <div class="guides" aria-hidden="true"></div>
   <div class="rail" aria-hidden="true"></div>
 
   <header>

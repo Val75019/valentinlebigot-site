@@ -80,19 +80,14 @@
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 
     /* mêmes réglages que le site : fond Lin clair, module de 8 px (largeur d'une ligne de couleur),
-       contenu et lignes de fond calés sur ce module, aucune couture entre deux teintes */
+       contenu calé sur ce module, aucune couture entre deux teintes */
     :root { --pad: 24px; }
     html, body { background: #faf9f6; }
     .lines span:not(:last-child) { margin-bottom: -1px; }
-    .guides { position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background: repeating-linear-gradient(90deg, rgba(20, 20, 20, .032) 0 1px, transparent 1px 192px);
-      background-position: var(--g0, 24px) 0; }
-    main, .lines { position: relative; z-index: 1; }
     .links li, .links { border-color: rgba(20, 20, 20, .1); }
   </style>
 </head>
 <body>
-  <div class="guides" aria-hidden="true"></div>
   <main>
     <a href="/" aria-label="Valentin Lebigot — site"><img class="logo" src="/assets/15-12-2025_logo-00-02.png" alt="Valentin Lebigot Studio"></a>
     <h1>Valentin<br>Lebigot</h1>
@@ -138,16 +133,15 @@
       box.innerHTML = html;
       document.getElementById('y').textContent = new Date().getFullYear();
 
-      // la colonne de contenu démarre sur un multiple de 8 px : le texte et le premier trait de fond
-      // tombent sur une jonction entre deux lignes de couleur du bas
-      var main = document.querySelector('main'), guides = document.querySelector('.guides');
+      // la colonne de contenu démarre sur un multiple de 8 px : le texte tombe sur une jonction
+      // entre deux lignes de couleur du bas
+      var main = document.querySelector('main');
       var align = function () {
         main.style.marginLeft = '';
         var pad = parseFloat(getComputedStyle(main).paddingLeft) || 24;
         var left = main.getBoundingClientRect().left + pad;
         var snap = Math.round(left / w) * w;
         if (innerWidth > 560) main.style.marginLeft = (snap - pad) + 'px';
-        guides.style.setProperty('--g0', snap + 'px');
       };
       align();
       addEventListener('resize', align);

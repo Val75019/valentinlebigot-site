@@ -38,12 +38,9 @@
       transform-origin: top; animation: grow 1.1s cubic-bezier(.65, 0, .35, 1) both; }
     .rail i { display: none; }
     @keyframes grow { from { transform: scaleY(0); } }
-    /* construction sur le module (largeur du rail) : marges en multiples, lignes de fond rares et discrètes */
+    /* construction sur le module (largeur du rail) : marges en multiples */
     @media (min-width: 1201px) { :root { --pad: 60px; } }
     @media (min-width: 901px) and (max-width: 1200px) { :root { --pad: 48px; } }
-    .guides { position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background: repeating-linear-gradient(90deg, rgba(20, 20, 20, .032) 0 1px, transparent 1px calc(var(--rail) * 24));
-      background-position: calc(var(--rail) + var(--pad)) 0; }
     .head, main { position: relative; z-index: 1; }
 
     .head { display: flex; align-items: center; height: 84px; padding: 0 var(--pad) 0 calc(var(--rail) + var(--pad)); }
@@ -97,7 +94,6 @@
   </style>
 </head>
 <body>
-  <div class="guides" aria-hidden="true"></div>
   <div class="rail" aria-hidden="true"></div>
   <header class="head">
     <a href="/" id="logo" aria-label="Valentin Lebigot — accueil"><img src="/assets/15-12-2025_logo-00-02.png" alt="Valentin Lebigot"></a>

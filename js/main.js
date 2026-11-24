@@ -361,29 +361,7 @@
   };
   buildFoot();
   buildHero();
-  // lignes de construction : posées sur le même module que les lignes de couleur
-  // (largeur du rail = largeur de chaque ligne de l'intro et du pied de page) : chaque trait
-  // tombe exactement sur une jonction entre deux lignes de couleur, environ tous les 1/12 d'écran
-  const guides = document.querySelector('.guides');
-  const placeGuides = () => {
-    if (!guides) return;
-    const w = railW();
-    // premier trait au bord gauche du contenu (titres, textes) ; puis un trait tous les 6 ou 12 modules
-    const start = innerWidth > 900 ? w + (parseFloat(getComputedStyle(root).getPropertyValue('--pad')) || 60) : w * 6;
-    let step = w * 24;   // téléphone : un trait tous les 24 modules
-    if (innerWidth > 900) {
-      // ordinateur : les traits tombent sur la structure de la page — bord du texte, milieu de la
-      // colonne de texte, bord gauche des images et de la frise (5/12 de l'écran), puis même cadence
-      const edge = Math.round(innerWidth * 5 / 12 / w) * w;
-      const span = edge - start;
-      step = (span / w) % 2 === 0 ? span / 2 : span;
-    }
-    guides.style.setProperty('--step', step + 'px');
-    guides.style.setProperty('--g0', start + 'px');
-  };
-  placeGuides();
   let lastW = innerWidth;
-  addEventListener('resize', placeGuides);
   addEventListener('resize', () => {
     clearTimeout(buildFoot.t);
     buildFoot.t = setTimeout(() => {
