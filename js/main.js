@@ -463,6 +463,8 @@
       track.scrollTo({ left: k >= n - 1 ? 0 : (k + 1) * step(), behavior: 'smooth' });
     };
     new IntersectionObserver(([e]) => {
+      // toute la bande apparaît d'un coup : l'image suivante, à peine visible sur la droite, ne reste jamais blanche
+      if (e.isIntersecting && swipeMode.matches) [...track.children].forEach((c, i) => { c.classList.add('in'); revealObs.unobserve(c); const im = c.querySelector('img'); if (im && i < 3) im.loading = 'eager'; });
       visible = e.intersectionRatio > .6;
       if (visible && !touched && !reduceMotion && swipeMode.matches && !timer) timer = setInterval(tick, 3600);
       if (!visible && timer) { clearInterval(timer); timer = 0; }
